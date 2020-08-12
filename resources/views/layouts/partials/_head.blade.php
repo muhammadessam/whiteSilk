@@ -15,9 +15,46 @@
     <link href="{{asset('admins/assets/css/plugins.css')}}" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{{asset('admins/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('admins/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css"/>
-    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{asset('admins/plugins/table/datatable/datatables.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admins/assets/css/forms/theme-checkbox-radio.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admins/plugins/table/datatable/dt-global_style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admins/plugins/table/datatable/custom_dt_custom.css')}}">
+    <!-- END PAGE LEVEL CUSTOM STYLES -->
 
+    <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
+    <link href="{{asset('admins/assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css"/>
+    {{--    <link rel="stylesheet" type="text/css" href="{{asset('admins/assets/css/forms/theme-checkbox-radio.css')}}">--}}
+    <link href="{{asset('admins/assets/css/tables/table-basic.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- END PAGE LEVEL CUSTOM STYLES -->
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"/>
+    <link href="{{asset('admins/plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('admins/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('admins/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css"/>
+    @yield('css')
+    <style>
+        .delete-btn {
+            background-color: white;
+            border: 0px;
+        }
+
+        .dataTables_length {
+            display: inline-block;
+        }
+
+        .dt-buttons {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .dataTables_filter {
+            display: inline-block;
+            float: left;
+        }
+
+        .dataTables_paginate {
+            float: left;
+        }
+    </style>
 </head>

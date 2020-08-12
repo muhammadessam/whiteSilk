@@ -10,4 +10,9 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function actionsuccess()
+    {
+        return toast('تمت العملية بنجاح', 'success')->position('top-start');
+    }
 }

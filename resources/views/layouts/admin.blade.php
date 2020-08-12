@@ -51,5 +51,6 @@
 </div>
 <!-- END MAIN CONTAINER -->
 @include('layouts.partials._footer')
+@include('sweetalert::alert')
 </body>
 </html>

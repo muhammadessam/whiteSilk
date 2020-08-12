@@ -119,6 +119,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/realrashid/sweet-alert" />
     </include_path>
   </component>
   <component name="ProjectId" id="1fzmPFYff6iQ5d0i6iz4Kc6Wl0Q" />
@@ -128,11 +129,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/adminsAssets" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.laravel_idea.plugin.extension.b.i" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -153,7 +155,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597229272357</updated>
-      <workItem from="1597229274707" duration="4087000" />
+      <workItem from="1597229274707" duration="16426000" />
     </task>
     <servers />
   </component>
@@ -166,25 +168,42 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="809" y="435" key="Create Controller" timestamp="1597233171748">
+    <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597240850639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="809" y="435" key="Create Controller/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597233171748" />
-    <state x="834" y="449" key="Create View" timestamp="1597233212510">
+    <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597240850639" />
+    <state x="809" y="435" key="Create Controller" timestamp="1597238119155">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="834" y="449" key="Create View/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597233212510" />
-    <state x="794" y="448" key="NewPhpFileDialog" timestamp="1597233053488">
+    <state x="809" y="435" key="Create Controller/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597238119155" />
+    <state x="809" y="407" key="Create Resource Controller" timestamp="1597238802457">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597233053488" />
-    <state x="461" y="170" key="SettingsEditor" timestamp="1597229327630">
+    <state x="809" y="407" key="Create Resource Controller/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597238802457" />
+    <state x="834" y="449" key="Create View" timestamp="1597247457989">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597229327630" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597233898943">
+    <state x="834" y="449" key="Create View/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597247457989" />
+    <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1597240866647">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597233898943" />
+    <state width="221" height="457" key="HiddenNamespacesPopup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597240866647" />
+    <state x="794" y="448" key="NewPhpFileDialog" timestamp="1597239197143">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597239197143" />
+    <state x="461" y="170" key="SettingsEditor" timestamp="1597238890268">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597238890268" />
+    <state x="667" y="81" width="585" height="888" key="find.popup" timestamp="1597243296407">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="667" y="81" width="585" height="888" key="find.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597243296407" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597249250780">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597247463007" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597249250780" />
   </component>
 </project>
