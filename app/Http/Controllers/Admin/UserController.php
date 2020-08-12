@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email|email',
+            'password' => 'required|confirmed|min:6',
+        ]);
+        if ($request->hasFile('img_temp'))
+            $request['img'] = '';
+        User::create($request->all());
+
     }
 
     /**

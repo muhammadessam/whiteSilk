@@ -8,7 +8,7 @@
                     <div class="card-header d-flex justify-content-between">
                         <h3 class="card-title">الصلاحيات</h3>
                         <div class="card-text">
-                            <a class="btn btn-success" href="{{route('admin.roles.create')}}"><i class="fa fa-plus"></i></a>
+                            <a class="btn btn-success" href="{{route('admin.users.create')}}"><i class="fa fa-plus"></i></a>
                         </div>
                     </div>
                     <div class="card-body">

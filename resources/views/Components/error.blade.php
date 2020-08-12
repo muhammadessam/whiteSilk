@@ -1,5 +1,7 @@
 @props(['title' => 'name', ''])
 
-<div class="invalid-feedback">
-
+@error($title)
+<div class="alert alert-danger">
+    {{$message}}
 </div>
+@enderror
