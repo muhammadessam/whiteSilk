@@ -134,12 +134,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/adminsAssets" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.laravel_idea.plugin.extension.b.i" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\whitsilk\public\adminsAssets" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="phpartisan migrate:rollback" />
+      <command value="php artisan migrate:rollback" />
+      <command value="php artisan migrate" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -155,7 +162,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597229272357</updated>
-      <workItem from="1597229274707" duration="26081000" />
+      <workItem from="1597229274707" duration="34250000" />
     </task>
     <servers />
   </component>
@@ -168,10 +175,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="191" y="151" key="#Live_Templates" timestamp="1597249962325">
+    <state x="176" y="48" width="1538" height="952" key="#Live_Templates" timestamp="1597264901510">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="191" y="151" key="#Live_Templates/0.0.1920.1050@0.0.1920.1050" timestamp="1597249962325" />
+    <state x="176" y="48" width="1538" height="952" key="#Live_Templates/0.0.1920.1050@0.0.1920.1050" timestamp="1597264901510" />
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597240850639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -181,6 +188,14 @@
     </state>
     <state x="809" y="435" key="Create Controller/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597238119155" />
     <state x="809" y="435" key="Create Controller/0.0.1920.1050@0.0.1920.1050" timestamp="1597251894627" />
+    <state x="834" y="389" key="Create Database Migration" timestamp="1597267244116">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="834" y="389" key="Create Database Migration/0.0.1920.1050@0.0.1920.1050" timestamp="1597267244116" />
+    <state x="834" y="449" key="Create Database Seeder" timestamp="1597260542068">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="834" y="449" key="Create Database Seeder/0.0.1920.1050@0.0.1920.1050" timestamp="1597260542068" />
     <state x="809" y="407" key="Create Resource Controller" timestamp="1597238802457">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -189,10 +204,27 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="808" y="435" key="Create Service Provider/0.0.1920.1050@0.0.1920.1050" timestamp="1597259829210" />
-    <state x="834" y="449" key="Create View" timestamp="1597247457989">
+    <state x="834" y="449" key="Create View" timestamp="1597260475274">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="834" y="449" key="Create View/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597247457989" />
+    <state x="834" y="449" key="Create View/0.0.1920.1050@0.0.1920.1050" timestamp="1597260475274" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1597267371532">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371532" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1597267371531">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371531" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1597267371531">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371531" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1597267371532">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371532" />
     <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1597240866647">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -206,10 +238,11 @@
     </state>
     <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597239197143" />
     <state x="794" y="448" key="NewPhpFileDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1597250210012" />
-    <state x="461" y="170" key="SettingsEditor" timestamp="1597238890268">
+    <state x="202" y="240" key="SettingsEditor" timestamp="1597263298578">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="170" key="SettingsEditor/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597238890268" />
+    <state x="202" y="240" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1597263298578" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1597252080301">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -218,10 +251,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="667" y="81" width="585" height="888" key="find.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597243296407" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597259093015">
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1597267367619">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597267367619" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597267504542">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597247463007" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597259093015" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597267504542" />
   </component>
 </project>

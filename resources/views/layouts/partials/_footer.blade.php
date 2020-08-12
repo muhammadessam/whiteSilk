@@ -9,7 +9,6 @@
         App.init();
     });
 </script>
-<script src="{{asset('admins/assets/js/custom.js')}}"></script>
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 
 <script src="{{asset('admins/plugins/table/datatable/datatables.js')}}"></script>
@@ -20,4 +19,7 @@
 <script src="{{asset('admins/plugins/dataTables.select.min.js')}}"></script>
 <script src="{{asset('admins/plugins/sweetalerts/sweetalert2.min.js')}}"></script>
 <script src="{{asset('admins/plugins/sweetalerts/custom-sweetalert.js')}}"></script>
+
+<script src="{{asset('admins/assets/js/custom.js')}}"></script>
+
 @yield('javascript')

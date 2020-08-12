@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        //abort_if(auth()->user()->cannot('show', User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return view('admin.users.index');
     }
 
     /**
@@ -46,40 +48,49 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.users.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return void
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.roles.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+        // handling password and photos
+        $user->update($request->all());
+        $this->actionsuccess();
+        return redirect()->route('admin.users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        $this->actionsuccess();
+        return redirect()->back();
     }
 }

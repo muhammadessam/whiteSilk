@@ -25,4 +25,20 @@ class RoleAbilityHelper
     {
         return $this->cruds[$crud];
     }
+
+    /**
+     * @return string[]
+     */
+    public function getModels(): array
+    {
+        return $this->models;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getCruds(): array
+    {
+        return $this->cruds;
+    }
 }
