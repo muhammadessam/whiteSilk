@@ -8,4 +8,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
 
+    Route::post('{role}/assignPermissions', 'RolePermissionController@assignPermissions')->name('assign.role.permissions');
 });

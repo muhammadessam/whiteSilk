@@ -26,7 +26,6 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $this->actionsuccess();
         return view('admin.roles.create');
     }
 
@@ -41,7 +40,8 @@ class RoleController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        Role::create($request['name']);
+        Role::create(['name' => $request['name']]);
+        $this->actionsuccess();
         return redirect()->route('admin.roles.index');
     }
 
@@ -53,7 +53,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        return view('admin.roles.show', compact('role'));
     }
 
     /**
@@ -64,7 +64,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit', compact('role'));
     }
 
     /**
@@ -76,7 +76,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $role->update($request->all());
+        $this->actionsuccess();
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -87,6 +92,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        $this->actionsuccess();
+        return redirect()->back();
     }
 }
