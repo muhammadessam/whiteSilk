@@ -14,7 +14,7 @@ class AbilitySeeder extends Seeder
         foreach (app('roleHelper')->getModels() as $model => $name)
             foreach (app('roleHelper')->getCruds() as $crud => $crudName)
                 \Silber\Bouncer\Database\Ability::create([
-                    'name' => $crud,
+                    'name' => $crudName,
                     'entity_type' => $model,
                     'title' => $crudName . ' ' . $name,
                     'created_at' => now(),

@@ -23,7 +23,7 @@
                                         </thead>
                                         <tbody>
 
-                                        @foreach(\Silber\Bouncer\Database\Ability::all()->groupBy("entity_type") as $type=>$names)
+                                        @foreach(\Silber\Bouncer\Database\Ability::all()->groupBy("entity_type") as $type => $names)
 
                                             <tr>
                                                 <td>{{app('roleHelper')->modelToName($type)}}</td>
@@ -35,7 +35,7 @@
                                                                     <input type="checkbox" name="permissions[]" value="{{$name['name']}}-{{$type}}" {{$role->can($name['name'], $type) ? 'checked':''}}>
                                                                     <span class="slider round"></span>
                                                                 </label>
-                                                                {{app('roleHelper')->crudsToName($name['name'])}}
+                                                                {{($name['name'])}}
 
                                                             </div>
                                                         @endforeach

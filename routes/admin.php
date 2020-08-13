@@ -15,4 +15,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     // roles and user
     Route::post('{user}/assignRoles', 'RoleUserController@store')->name('role.user.store');
+
+    // Locations
+    Route::resource('countries', 'CountryController');
+    Route::resource('cities', 'CityController');
+    Route::resource('areas', 'AreaController');
 });

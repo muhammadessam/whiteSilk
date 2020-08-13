@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Silber\Bouncer\BouncerFacade;
 
 class RoleSeeder extends Seeder
 {
@@ -24,6 +23,6 @@ class RoleSeeder extends Seeder
             'name' => 'السائق',
             'title' => 'Driver',
         ]);
-
+        \App\User::find(1)->roles()->Sync([1]);
     }
 }

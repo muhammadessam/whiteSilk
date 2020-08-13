@@ -7,7 +7,10 @@ namespace App;
 class RoleAbilityHelper
 {
     private $models = [
-        User::class => 'المستخدمون'
+        User::class => 'المستخدمون',
+        Country::class => 'البلاد',
+        City::class => 'المدن',
+        Area::class => 'المناطق',
     ];
     private $cruds = [
         'show' => 'عرض',

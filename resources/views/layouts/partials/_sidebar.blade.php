@@ -53,24 +53,21 @@
                 </ul>
             </li>
 
+
             <li class="menu">
-                <a href="#app" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#app" data-toggle="collapse"
+                   aria-expanded="{{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ? 'true':'false'}}"
+                   data-active="{{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ? 'true':'false'}}"
+                   class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-cpu">
-                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                            <rect x="9" y="9" width="6" height="6"></rect>
-                            <line x1="9" y1="1" x2="9" y2="4"></line>
-                            <line x1="15" y1="1" x2="15" y2="4"></line>
-                            <line x1="9" y1="20" x2="9" y2="23"></line>
-                            <line x1="15" y1="20" x2="15" y2="23"></line>
-                            <line x1="20" y1="9" x2="23" y2="9"></line>
-                            <line x1="20" y1="14" x2="23" y2="14"></line>
-                            <line x1="1" y1="9" x2="4" y2="9"></line>
-                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                             stroke-linejoin="round" class="feather feather-map">
+                            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                            <line x1="8" y1="2" x2="8" y2="18"></line>
+                            <line x1="16" y1="6" x2="16" y2="22"></line>
                         </svg>
-                        <span>المستخدمين</span>
+                        <span>الموقع</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -80,18 +77,16 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="app" data-parent="#accordionExample">
-                    <li>
-                        <a href="apps_chat.html"> Chat </a>
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ?'show':''}}"
+                    id="app" data-parent="#accordionExample">
+                    <li class="{{request()->routeIs('admin.countries.*') ? 'active' :''}}">
+                        <a href="{{route('admin.countries.index')}}"> البلد </a>
                     </li>
-                    <li>
-                        <a href="apps_mailbox.html"> Mailbox </a>
+                    <li class="{{request()->routeIs('admin.cities.*') ? 'active' :''}}">
+                        <a href="{{route('admin.cities.index')}}"> المدينة </a>
                     </li>
-                    <li>
-                        <a href="apps_todoList.html"> Todo List </a>
-                    </li>
-                    <li>
-                        <a href="apps_notes.html"> Notes </a>
+                    <li class="{{request()->routeIs('admin.areas.*') ? 'active' :''}}">
+                        <a href="{{route('admin.areas.index')}}">المنطقة </a>
                     </li>
                 </ul>
             </li>
@@ -556,20 +551,6 @@
                 </a>
             </li>
 
-            <li class="menu">
-                <a href="map_jvector.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                             stroke-linejoin="round" class="feather feather-map">
-                            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-                            <line x1="8" y1="2" x2="8" y2="18"></line>
-                            <line x1="16" y1="6" x2="16" y2="22"></line>
-                        </svg>
-                        <span>Maps</span>
-                    </div>
-                </a>
-            </li>
 
             <li class="menu">
                 <a href="charts_apex.html" aria-expanded="false" class="dropdown-toggle">

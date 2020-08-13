@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //abort_if(auth()->user()->cannot('show', User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->canAccess('show', User::class);
         return view('admin.users.index');
     }
 
@@ -27,6 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('create'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.users.create');
     }
 
@@ -38,6 +40,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('create'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
@@ -58,6 +61,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('show'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.users.show', compact('user'));
     }
 
@@ -69,6 +73,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('edit'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
         return view('admin.users.edit', compact('user'));
     }
 
@@ -81,6 +86,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('edit'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -106,6 +112,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('delete'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if ($user['img'])
             File::delete($user['img']);
         $user->delete();
