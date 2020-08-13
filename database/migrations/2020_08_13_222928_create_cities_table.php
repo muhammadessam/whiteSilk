@@ -10,6 +10,7 @@ class CreateCitiesTable extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('is_active')->default(true);
             $table->string('name');
             $table->decimal('price');
             $table->unsignedBigInteger('country_id');

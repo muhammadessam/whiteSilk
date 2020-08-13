@@ -12,6 +12,7 @@ class CreateCountriesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('name');
+            $table->boolean('is_active')->default(true);
             $table->string('code')->nullable()->default(null);
             $table->text('img')->nullable()->default(null);
             $table->timestamps();

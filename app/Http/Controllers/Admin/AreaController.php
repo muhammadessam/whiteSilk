@@ -44,6 +44,7 @@ class   AreaController extends Controller
             'price' => 'required',
             'city_id' => 'required|exists:cities,id'
         ]);
+        $request['is_active'] = $request['is_active'] ? 1 : 0;
         Area::create($request->all());
         $this->actionSuccess();
         return redirect()->route('admin.areas.index');
@@ -87,6 +88,7 @@ class   AreaController extends Controller
             'price' => 'required|numeric',
             'city_id' => 'required|exists:cities,id'
         ]);
+        $request['is_active'] = $request['is_active'] ? 1 : 0;
         $area->update($request->all());
         $this->actionSuccess();
         return redirect()->route('admin.areas.index');

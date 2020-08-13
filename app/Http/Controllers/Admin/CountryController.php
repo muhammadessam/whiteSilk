@@ -43,6 +43,7 @@ class CountryController extends Controller
             'name' => 'required'
         ]);
         $this->storeImg($request, 'img_temp', 'Countries');
+        $request['is_active'] ?? 0;
         Country::create($request->except('img_temp'));
         $this->actionsuccess();
         return redirect()->route('admin.countries.index');
@@ -83,11 +84,12 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         $this->canAccess('edit', Country::class);
-
         $request->validate([
             'name' => 'required'
         ]);
         $this->storeImg($request, 'img_temp', 'Countries');
+        $request['is_active'] = $request['is_active']? 1 : 0;
+
         $country->update($request->except('img_temp'));
         $this->actionsuccess();
         return redirect()->route('admin.countries.index');

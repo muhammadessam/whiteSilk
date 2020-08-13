@@ -50,6 +50,9 @@
                     <li class="{{request()->routeIs('admin.users.*') ? 'active' : ''}}">
                         <a href="{{route('admin.users.index')}}">المستخدمين</a>
                     </li>
+                    <li class="{{request()->routeIs('admin.addresses.*') ? 'active' : ''}}">
+                        <a href="{{route('admin.addresses.index')}}">العنوان</a>
+                    </li>
                 </ul>
             </li>
 

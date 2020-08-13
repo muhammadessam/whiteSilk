@@ -43,6 +43,7 @@ class CityController extends Controller
             'name' => 'required',
             'price' => 'required',
         ]);
+        $request['is_active'] = $request['is_active'] ? 1 : 0;
         City::create($request->all());
         $this->actionSuccess();
         return redirect()->route('admin.cities.index');
@@ -87,6 +88,7 @@ class CityController extends Controller
             'name' => 'required',
             'price' => 'required',
         ]);
+        $request['is_active'] = $request['is_active'] ? 1 : 0;
         $city->update($request->all());
         $this->actionSuccess();
         return redirect()->route('admin.cities.index');

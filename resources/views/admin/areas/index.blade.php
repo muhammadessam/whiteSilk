@@ -18,6 +18,7 @@
                                 <th>الاسم</th>
                                 <th>سعر التوصيل</th>
                                 <th>المدينة</th>
+                                <th>الحالة</th>
                                 <th>اجراء</th>
                             </tr>
                             </thead>
@@ -28,6 +29,13 @@
                                     <td>{{$item['name']}}</td>
                                     <td>{{$item['price']}}</td>
                                     <td>{{$item->city->name}}</td>
+                                    <td>
+                                        @if($item['is_active'])
+                                            <span class="badge badge-success"> Active </span>
+                                        @else
+                                            <span class="badge badge-danger"> Inactive </span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <ul class="table-controls">
                                             <li>
@@ -52,6 +60,6 @@
         </div>
     </div>
 @endsection
-@section('javascript')
+@section('js')
     <x-datatable id="cities"></x-datatable>
 @endsection

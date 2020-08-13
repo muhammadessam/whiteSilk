@@ -17,6 +17,7 @@
                                 <th></th>
                                 <th>الاسم</th>
                                 <th>الكود</th>
+                                <th>الحالة</th>
                                 <th>الصورة</th>
                                 <th>اجراء</th>
                             </tr>
@@ -27,6 +28,13 @@
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item['name']}}</td>
                                     <td>{{$item['code']}}</td>
+                                    <td>
+                                        @if($item['is_active'])
+                                            <span class="badge badge-success"> Active </span>
+                                        @else
+                                            <span class="badge badge-danger"> Inactive </span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <img class="rounded-circle" src="{{asset($item['img'])}}" alt="" style="width: 100px;height: 100px;">
                                     </td>
@@ -54,6 +62,6 @@
         </div>
     </div>
 @endsection
-@section('javascript')
+@section('js')
     <x-datatable id="countries"></x-datatable>
 @endsection

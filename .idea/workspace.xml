@@ -132,15 +132,18 @@
     <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/areas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\whitsilk\resources\views\admin" />
+      <recent name="C:\laragon\www\whitsilk\database\migrations" />
+      <recent name="C:\laragon\www\whitsilk\app\Http\Controllers\Admin" />
+      <recent name="C:\laragon\www\whitsilk\app" />
       <recent name="C:\laragon\www\whitsilk\resources\views\admin\areas" />
-      <recent name="C:\laragon\www\whitsilk\public\adminsAssets" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -167,7 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597229272357</updated>
       <workItem from="1597229274707" duration="37605000" />
-      <workItem from="1597318512079" duration="28120000" />
+      <workItem from="1597318512079" duration="32372000" />
     </task>
     <servers />
   </component>
@@ -184,10 +187,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="281" y="250" key="#CLI_Interpreters/0.0.1920.1050@0.0.1920.1050" timestamp="1597340178118" />
-    <state x="176" y="48" width="1538" height="952" key="#Live_Templates" timestamp="1597352381897">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="2050" y="152" width="1538" height="952" key="#Live_Templates" timestamp="1597359565996">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="176" y="48" key="#Live_Templates/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597322751809" />
+    <state x="2050" y="152" key="#Live_Templates/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1597359565996" />
     <state x="176" y="48" width="1538" height="952" key="#Live_Templates/0.0.1920.1050@0.0.1920.1050" timestamp="1597352381897" />
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597240850639">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -283,10 +287,10 @@
     </state>
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597334721377" />
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597357067219" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597357086561">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597357934613">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597335197622" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597357086561" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597357934613" />
   </component>
 </project>

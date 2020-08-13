@@ -63,6 +63,6 @@
         </div>
     </div>
 @endsection
-@section('javascript')
+@section('js')
     <x-datatable id="roles"></x-datatable>
 @endsection

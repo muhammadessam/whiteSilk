@@ -11,6 +11,7 @@ class RoleAbilityHelper
         Country::class => 'البلاد',
         City::class => 'المدن',
         Area::class => 'المناطق',
+        Address::class => 'العنوان',
     ];
     private $cruds = [
         'show' => 'عرض',

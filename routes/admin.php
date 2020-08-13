@@ -20,4 +20,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('countries', 'CountryController');
     Route::resource('cities', 'CityController');
     Route::resource('areas', 'AreaController');
+    Route::resource('addresses', 'AddressController');
 });

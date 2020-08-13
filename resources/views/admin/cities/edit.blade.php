@@ -32,7 +32,13 @@
                             </select>
                             <x-error title="name"></x-error>
                         </div>
-
+                        <div class="mb-3">
+                            <label class="switch s-icons s-outline s-outline-default mr-2 s-outline-success">
+                                <input id="is_active" name="is_active" type="checkbox" {{ $city['is_active'] ? 'checked':''}} value="1">
+                                <span class="slider round"></span>
+                            </label>
+                            فعال
+                        </div>
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>
                 </div>

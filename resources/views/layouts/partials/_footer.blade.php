@@ -25,4 +25,4 @@
 <script src="{{asset('admins/plugins/file-upload/file-upload-with-preview.min.js')}}"></script>
 <script src="{{asset('admins/plugins/highlight/highlight.pack.js')}}"></script>
 
-@yield('javascript')
+@yield('js')
