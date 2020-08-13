@@ -21,5 +21,8 @@
 <script src="{{asset('admins/plugins/sweetalerts/custom-sweetalert.js')}}"></script>
 
 <script src="{{asset('admins/assets/js/custom.js')}}"></script>
+<script src="{{asset('admins/assets/js/scrollspyNav.js')}}"></script>
+<script src="{{asset('admins/plugins/file-upload/file-upload-with-preview.min.js')}}"></script>
+<script src="{{asset('admins/plugins/highlight/highlight.pack.js')}}"></script>
 
 @yield('javascript')

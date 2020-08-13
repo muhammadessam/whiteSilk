@@ -48,7 +48,6 @@ function checkall(clickchk, relChkbox) {
 
 function multiCheck(tb_var) {
     tb_var.on("change", ".chk-parent", function() {
-        console.log('asd')
         var e=$(this).closest("table").find("td:first-child .child-chk"),
             a=$(this).is(":checked");
         $(e).each(function(check) {

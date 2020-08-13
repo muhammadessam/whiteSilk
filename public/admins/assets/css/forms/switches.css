@@ -18,7 +18,7 @@
   position: relative;
   display: inline-block;
   width: 35px;
-  height: 18px; }
+  height: 10px; }
   .switch input {
     display: none; }
   .switch .slider {
@@ -198,7 +198,8 @@
     box-shadow: 0 0 1px #3b3f5c; }
   .switch.s-icons {
     width: 57px;
-    height: 30px; }
+    /*height: 30px; */
+  }
     .switch.s-icons .slider {
       width: 48px;
       height: 25px; }

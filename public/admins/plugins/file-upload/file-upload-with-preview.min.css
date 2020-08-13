@@ -78,9 +78,9 @@
 .custom-file-container__image-preview {
   box-sizing: border-box;
   transition: all 0.2s ease;
-  margin-top: 54px;
-  margin-bottom: 40px;
-  height: 250px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  height: 100px;
   width: 100%;
   border-radius: 4px;
   background-size: contain;

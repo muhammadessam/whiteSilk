@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -43,20 +44,21 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
         if ($request->hasFile('img_temp'))
-            $request['img'] = '';
+            $request['img'] = 'storage/' . $request->file('img_temp')->store('UserProfiles', 'public');
         User::create($request->all());
-
+        $this->actionsuccess();
+        return redirect()->route('admin.users.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        return view('admin.users.show');
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -67,7 +69,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.roles.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -83,7 +85,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email',
         ]);
-        // handling password and photos
+
+        if ($request->hasFile('img_temp')) {
+            if ($user['img']) {
+                File::delete($user['img']);
+            }
+            $request['img'] = 'storage/' . $request->file('img_temp')->store('UserProfiles', 'public');
+        }
+
         $user->update($request->all());
         $this->actionsuccess();
         return redirect()->route('admin.users.index');
@@ -97,6 +106,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if ($user['img'])
+            File::delete($user['img']);
         $user->delete();
         $this->actionsuccess();
         return redirect()->back();

@@ -24,6 +24,7 @@
 
     <!-- BEGIN PAGE LEVEL CUSTOM STYLES -->
     <link href="{{asset('admins/assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('admins/plugins/file-upload/file-upload-with-preview.min.css')}}" rel="stylesheet" type="text/css"/>
     {{--    <link rel="stylesheet" type="text/css" href="{{asset('admins/assets/css/forms/theme-checkbox-radio.css')}}">--}}
     <link href="{{asset('admins/assets/css/tables/table-basic.css')}}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL CUSTOM STYLES -->
@@ -32,6 +33,9 @@
     <link href="{{asset('admins/plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('admins/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('admins/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('admins/assets/css/forms/switches.css')}}">
+
+
     @yield('css')
     <style>
         .delete-btn {

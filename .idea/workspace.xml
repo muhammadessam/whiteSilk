@@ -10,7 +10,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -135,6 +135,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/adminsAssets" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -162,7 +163,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597229272357</updated>
-      <workItem from="1597229274707" duration="37559000" />
+      <workItem from="1597229274707" duration="37605000" />
+      <workItem from="1597318512079" duration="13096000" />
     </task>
     <servers />
   </component>
@@ -175,27 +177,28 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="176" y="48" width="1538" height="952" key="#Live_Templates" timestamp="1597264901510">
+    <state x="176" y="48" width="1538" height="952" key="#Live_Templates" timestamp="1597322751809">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="176" y="48" key="#Live_Templates/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597322751809" />
     <state x="176" y="48" width="1538" height="952" key="#Live_Templates/0.0.1920.1050@0.0.1920.1050" timestamp="1597264901510" />
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597240850639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597240850639" />
-    <state x="809" y="435" key="Create Controller" timestamp="1597251894627">
+    <state x="809" y="435" key="Create Controller" timestamp="1597335184138">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="809" y="435" key="Create Controller/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597238119155" />
+    <state x="809" y="435" key="Create Controller/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597335184138" />
     <state x="809" y="435" key="Create Controller/0.0.1920.1050@0.0.1920.1050" timestamp="1597251894627" />
     <state x="834" y="389" key="Create Database Migration" timestamp="1597267244116">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="834" y="389" key="Create Database Migration/0.0.1920.1050@0.0.1920.1050" timestamp="1597267244116" />
-    <state x="834" y="449" key="Create Database Seeder" timestamp="1597260542068">
+    <state x="834" y="449" key="Create Database Seeder" timestamp="1597336274137">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="834" y="449" key="Create Database Seeder/0.0.1920.1050@0.0.1920.1050" timestamp="1597260542068" />
+    <state x="834" y="449" key="Create Database Seeder/0.0.1920.1050@0.0.1920.1050" timestamp="1597336274137" />
     <state x="809" y="407" key="Create Resource Controller" timestamp="1597238802457">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -209,22 +212,22 @@
     </state>
     <state x="834" y="449" key="Create View/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597247457989" />
     <state x="834" y="449" key="Create View/0.0.1920.1050@0.0.1920.1050" timestamp="1597260475274" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1597267371532">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1597271887318">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371532" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1597267371531">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1597271887318" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1597271887318">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371531" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1597267371531">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1597271887318" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1597271887318">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371531" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1597267371532">
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1597271887318" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1597271887318">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1597267371532" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1597271887318" />
     <state width="221" height="457" key="HiddenNamespacesPopup" timestamp="1597240866647">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -251,14 +254,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="667" y="81" width="585" height="888" key="find.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597243296407" />
-    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1597267367619">
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup" timestamp="1597334721377">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597334721377" />
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597267367619" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597271116946">
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597337805310">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597247463007" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597271116946" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597335197622" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597337805310" />
   </component>
 </project>

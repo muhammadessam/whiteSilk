@@ -24,20 +24,19 @@
                                         <tbody>
 
                                         @foreach(\Silber\Bouncer\Database\Ability::all()->groupBy("entity_type") as $type=>$names)
+
                                             <tr>
                                                 <td>{{app('roleHelper')->modelToName($type)}}</td>
                                                 <td>
                                                     <div class="form-row">
                                                         @foreach($names as $name)
                                                             <div class="n-chk">
-                                                                <label
-                                                                    class="new-control new-checkbox checkbox-primary">
-                                                                    <input type="checkbox" class="new-control-input"
-                                                                           name="permissions[]"
-                                                                           value="{{$name['name']}}-{{$type}}" {{$role->can($name['name'], $type) ? 'checked':''}}>
-                                                                    <span class="new-control-indicator"></span>
-                                                                    {{app('roleHelper')->crudsToName($name['name'])}}
+                                                                <label class="switch s-icons s-outline s-outline-default mr-2 s-outline-success">
+                                                                    <input type="checkbox" name="permissions[]" value="{{$name['name']}}-{{$type}}" {{$role->can($name['name'], $type) ? 'checked':''}}>
+                                                                    <span class="slider round"></span>
                                                                 </label>
+                                                                {{app('roleHelper')->crudsToName($name['name'])}}
+
                                                             </div>
                                                         @endforeach
                                                     </div>
