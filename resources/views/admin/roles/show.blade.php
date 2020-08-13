@@ -4,8 +4,17 @@
     <div class="row layout-top-spacing">
         <div class="col">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title"> {{$role->name}}</h3>
+                    <div>
+                        <div class="n-chk">
+                            <label class="switch s-icons s-outline s-outline-default mr-2 s-outline-success">
+                                <input id="chkall" type="checkbox" onchange="selectAll()">
+                                <span class="slider round"></span>
+                            </label>
+                            كافة الصلاحيات
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
 
@@ -32,11 +41,10 @@
                                                         @foreach($names as $name)
                                                             <div class="n-chk">
                                                                 <label class="switch s-icons s-outline s-outline-default mr-2 s-outline-success">
-                                                                    <input type="checkbox" name="permissions[]" value="{{$name['name']}}-{{$type}}" {{$role->can($name['name'], $type) ? 'checked':''}}>
+                                                                    <input onchange="changeAll()" class="chk" type="checkbox" name="permissions[]" value="{{$name['name']}}-{{$type}}" {{$role->can($name['name'], $type) ? 'checked':''}}>
                                                                     <span class="slider round"></span>
                                                                 </label>
                                                                 {{($name['name'])}}
-
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -56,3 +64,19 @@
     </div>
 
 @endsection
+<script>
+    function selectAll() {
+        $('.chk').each(function (index, obj) {
+            if ($('#chkall').is(':checked')) {
+                $(this).prop('checked', true);
+            } else {
+                $(this).prop('checked', false);
+
+            }
+        });
+    }
+
+    function changeAll() {
+        $('#chkall').prop('checked', false);
+    }
+</script>
