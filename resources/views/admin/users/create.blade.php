@@ -55,8 +55,3 @@
         </div>
     </div>
 @endsection
-@section('javascript')
-    <script>
-        var firstUpload = new FileUploadWithPreview('img_temp')
-    </script>
-@endsection

@@ -155,8 +155,22 @@
 
                     <nav class="breadcrumb-one" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><span>Sales</span></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">لوحة التحكم</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <span>
+                                    @if(request()->routeIs('admin.roles.*'))
+                                        الادوار
+                                    @elseif(request()->routeIs('admin.countries.*'))
+                                        الدول
+                                    @elseif(request()->routeIs('admin.addresses.*'))
+                                        العناوين
+                                    @elseif(request()->routeIs('admin.cities.*'))
+                                        المدن
+                                    @elseif(request()->routeIs('admin.areas.*'))
+                                        المناطق
+                                    @endif
+                                </span>
+                            </li>
                         </ol>
                     </nav>
 

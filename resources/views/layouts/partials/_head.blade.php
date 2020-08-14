@@ -34,6 +34,7 @@
     <link href="{{asset('admins/plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{asset('admins/assets/css/components/custom-sweetalert.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="{{asset('admins/assets/css/forms/switches.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
 
 
     @yield('css')
@@ -59,6 +60,10 @@
 
         .dataTables_paginate {
             float: left;
+        }
+
+        *{
+            font-family: 'Almarai', sans-serif;
         }
     </style>
 </head>

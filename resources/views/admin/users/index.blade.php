@@ -5,7 +5,7 @@
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title">الصلاحيات</h3>
+                    <h3 class="card-title">المستخدمين</h3>
                     <div class="card-text">
                         <a class="btn btn-success" href="{{route('admin.users.create')}}"><i class="fa fa-plus"></i></a>
                     </div>

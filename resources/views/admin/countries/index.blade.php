@@ -4,7 +4,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h3>البلاد</h3>
+                    <h3>الدول</h3>
                     <div>
                         <a href="{{route('admin.countries.create')}}" class="btn btn-success"><i class="fa fa-plus"></i></a>
                     </div>

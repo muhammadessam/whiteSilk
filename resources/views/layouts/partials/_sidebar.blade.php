@@ -83,13 +83,13 @@
                 <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ?'show':''}}"
                     id="app" data-parent="#accordionExample">
                     <li class="{{request()->routeIs('admin.countries.*') ? 'active' :''}}">
-                        <a href="{{route('admin.countries.index')}}"> البلد </a>
+                        <a href="{{route('admin.countries.index')}}"> الدول </a>
                     </li>
                     <li class="{{request()->routeIs('admin.cities.*') ? 'active' :''}}">
-                        <a href="{{route('admin.cities.index')}}"> المدينة </a>
+                        <a href="{{route('admin.cities.index')}}"> المدن </a>
                     </li>
                     <li class="{{request()->routeIs('admin.areas.*') ? 'active' :''}}">
-                        <a href="{{route('admin.areas.index')}}">المنطقة </a>
+                        <a href="{{route('admin.areas.index')}}">المناطق </a>
                     </li>
                 </ul>
             </li>
