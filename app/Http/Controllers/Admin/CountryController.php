@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Country;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CountryController extends Controller
 {
@@ -88,7 +89,7 @@ class CountryController extends Controller
             'name' => 'required'
         ]);
         $this->storeImg($request, 'img_temp', 'Countries');
-        $request['is_active'] = $request['is_active']? 1 : 0;
+        $request['is_active'] = $request['is_active'] ? 1 : 0;
 
         $country->update($request->except('img_temp'));
         $this->actionsuccess();
@@ -107,5 +108,11 @@ class CountryController extends Controller
         $this->canAccess('delete', Country::class);
         $country->delete();
         return redirect()->back();
+    }
+
+    public function massDestroy(Request $request)
+    {
+        Country::whereIn('id', request('ids'))->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

@@ -96,4 +96,10 @@ class RoleController extends Controller
         $this->actionsuccess();
         return redirect()->back();
     }
+
+    public function massDestroy(Request $request)
+    {
+        Role::whereIn('id', $request['ids'])->delete();
+
+    }
 }

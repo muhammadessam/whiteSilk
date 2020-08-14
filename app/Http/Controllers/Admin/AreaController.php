@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Area;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class   AreaController extends Controller
 {
@@ -106,5 +108,11 @@ class   AreaController extends Controller
         $area->delete();
         $this->actionSuccess();
         return redirect()->back();
+    }
+
+    public function massDestroy(Request $request)
+    {
+        Area::whereIn('id', request('ids'))->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

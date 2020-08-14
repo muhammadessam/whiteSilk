@@ -73,5 +73,5 @@
     </div>
 @endsection
 @section('js')
-    <x-datatable id="addresses"></x-datatable>
+    <x-datatable id="addresses" mass="{{route('admin.addresses.mass.destroy')}}"></x-datatable>
 @endsection

@@ -5,13 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Address;
 use App\Customer;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyAddressRequest;
-use App\Http\Requests\StoreAddressRequest;
-use App\Http\Requests\UpdateAddressRequest;
-use Gate;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class AddressController extends Controller
 {
@@ -79,10 +76,9 @@ class AddressController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyAddressRequest $request)
+    public function massDestroy(Request $request)
     {
         Address::whereIn('id', request('ids'))->delete();
-
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }

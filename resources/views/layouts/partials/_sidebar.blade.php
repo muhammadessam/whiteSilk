@@ -20,8 +20,8 @@
 
             <li class="menu">
                 <a href="#users" data-toggle="collapse"
-                   aria-expanded="{{request()->routeIs('admin.roles.*') || request()->routeIs('admin.users.*') ? 'true':'false'}}"
-                   data-active="{{request()->routeIs('admin.roles.*') || request()->routeIs('admin.users.*') ? 'true':'false'}}"
+                   aria-expanded="{{request()->routeIs('admin.roles.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.addresses.*') ? 'true':'false'}}"
+                   data-active="{{request()->routeIs('admin.roles.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.addresses.*') ? 'true':'false'}}"
                    class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -42,7 +42,7 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.roles.*') || request()->routeIs('admin.users.*') ? 'show':''}}"
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.roles.*') || request()->routeIs('admin.users.*') || request()->routeIs('admin.addresses.*') ? 'show':''}}"
                     id="users" data-parent="#accordionExample">
                     <li class="{{request()->routeIs('admin.roles.*') ? 'active' : ''}}">
                         <a href="{{route('admin.roles.index')}}">الادوار</a>

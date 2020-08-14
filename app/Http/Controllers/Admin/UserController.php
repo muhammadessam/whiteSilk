@@ -119,4 +119,11 @@ class UserController extends Controller
         $this->actionsuccess();
         return redirect()->back();
     }
+
+    public function massDestroy(Request $request)
+    {
+        abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName('delete'), User::class), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        User::whereIn('id', $request['ids'])->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }

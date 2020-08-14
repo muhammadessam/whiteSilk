@@ -4,8 +4,8 @@
 
         <ul class="navbar-item theme-brand flex-row  text-center">
             <li class="nav-item theme-logo">
-                <a href="index.html">
-                    <img src="{{asset('admins/assets/img/90x90.jpg')}}" class="navbar-logo" alt="logo">
+                <a href="{{route('admin.home')}}">
+                    <img src="{{asset('admins/assets/img/component.png')}}" class="navbar-logo" alt="logo">
                 </a>
             </li>
             <li class="nav-item theme-text">
@@ -113,16 +113,6 @@
                                 Inbox</a>
                         </div>
                         <div class="dropdown-item">
-                            <a href="auth_lockscreen.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                     stroke-linejoin="round" class="feather feather-lock">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                </svg>
-                                Lock Screen</a>
-                        </div>
-                        <div class="dropdown-item">
                             <form action="{{route('logout')}}" method="post" class="text-center p-2">
                                 @csrf
                                 <button type="submit" style="background-color: Transparent; border: none;width: 90%">
@@ -186,11 +176,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="customDropdown">
-                        <a class="dropdown-item" data-value="Settings" href="javascript:void(0);">Settings</a>
-                        <a class="dropdown-item" data-value="Mail" href="javascript:void(0);">Mail</a>
-                        <a class="dropdown-item" data-value="Print" href="javascript:void(0);">Print</a>
-                        <a class="dropdown-item" data-value="Download" href="javascript:void(0);">Download</a>
-                        <a class="dropdown-item" data-value="Share" href="javascript:void(0);">Share</a>
+                        <a class="dropdown-item" data-value="Settings" href="javascript:void(0);">الاعدادات</a>
                     </div>
                 </div>
             </li>

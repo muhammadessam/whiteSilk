@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\City;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class CityController extends Controller
 {
@@ -106,5 +108,10 @@ class CityController extends Controller
         $city->delete();
         $this->actionSuccess();
         return redirect()->back();
+    }
+    public function massDestroy(Request $request)
+    {
+        City::whereIn('id', request('ids'))->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

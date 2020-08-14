@@ -23,7 +23,7 @@
                             <tbody>
                             @foreach(\Silber\Bouncer\Database\Role::all() as $item)
                                 <tr>
-                                    <td></td>
+                                    <td>{{$item['id']}}</td>
                                     <td>{{$item['name']}}</td>
                                     <td>
                                         <ul class="table-controls">
