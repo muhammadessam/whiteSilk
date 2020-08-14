@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Address;
-use App\Area;
-use App\City;
-use App\Country;
 use App\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyAddressRequest;
@@ -20,26 +17,20 @@ class AddressController extends Controller
 {
     public function index(Request $request)
     {
+        $this->canAccess('show', Address::class);
         return view('admin.addresses.index');
     }
 
     public function create()
     {
-        abort_if(Gate::denies('address_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customers = Customer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $areas = Area::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.addresses.create', compact('customers', 'countries', 'cities', 'areas'));
+        $this->canAccess('create', Address::class);
+        return view('admin.addresses.create');
     }
 
-    public function store(StoreAddressRequest $request)
+    public function store(Request $request)
     {
+        $this->canAccess('create', Address::class);
         $address = Address::create($request->all());
 
         return redirect()->route('admin.addresses.index');
@@ -47,23 +38,28 @@ class AddressController extends Controller
 
     public function edit(Address $address)
     {
-        abort_if(Gate::denies('address_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $customers = Customer::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $countries = Country::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $cities = City::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $areas = Area::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $address->load('customer', 'country', 'city', 'area');
-
-        return view('admin.addresses.edit', compact('customers', 'countries', 'cities', 'areas', 'address'));
+        $this->canAccess('edit', Address::class);
+        return view('admin.addresses.edit', compact('address'));
     }
 
-    public function update(UpdateAddressRequest $request, Address $address)
+    public function update(Request $request, Address $address)
     {
+        $request->validate([
+            'customer_id' => ['required', 'integer',],
+            'country_id' => ['required', 'integer',],
+            'city_id' => ['required', 'integer',],
+            'lat' => ['numeric',],
+            'long' => ['numeric',],
+            'phone' => ['string', 'nullable',],
+            'alter_phone' => ['string', 'nullable',],
+            'name' => ['string', 'nullable',],
+            'block' => ['string', 'nullable',],
+            'gada' => ['string', 'nullable',],
+            'street' => ['string', 'nullable',],
+            'building' => ['string', 'nullable',],
+            'floor' => ['string', 'nullable',],
+            'flat_house' => ['string', 'nullable',]
+        ]);
         $address->update($request->all());
 
         return redirect()->route('admin.addresses.index');
@@ -71,19 +67,15 @@ class AddressController extends Controller
 
     public function show(Address $address)
     {
-        abort_if(Gate::denies('address_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $address->load('customer', 'country', 'city', 'area');
-
+        $this->canAccess('show', Address::class);
         return view('admin.addresses.show', compact('address'));
     }
 
     public function destroy(Address $address)
     {
-        abort_if(Gate::denies('address_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        $this->canAccess('delete', Address::class);
         $address->delete();
-
+        $this->actionSuccess();
         return back();
     }
 
