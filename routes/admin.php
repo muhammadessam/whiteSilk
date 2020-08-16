@@ -34,4 +34,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     Route::delete('addresses/massDestroy', 'AddressController@massDestroy')->name('addresses.mass.destroy');
     Route::resource('addresses', 'AddressController');
+
+    // subscriptions
+    Route::delete('subscriptions/massDestroy', 'SubscriptionController@massDestroy')->name('subscriptions.mass.destroy');
+    Route::resource('subscriptions', 'SubscriptionController');
+
+    //subscriptions type
+    Route::delete('subscription-types/massDestroy', 'SubscriptionTypeController@massDestroy')->name('subscription.types.mass.destroy');
+    Route::resource('subscription-types', 'SubscriptionTypeController');
+
 });

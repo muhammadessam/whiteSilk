@@ -4,6 +4,7 @@
     <nav id="sidebar">
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
+
             <li class="menu">
                 <a href="{{route('admin.home')}}" data-active="false" class="dropdown-toggle">
                     <div class="">
@@ -95,7 +96,10 @@
             </li>
 
             <li class="menu">
-                <a href="#components" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#components" data-toggle="collapse"
+                   aria-expanded="{{request()->routeIs('admin.subscriptions.*')|| request()->routeIs('admin.subscription-types.*') ? 'true' : 'false'}}"
+                   data-active="{{request()->routeIs('admin.subscriptions.*')|| request()->routeIs('admin.subscription-types.*') ? 'true' : 'false'}}"
+                   class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -105,7 +109,7 @@
                             <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                             <line x1="12" y1="22.08" x2="12" y2="12"></line>
                         </svg>
-                        <span>Components</span>
+                        <span>الاشتركات</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -115,54 +119,13 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="components" data-parent="#accordionExample">
-                    <li>
-                        <a href="component_tabs.html"> Tabs </a>
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.subscriptions.*')|| request()->routeIs('admin.subscription-types.*') ? 'show' : ''}}" id="components" data-parent="#accordionExample">
+                    <li class="{{request()->routeIs('admin.subscription-types.*') ? 'active':''}}">
+                        <a href="{{route('admin.subscription-types.index')}}"> نوع الاشتراك </a>
                     </li>
-                    <li>
-                        <a href="component_accordion.html"> Accordions </a>
-                    </li>
-                    <li>
-                        <a href="component_modal.html"> Modals </a>
-                    </li>
-                    <li>
-                        <a href="component_cards.html"> Cards </a>
-                    </li>
-                    <li>
-                        <a href="component_bootstrap_carousel.html">Carousel</a>
-                    </li>
-                    <li>
-                        <a href="component_blockui.html"> Block UI </a>
-                    </li>
-                    <li>
-                        <a href="component_countdown.html"> Countdown </a>
-                    </li>
-                    <li>
-                        <a href="component_counter.html"> Counter </a>
-                    </li>
-                    <li>
-                        <a href="component_sweetalert.html"> Sweet Alerts </a>
-                    </li>
-                    <li>
-                        <a href="component_timeline.html"> Timeline </a>
-                    </li>
-                    <li>
-                        <a href="component_snackbar.html"> Notifications </a>
-                    </li>
-                    <li>
-                        <a href="component_session_timeout.html"> Session Timeout </a>
-                    </li>
-                    <li>
-                        <a href="component_media_object.html"> Media Object </a>
-                    </li>
-                    <li>
-                        <a href="component_list_group.html"> List Group </a>
-                    </li>
-                    <li>
-                        <a href="component_pricing_table.html"> Pricing Tables </a>
-                    </li>
-                    <li>
-                        <a href="component_lightbox.html"> Lightbox </a>
+                    <li class="{{request()->routeIs('admin.subscriptions.*') ? 'active':''}}">
+
+                        <a href="{{request()->routeIs('admin.subscriptions.index')}}"> الاشتراك </a>
                     </li>
                 </ul>
             </li>

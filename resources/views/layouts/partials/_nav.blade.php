@@ -160,6 +160,8 @@
                                 <span>
                                     @if(request()->routeIs('admin.roles.*'))
                                         الادوار
+                                    @elseif(request()->routeIs('admin.users.*'))
+                                        المستخدمين
                                     @elseif(request()->routeIs('admin.countries.*'))
                                         الدول
                                     @elseif(request()->routeIs('admin.addresses.*'))

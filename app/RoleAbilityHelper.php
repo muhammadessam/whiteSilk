@@ -12,6 +12,8 @@ class RoleAbilityHelper
         City::class => 'المدن',
         Area::class => 'المناطق',
         Address::class => 'العنوان',
+        SubscriptionType::class => 'نوع الاشتراك',
+        Subscription::class => 'الاشتراك',
     ];
     private $cruds = [
         'show' => 'عرض',
