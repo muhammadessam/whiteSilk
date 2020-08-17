@@ -7,7 +7,12 @@
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title">الصلاحيات</h3>
                     <div class="card-text">
-                        <a class="btn btn-success" href="{{route('admin.roles.create')}}"><i class="fa fa-plus"></i></a>
+                        <form class="form-inline" action="{{route('admin.roles.store')}}" method="post">
+                            @csrf
+                            <input type="text" name="name" id="name" class="form-control" placeholder="ادخل اسم جديد ...">
+                            <x-error title="name"></x-error>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                        </form>
                     </div>
                 </div>
                 <div class="card-body">
