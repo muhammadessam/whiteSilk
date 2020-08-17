@@ -36,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('admins/assets/css/forms/switches.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
 
+    <link href="{{asset('admins/assets/css/components/tabs-accordian/custom-tabs.css')}}" rel="stylesheet" type="text/css" />
 
     @yield('css')
     <style>

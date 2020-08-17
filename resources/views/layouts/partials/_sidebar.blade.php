@@ -59,7 +59,7 @@
 
 
             <li class="menu">
-                <a href="#app" data-toggle="collapse"
+                <a href="#countries" data-toggle="collapse"
                    aria-expanded="{{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ? 'true':'false'}}"
                    data-active="{{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ? 'true':'false'}}"
                    class="dropdown-toggle">
@@ -82,7 +82,7 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ?'show':''}}"
-                    id="app" data-parent="#accordionExample">
+                    id="countries" data-parent="#accordionExample">
                     <li class="{{request()->routeIs('admin.countries.*') ? 'active' :''}}">
                         <a href="{{route('admin.countries.index')}}"> الدول </a>
                     </li>
@@ -125,7 +125,7 @@
                     </li>
                     <li class="{{request()->routeIs('admin.subscriptions.*') ? 'active':''}}">
 
-                        <a href="{{request()->routeIs('admin.subscriptions.index')}}"> الاشتراك </a>
+                        <a href="{{route('admin.subscriptions.index')}}"> الاشتراكات </a>
                     </li>
                 </ul>
             </li>

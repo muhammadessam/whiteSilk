@@ -24,7 +24,7 @@
 @include('layouts.partials._sidebar')
 <!--  BEGIN CONTENT AREA  -->
     <div id="content" class="main-content">
-        <div class="layout-px-spacing">
+        <div class="layout-px-spacing" id="app">
             @yield('content')
         </div>
 
@@ -52,5 +52,7 @@
 <!-- END MAIN CONTAINER -->
 @include('layouts.partials._footer')
 @include('sweetalert::alert')
+@yield('js')
+
 </body>
 </html>

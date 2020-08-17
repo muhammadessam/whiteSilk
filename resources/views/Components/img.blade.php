@@ -5,7 +5,7 @@
     <label>اختر صورة<a href="javascript:void(0)" class="custom-file-container__image-clear" title="حذف">x</a></label>
     <label class="custom-file-container__custom-file">
         <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*" name="img_temp">
-        <input type="hidden" name="MAX_FILE_SIZE" value="10485760"/>
+        <input type="hidden"/>
         <span class="custom-file-container__custom-file__custom-file-control"></span>
     </label>
     <div class="custom-file-container__image-preview"></div>
