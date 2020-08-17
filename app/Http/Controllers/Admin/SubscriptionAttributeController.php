@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\SubscriptionAttribute;
 use Illuminate\Http\Request;
 
-class SubscriptionAttriuteController extends Controller
+class SubscriptionAttributeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +36,15 @@ class SubscriptionAttriuteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->canAccess('create', SubscriptionAttribute::class);
+        $request->validate([
+            'key' => 'required',
+            'value' => 'required',
+            'subscription_id' => 'required|exists:subscriptions,id'
+        ]);
+        SubscriptionAttribute::create($request->all());
+        $this->actionSuccess();
+        return redirect()->route('admin.subscriptions.show', $request['subscription_id']);
     }
 
     /**
@@ -58,7 +66,7 @@ class SubscriptionAttriuteController extends Controller
      */
     public function edit(SubscriptionAttribute $subscriptionAttribute)
     {
-        //
+        return view('admin.subscriptionsattributes.edit', compact('subscriptionAttribute'));
     }
 
     /**
@@ -70,7 +78,14 @@ class SubscriptionAttriuteController extends Controller
      */
     public function update(Request $request, SubscriptionAttribute $subscriptionAttribute)
     {
-        //
+        $this->canAccess('edit', SubscriptionAttribute::class);
+        $request->validate([
+            'key' => 'required',
+            'value' => 'required',
+        ]);
+        $subscriptionAttribute->update($request->all());
+        $this->actionSuccess();
+        return redirect()->route('admin.subscriptions.show', $subscriptionAttribute['subscription_id']);
     }
 
     /**
@@ -81,6 +96,9 @@ class SubscriptionAttriuteController extends Controller
      */
     public function destroy(SubscriptionAttribute $subscriptionAttribute)
     {
-        //
+        $this->canAccess('delete', SubscriptionAttribute::class);
+        $subscriptionAttribute->delete();
+        $this->actionSuccess();
+        return back();
     }
 }

@@ -14,6 +14,7 @@ class RoleAbilityHelper
         Address::class => 'العنوان',
         SubscriptionType::class => 'نوع الاشتراك',
         Subscription::class => 'الاشتراك',
+        SubscriptionAttribute::class=>'عناصر الاشتراك',
     ];
     private $cruds = [
         'show' => 'عرض',

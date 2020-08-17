@@ -12,4 +12,9 @@ class Subscription extends Model
     {
         return $this->hasMany(SubscriptionAttribute::class, 'subscription_id', 'id');
     }
+
+    public function type()
+    {
+        return $this->belongsTo(SubscriptionType::class, 'type_id', 'id');
+    }
 }

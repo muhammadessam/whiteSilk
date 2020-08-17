@@ -43,4 +43,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::delete('subscription-types/massDestroy', 'SubscriptionTypeController@massDestroy')->name('subscription.types.mass.destroy');
     Route::resource('subscription-types', 'SubscriptionTypeController');
 
+    // subscriptions attributes
+    Route::resource('subscription-attributes', 'SubscriptionAttributeController');
 });
