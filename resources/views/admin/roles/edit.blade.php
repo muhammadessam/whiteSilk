@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">اضافة جديد</h3>
+                    <h3 class="card-title">تعديل</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{route('admin.roles.update', $role)}}" method="post">

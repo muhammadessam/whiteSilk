@@ -131,14 +131,17 @@
             </li>
 
             <li class="menu">
-                <a href="#elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#elements" data-toggle="collapse"
+                   data-active="{{request()->routeIs('admin.drivers-times.*') || request()->routeIs('admin.drivers.*') ? 'true' : 'false'}}"
+                   aria-expanded="{{request()->routeIs('admin.drivers-times.*') || request()->routeIs('admin.drivers.*') ? 'true' : 'false'}}"
+                   class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                              stroke-linejoin="round" class="feather feather-zap">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                         </svg>
-                        <span>Elements</span>
+                        <span>السائقين</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -148,60 +151,12 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="elements" data-parent="#accordionExample">
-                    <li>
-                        <a href="element_alerts.html"> Alerts </a>
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.drivers-times.*') || request()->routeIs('admin.drivers.*') ? 'show' : ''}}" id="elements" data-parent="#accordionExample">
+                    <li class="{{request()->routeIs('admin.drivers.*') ? 'active' :''}} ">
+                        <a href="{{route('admin.drivers.index')}}"> السائقين </a>
                     </li>
-                    <li>
-                        <a href="element_avatar.html"> Avatar </a>
-                    </li>
-                    <li>
-                        <a href="element_badges.html"> Badges </a>
-                    </li>
-                    <li>
-                        <a href="element_breadcrumbs.html"> Breadcrumbs </a>
-                    </li>
-                    <li>
-                        <a href="element_buttons.html"> Buttons </a>
-                    </li>
-                    <li>
-                        <a href="element_buttons_group.html"> Button Groups </a>
-                    </li>
-                    <li>
-                        <a href="element_color_library.html"> Color Library </a>
-                    </li>
-                    <li>
-                        <a href="element_dropdown.html"> Dropdown </a>
-                    </li>
-                    <li>
-                        <a href="element_infobox.html"> Infobox </a>
-                    </li>
-                    <li>
-                        <a href="element_jumbotron.html"> Jumbotron </a>
-                    </li>
-                    <li>
-                        <a href="element_loader.html"> Loader </a>
-                    </li>
-                    <li>
-                        <a href="element_pagination.html"> Pagination </a>
-                    </li>
-                    <li>
-                        <a href="element_popovers.html"> Popovers </a>
-                    </li>
-                    <li>
-                        <a href="element_progress_bar.html"> Progress Bar </a>
-                    </li>
-                    <li>
-                        <a href="element_search.html"> Search </a>
-                    </li>
-                    <li>
-                        <a href="element_tooltips.html"> Tooltips </a>
-                    </li>
-                    <li>
-                        <a href="element_treeview.html"> Treeview </a>
-                    </li>
-                    <li>
-                        <a href="element_typography.html"> Typography </a>
+                    <li class="{{request()->routeIs('admin.drivers-times.*') ? 'active' :''}} ">
+                        <a href="{{route('admin.drivers-times.index')}}"> اوقات السائقين </a>
                     </li>
                 </ul>
             </li>

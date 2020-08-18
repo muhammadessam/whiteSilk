@@ -15,6 +15,7 @@ class RoleAbilityHelper
         SubscriptionType::class => 'نوع الاشتراك',
         Subscription::class => 'الاشتراك',
         SubscriptionAttribute::class=>'عناصر الاشتراك',
+        DriversTime::class=>'اوقات السائقين',
     ];
     private $cruds = [
         'show' => 'عرض',

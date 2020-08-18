@@ -45,4 +45,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 
     // subscriptions attributes
     Route::resource('subscription-attributes', 'SubscriptionAttributeController');
+
+    //Drivers
+    Route::delete('drivers/massDestroy', 'DriverController@massDestroy')->name('drivers.mass.destroy');
+    Route::resource('drivers', 'DriverController');
+
+    // Drivers Time
+    Route::delete('drivers-times/massDestroy', 'DriverController@massDestroy')->name('drivers.times.mass.destroy');
+    Route::resource('drivers-times', 'DriversTimeController');
 });

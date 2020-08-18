@@ -38,6 +38,16 @@
                             <input type="text" name="password_confirmation" id="password_confirmation" class="form-control">
                             <x-error title="password_confirmation"></x-error>
                         </div>
+                        <div class="form-group">
+                            <label for="type">النوع</label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="ادمن" {{$user['type']=='ادمن' ?'selected':''}}>ادمن</option>
+                                <option value="عميل" {{$user['type']=='عميل' ?'selected':''}}>عميل</option>
+                                <option value="مشرف" {{$user['type']=='مشرف' ?'selected':''}}>مشرف</option>
+                                <option value="سائق" {{$user['type']=='سائق' ?'selected':''}}>سائق</option>
+                            </select>
+                            <x-error title="type"></x-error>
+                        </div>
                         <div class="custom-file-container" data-upload-id="img_temp">
                             <label>اختر صورة<a href="javascript:void(0)" class="custom-file-container__image-clear" title="حذف">x</a></label>
                             <label class="custom-file-container__custom-file">
@@ -56,8 +66,8 @@
         </div>
     </div>
 @endsection
-@section('javascript')
+@section('js')
     <script>
-        var firstUpload = new FileUploadWithPreview('img_temp')
+        let firstUpload = new FileUploadWithPreview('img_temp')
     </script>
 @endsection

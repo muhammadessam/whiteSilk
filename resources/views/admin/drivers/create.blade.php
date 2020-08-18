@@ -4,13 +4,13 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="d-inline-block">اضافة مستخدم جديد</h3>
+                    <h3 class="d-inline-block">اضافة جديد</h3>
                     <div class="d-inline-block float-right">
-                        <a href="{{route('admin.users.index')}}" title="عرض الكل" class="btn btn-primary"><i class="fa fa-list"></i></a>
+                        <a href="{{route('admin.drivers.index')}}" title="عرض الكل" class="btn btn-primary"><i class="fa fa-list"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.users.store')}}" class="form" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.drivers.store')}}" class="form" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">الاسم</label>
@@ -36,16 +36,6 @@
                             <label for="password_confirmation">تاكيد كلمة المرور</label>
                             <input type="text" name="password_confirmation" id="password_confirmation" class="form-control" value="{{old('password_confirmation')}}">
                             <x-error title="password_confirmation"></x-error>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">النوع</label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="ادمن">ادمن</option>
-                                <option value="عميل">عميل</option>
-                                <option value="مشرف">مشرف</option>
-                                <option value="سائق">سائق</option>
-                            </select>
-                            <x-error title="type"></x-error>
                         </div>
                         <div class="custom-file-container" data-upload-id="img_temp">
                             <label>اختر صورة<a href="javascript:void(0)" class="custom-file-container__image-clear" title="حذف">x</a></label>

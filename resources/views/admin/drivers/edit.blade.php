@@ -4,48 +4,39 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="d-inline-block">اضافة مستخدم جديد</h3>
+                    <h3 class="d-inline-block">تعديل</h3>
                     <div class="d-inline-block float-right">
-                        <a href="{{route('admin.users.index')}}" title="عرض الكل" class="btn btn-primary"><i class="fa fa-list"></i></a>
+                        <a href="{{route('admin.drivers.index')}}" title="عرض الكل" class="btn btn-primary"><i class="fa fa-list"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.users.store')}}" class="form" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.drivers.update', $driver)}}" class="form" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <label for="name">الاسم</label>
-                            <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
+                            <input type="text" name="name" id="name" class="form-control" value="{{$driver['name']}}">
                             <x-error title="name"></x-error>
                         </div>
                         <div class="form-group">
                             <label for="email">البريد</label>
-                            <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}">
+                            <input type="email" name="email" id="email" class="form-control" value="{{$driver['email']}}">
                             <x-error title="email"></x-error>
                         </div>
                         <div class="form-group">
                             <label for="phone">الهاتف</label>
-                            <input type="text" name="phone" id="phone" class="form-control" value="{{old('phone')}}">
+                            <input type="text" name="phone" id="phone" class="form-control" value="{{$driver['phone']}}">
                             <x-error title="phone"></x-error>
                         </div>
                         <div class="form-group">
                             <label for="password">كلمة المرور</label>
-                            <input type="text" name="password" id="password" class="form-control" value="{{old('password')}}">
+                            <input type="text" name="password" id="password" class="form-control">
                             <x-error title="password"></x-error>
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation">تاكيد كلمة المرور</label>
-                            <input type="text" name="password_confirmation" id="password_confirmation" class="form-control" value="{{old('password_confirmation')}}">
+                            <input type="text" name="password_confirmation" id="password_confirmation" class="form-control">
                             <x-error title="password_confirmation"></x-error>
-                        </div>
-                        <div class="form-group">
-                            <label for="type">النوع</label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="ادمن">ادمن</option>
-                                <option value="عميل">عميل</option>
-                                <option value="مشرف">مشرف</option>
-                                <option value="سائق">سائق</option>
-                            </select>
-                            <x-error title="type"></x-error>
                         </div>
                         <div class="custom-file-container" data-upload-id="img_temp">
                             <label>اختر صورة<a href="javascript:void(0)" class="custom-file-container__image-clear" title="حذف">x</a></label>
@@ -67,6 +58,6 @@
 @endsection
 @section('js')
     <script>
-        firstUpload = new FileUploadWithPreview('img_temp')
+        let firstUpload = new FileUploadWithPreview('img_temp')
     </script>
 @endsection
