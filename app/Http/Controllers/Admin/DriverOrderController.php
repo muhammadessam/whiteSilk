@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DriverOrder;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DriverOrderController extends Controller
 {
@@ -109,6 +110,8 @@ class DriverOrderController extends Controller
 
     public function massDestroy(Request $request)
     {
-
+        $this->canAccess('delete', DriverOrder::class);
+        DriverOrder::whereIn('id', $request['ids'])->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

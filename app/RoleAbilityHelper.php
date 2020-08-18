@@ -19,7 +19,7 @@ class RoleAbilityHelper
         PriceList::class => 'قائمة الاسعار',
         DriverOrder::class => 'طلبات السائق',
         DriverOrderStatus::class => 'حالة طلبات السائقين',
-
+        GiftCategory::class => 'انواع كروت الهدايا'
 
     ];
     private $cruds = [

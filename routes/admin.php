@@ -67,6 +67,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('driver-orders', 'DriverOrderController');
 
     //Driver Order status
-    Route::delete('driver-order-status/massDestroy','DriverOrderStatusController@massDestroy')->name('driver.order.status.mass.destroy');
-    Route::resource('driver-order-status','DriverOrderStatusController');
+    Route::delete('driver-order-status/massDestroy', 'DriverOrderStatusController@massDestroy')->name('driver.order.status.mass.destroy');
+    Route::resource('driver-order-status', 'DriverOrderStatusController');
+
+    // Gift category
+    Route::delete('giftCategory/massDestroy', 'GiftCategoryController@massDestroy')->name('giftCat.mass.destroy');
+    Route::resource('giftCategory', 'GiftCategoryController');
+
 });

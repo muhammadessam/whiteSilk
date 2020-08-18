@@ -231,7 +231,7 @@
             </li>
 
             <li class="menu">
-                <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#gifts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -240,7 +240,7 @@
                             <polyline points="2 17 12 22 22 17"></polyline>
                             <polyline points="2 12 12 17 22 12"></polyline>
                         </svg>
-                        <span>DataTables</span>
+                        <span>الهدايا والكوبونات</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -250,39 +250,21 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="datatables" data-parent="#accordionExample">
-                    <li>
-                        <a href="table_dt_basic.html"> Basic </a>
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.giftCategory.*') ? 'show':''}}" id="gifts" data-parent="#accordionExample">
+                    <li class="{{request()->routeIs('admin.giftCategory.*') ? 'active':''}}">
+                        <a href="{{route('admin.giftCategory.index')}}"> انواع كروت الهدايا </a>
                     </li>
                     <li>
-                        <a href="table_dt_basic-dark.html"> Dark </a>
+                        <a href="table_dt_basic-dark.html"> كروت الهدايا </a>
                     </li>
                     <li>
-                        <a href="table_dt_ordering_sorting.html"> Order Sorting </a>
+                        <a href="table_dt_ordering_sorting.html"> استخدام كروت الهدايا </a>
                     </li>
                     <li>
-                        <a href="table_dt_multi-column_ordering.html"> Multi-Column </a>
+                        <a href="table_dt_multi-column_ordering.html"> الكوبونات </a>
                     </li>
                     <li>
-                        <a href="table_dt_multiple_tables.html"> Multiple Tables</a>
-                    </li>
-                    <li>
-                        <a href="table_dt_alternative_pagination.html"> Alt. Pagination</a>
-                    </li>
-                    <li>
-                        <a href="table_dt_custom.html"> Custom </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_range_search.html"> Range Search </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_html5.html"> HTML5 Export </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_live_dom_ordering.html"> Live DOM ordering </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_miscellaneous.html"> Miscellaneous </a>
+                        <a href="table_dt_multiple_tables.html"> استخدام الكوبونات </a>
                     </li>
                 </ul>
             </li>
