@@ -74,4 +74,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::delete('giftCategory/massDestroy', 'GiftCategoryController@massDestroy')->name('giftCat.mass.destroy');
     Route::resource('giftCategory', 'GiftCategoryController');
 
+    // Git card
+    Route::delete('giftcard/massDestroy', 'GiftCardController@massDesctroy')->name('gift.card.mass.destroy');
+    Route::resource('giftcard', 'GiftCardController');
+
+    // Gift Card Usages
+    Route::delete('giftCardUsage/massDestroy', 'GiftCardUsageController@massDestroy')->name('gift.card.usage.mass.destroy');
+    Route::resource('giftCardUsage', 'GiftCardUsageController');
 });

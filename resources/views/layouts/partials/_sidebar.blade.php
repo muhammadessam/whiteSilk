@@ -231,7 +231,9 @@
             </li>
 
             <li class="menu">
-                <a href="#gifts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#gifts" data-toggle="collapse"
+                   aria-expanded="{{request()->routeIs('admin.giftCategory.*') || request()->routeIs('admin.giftcard.*') ? 'true':'false'}}"
+                   class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -250,15 +252,15 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.giftCategory.*') ? 'show':''}}" id="gifts" data-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.giftCategory.*') || request()->routeIs('admin.giftcard.*') ? 'show':''}}" id="gifts" data-parent="#accordionExample">
                     <li class="{{request()->routeIs('admin.giftCategory.*') ? 'active':''}}">
                         <a href="{{route('admin.giftCategory.index')}}"> انواع كروت الهدايا </a>
                     </li>
-                    <li>
-                        <a href="table_dt_basic-dark.html"> كروت الهدايا </a>
+                    <li class="{{request()->routeIs('admin.giftcard.*') ? 'active':''}}">
+                        <a href="{{route('admin.giftcard.index')}}"> كروت الهدايا </a>
                     </li>
-                    <li>
-                        <a href="table_dt_ordering_sorting.html"> استخدام كروت الهدايا </a>
+                    <li class="{{request()->routeIs('admin.giftCardUsage.*') ?'active':''}}">
+                        <a href="{{route('admin.giftCardUsage.index')}}"> استخدام كروت الهدايا </a>
                     </li>
                     <li>
                         <a href="table_dt_multi-column_ordering.html"> الكوبونات </a>

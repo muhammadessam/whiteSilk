@@ -19,8 +19,9 @@ class RoleAbilityHelper
         PriceList::class => 'قائمة الاسعار',
         DriverOrder::class => 'طلبات السائق',
         DriverOrderStatus::class => 'حالة طلبات السائقين',
-        GiftCategory::class => 'انواع كروت الهدايا'
-
+        GiftCategory::class => 'انواع كروت الهدايا',
+        GiftCard::class => 'كروت الهدايا',
+        GiftCardUsage::class => 'استخدام كروت الهدايا',
     ];
     private $cruds = [
         'show' => 'عرض',
