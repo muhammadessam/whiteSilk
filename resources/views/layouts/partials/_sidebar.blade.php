@@ -197,7 +197,10 @@
             </li>
 
             <li class="menu">
-                <a href="table_basic.html" aria-expanded="false" class="dropdown-toggle">
+                <a href="#datatables" data-toggle="collapse"
+                   aria-expanded="{{request()->routeIs('admin.driver-orders.*') || request()->routeIs('admin.driver-order-status.*') ? 'true':'false'}}"
+                   data-active="{{request()->routeIs('admin.driver-orders.*') || request()->routeIs('admin.driver-order-status.*') ? 'true':'false'}}"
+                   class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -206,13 +209,29 @@
                             <line x1="3" y1="9" x2="21" y2="9"></line>
                             <line x1="9" y1="21" x2="9" y2="9"></line>
                         </svg>
-                        <span>Tables</span>
+                        <span>طلبات السائقين</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                             stroke-linejoin="round" class="feather feather-chevron-right">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
                     </div>
                 </a>
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.driver-orders.*') || request()->routeIs('admin.driver-order-status.*') ? 'show':''}}" id="datatables" data-parent="#accordionExample">
+                    <li class="{{request()->routeIs('admin.driver-order-status.*') ? 'active' :''}}">
+                        <a href="{{route('admin.driver-order-status.index')}}"> حالة الطلب </a>
+                    </li>
+                    <li class="{{request()->routeIs('admin.driver-orders.*') ? 'active' :''}}">
+                        <a href="{{route('admin.driver-orders.index')}}"> طلبات السائقين </a>
+                    </li>
+
+                </ul>
             </li>
 
             <li class="menu">
-                <a href="#datatables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

@@ -17,7 +17,8 @@ class RoleAbilityHelper
         SubscriptionAttribute::class => 'عناصر الاشتراك',
         DriversTime::class => 'اوقات السائقين',
         PriceList::class => 'قائمة الاسعار',
-
+        DriverOrder::class => 'طلبات السائق',
+        DriverOrderStatus::class => 'حالة طلبات السائقين',
 
 
     ];

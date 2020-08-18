@@ -61,4 +61,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // Price List
     Route::delete('price-list/massDestroy', 'PriceListController@massDestroy')->name('price.list.mass.destroy');
     Route::resource('price-list', 'PriceListController');
+
+    // Driver Order
+    Route::delete('driver-order/massDestroy', 'DriverController@massDestroy')->name('driver.order.mass.destroy');
+    Route::resource('driver-orders', 'DriverOrderController');
+
+    //Driver Order status
+    Route::delete('driver-order-status/massDestroy','DriverOrderStatusController@massDestroy')->name('driver.order.status.mass.destroy');
+    Route::resource('driver-order-status','DriverOrderStatusController');
 });
