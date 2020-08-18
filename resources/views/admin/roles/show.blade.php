@@ -39,7 +39,7 @@
                                                 <td>
                                                     <div class="form-row">
                                                         @foreach($names as $name)
-                                                            <div class="n-chk">
+                                                            <div class="n-chk ml-4">
                                                                 <label class="switch s-icons s-outline s-outline-default mr-2 s-outline-success">
                                                                     <input onchange="changeAll()" class="chk" type="checkbox" name="permissions[]" value="{{$name['name']}}-{{$type}}" {{$role->can($name['name'], $type) ? 'checked':''}}>
                                                                     <span class="slider round"></span>
