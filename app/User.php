@@ -44,4 +44,9 @@ class User extends Authenticatable
             $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
         }
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'customer_id', 'id');
+    }
 }

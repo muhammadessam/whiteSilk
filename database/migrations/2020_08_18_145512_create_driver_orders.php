@@ -19,6 +19,12 @@ class CreateDriverOrders extends Migration
             $table->unsignedBigInteger('status_id');
             $table->unsignedBigInteger('subscription_id')->nullable()->default(null);
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('time_id')->references('id')->on('driver_times')->onDelete('cascade');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('driver_order_status')->onDelete('cascade');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

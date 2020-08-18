@@ -2,7 +2,7 @@
 
 
 <div class="form-group">
-    <label class="font-weight-bold" for="{{$name}}" class="font-weight-bold">{{$title}}</label>
+    <label class="font-weight-bold" for="{{$name}}">{{$title}}</label>
     <select name="{{$name}}" id="{{$name}}" class="form-control">
         @foreach($loopOver as $item)
             <option value="{{$item['id']}}" {{$item['id'] == $value ?'selected':''}}> {{$item[$showCol]}} </option>

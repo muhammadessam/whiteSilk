@@ -59,7 +59,7 @@
 
 
             <li class="menu">
-                <a href="#countries" data-toggle="collapse"
+                <a href="#countriesList" data-toggle="collapse"
                    aria-expanded="{{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ? 'true':'false'}}"
                    data-active="{{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ? 'true':'false'}}"
                    class="dropdown-toggle">
@@ -82,7 +82,7 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.countries.*') || request()->routeIs('admin.cities.*') ||request()->routeIs('admin.areas.*') ?'show':''}}"
-                    id="countries" data-parent="#accordionExample">
+                    id="countriesList" data-parent="#accordionExample">
                     <li class="{{request()->routeIs('admin.countries.*') ? 'active' :''}}">
                         <a href="{{route('admin.countries.index')}}"> الدول </a>
                     </li>

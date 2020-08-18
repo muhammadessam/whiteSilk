@@ -39,7 +39,14 @@ class DriverOrderController extends Controller
     public function store(Request $request)
     {
         $this->canAccess('create', DriverOrder::class);
-
+        $request->validate([
+            'time_id' => 'required',
+            'date' => 'required',
+            'status_id' => 'required',
+        ]);
+        DriverOrder::create($request->all());
+        $this->actionSuccess();
+        return redirect()->route('admin.driver-orders.index');
     }
 
     /**
@@ -50,7 +57,8 @@ class DriverOrderController extends Controller
      */
     public function show(DriverOrder $driverOrder)
     {
-        //
+        $this->canAccess('show', DriverOrder::class);
+        return view('admin.driverOrders.show', compact('driverOrder'));
     }
 
     /**
@@ -61,7 +69,8 @@ class DriverOrderController extends Controller
      */
     public function edit(DriverOrder $driverOrder)
     {
-        //
+        $this->canAccess('edit', DriverOrder::class);
+        return view('admin.driverOrders.edit', compact('driverOrder'));
     }
 
     /**
@@ -73,7 +82,15 @@ class DriverOrderController extends Controller
      */
     public function update(Request $request, DriverOrder $driverOrder)
     {
-        //
+        $this->canAccess('edit', DriverOrder::class);
+        $request->validate([
+            'time_id' => 'required',
+            'date' => 'required',
+            'status_id' => 'required',
+        ]);
+        $driverOrder->update($request->all());
+        $this->actionSuccess();
+        return redirect()->route('admin.driver-orders.index');
     }
 
     /**
@@ -84,7 +101,10 @@ class DriverOrderController extends Controller
      */
     public function destroy(DriverOrder $driverOrder)
     {
-        //
+        $this->canAccess('delete', DriverOrder::class);
+        $driverOrder->delete();
+        $this->actionSuccess();
+        return back();
     }
 
     public function massDestroy(Request $request)
