@@ -25,6 +25,8 @@ class RoleAbilityHelper
         Coupon::class => 'الكوبونات',
         CouponUsage::class => 'استخدام الكوبونات',
         PaymentMethod::class => 'طرق الدفع',
+        OrderStatus::class  =>'حالة الطلب',
+        Order::class=>'الطلبات',
     ];
     private $cruds = [
         'show' => 'عرض',

@@ -92,4 +92,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // Payment Methods
     Route::delete('paymentsMethod/massDestroy', 'PaymentMethodController@massDestroy')->name('payment.method.mass.destroy');
     Route::resource('paymentsMethod', 'PaymentMethodController');
+
+    // Order Status
+    Route::delete('orderStatus/massDestroy', 'OrderStatusController@massDestroy')->name('order.status.mass.destroy');
+    Route::resource('orderStatus', 'OrderStatusController');
+
+    // Orders
+    Route::delete('orders/massDestroy', 'OrderController@massDestroy')->name('order.mass.destroy');
+    Route::resource('orders', 'OrderController');
 });
