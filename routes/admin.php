@@ -84,4 +84,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // coupons
     Route::delete('coupons/massDestroy', 'CouponController@massDestroy')->name('coupons.mass.destroy');
     Route::resource('coupons', 'CouponController');
+
+    //Coupon usage
+    Route::delete('couponUsage/massDesctroy', 'CouponUsageController@massDestroy')->name('coupon.usage.mass,destroy');
+    Route::resource('couponUsage', 'CouponUsageController');
 });

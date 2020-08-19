@@ -232,7 +232,7 @@
 
             <li class="menu">
                 <a href="#gifts" data-toggle="collapse"
-                   aria-expanded="{{request()->routeIs('admin.giftCategory.*') || request()->routeIs('admin.giftcard.*') ? 'true':'false'}}"
+                   aria-expanded="{{request()->routeIs('admin.couponUsage.*') || request()->routeIs('admin.coupons.*') ||  request()->routeIs('admin.giftCategory.*') || request()->routeIs('admin.giftcard.*') ? 'true':'false'}}"
                    class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -252,7 +252,7 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.giftCategory.*') || request()->routeIs('admin.giftcard.*') ? 'show':''}}" id="gifts" data-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.couponUsage.*') || request()->routeIs('admin.coupons.*') || request()->routeIs('admin.giftCategory.*') || request()->routeIs('admin.giftcard.*') ? 'show':''}}" id="gifts" data-parent="#accordionExample">
                     <li class="{{request()->routeIs('admin.giftCategory.*') ? 'active':''}}">
                         <a href="{{route('admin.giftCategory.index')}}"> انواع كروت الهدايا </a>
                     </li>
@@ -265,8 +265,8 @@
                     <li class="{{request()->routeIs('admin.coupons.*') ? 'active':''}}">
                         <a href="{{route('admin.coupons.index')}}"> الكوبونات </a>
                     </li>
-                    <li>
-                        <a href="table_dt_multiple_tables.html"> استخدام الكوبونات </a>
+                    <li class="{{request()->routeIs('admin.couponUsage.*') ? 'active':''}}">
+                        <a href="{{route('admin.couponUsage.index')}}"> استخدام الكوبونات </a>
                     </li>
                 </ul>
             </li>
