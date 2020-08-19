@@ -100,4 +100,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // Orders
     Route::delete('orders/massDestroy', 'OrderController@massDestroy')->name('order.mass.destroy');
     Route::resource('orders', 'OrderController');
+
+    // payments
+    Route::delete('payments/massDestroy', 'PaymentController@massDestroy')->name('payment.mass.destroy');
+    Route::resource('payments', 'PaymentController');
+
 });

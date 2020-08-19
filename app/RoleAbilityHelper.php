@@ -27,6 +27,7 @@ class RoleAbilityHelper
         PaymentMethod::class => 'طرق الدفع',
         OrderStatus::class  =>'حالة الطلب',
         Order::class=>'الطلبات',
+        Payment::class=>'عمليات الدفع'
     ];
     private $cruds = [
         'show' => 'عرض',
