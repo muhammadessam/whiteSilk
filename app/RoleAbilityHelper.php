@@ -22,6 +22,7 @@ class RoleAbilityHelper
         GiftCategory::class => 'انواع كروت الهدايا',
         GiftCard::class => 'كروت الهدايا',
         GiftCardUsage::class => 'استخدام كروت الهدايا',
+        Coupon::class => 'الكوبونات',
     ];
     private $cruds = [
         'show' => 'عرض',

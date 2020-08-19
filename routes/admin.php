@@ -81,4 +81,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     // Gift Card Usages
     Route::delete('giftCardUsage/massDestroy', 'GiftCardUsageController@massDestroy')->name('gift.card.usage.mass.destroy');
     Route::resource('giftCardUsage', 'GiftCardUsageController');
+    // coupons
+    Route::delete('coupons/massDestroy', 'CouponController@massDestroy')->name('coupons.mass.destroy');
+    Route::resource('coupons', 'CouponController');
 });

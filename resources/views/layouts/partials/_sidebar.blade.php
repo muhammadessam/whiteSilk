@@ -262,8 +262,8 @@
                     <li class="{{request()->routeIs('admin.giftCardUsage.*') ?'active':''}}">
                         <a href="{{route('admin.giftCardUsage.index')}}"> استخدام كروت الهدايا </a>
                     </li>
-                    <li>
-                        <a href="table_dt_multi-column_ordering.html"> الكوبونات </a>
+                    <li class="{{request()->routeIs('admin.coupons.*') ? 'active':''}}">
+                        <a href="{{route('admin.coupons.index')}}"> الكوبونات </a>
                     </li>
                     <li>
                         <a href="table_dt_multiple_tables.html"> استخدام الكوبونات </a>

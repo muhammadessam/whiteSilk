@@ -4,6 +4,39 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\DriverOrder
+ *
+ * @property int $id
+ * @property int|null $user_id
+ * @property int $time_id
+ * @property int|null $address_id
+ * @property int|null $pieces
+ * @property string $date
+ * @property int $status_id
+ * @property int|null $subscription_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Address|null $address
+ * @property-read \App\User|null $client
+ * @property-read \App\DriverOrderStatus $status
+ * @property-read \App\Subscription|null $subscription
+ * @property-read \App\DriversTime $time
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereAddressId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder wherePieces($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereStatusId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereSubscriptionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereTimeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereUserId($value)
+ * @mixin \Eloquent
+ */
 class DriverOrder extends Model
 {
     protected $guarded = [];
