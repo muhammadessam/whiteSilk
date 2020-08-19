@@ -27,7 +27,7 @@
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item->user->name}}</td>
                                     <td>{{$item->coupon->name}}</td>
-                                    <td></td>
+                                    <td>{{$item->order->id}}</td>
                                     <td class="d-flex">
                                         <a href="{{route('admin.couponUsage.edit', $item)}}"><i class="fa fa-edit text-primary"></i></a>
                                         <form action="{{route('admin.couponUsage.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد ؟')">

@@ -15,6 +15,7 @@
                             <thead>
                             <tr>
                                 <th></th>
+                                <th>رقم الطلب</th>
                                 <th>طريقة الدفع</th>
                                 <th>اسم العميل</th>
                                 <th>العنوان</th>
@@ -29,6 +30,7 @@
                             <tbody>
                             @foreach(\App\Order::all() as $item)
                                 <tr>
+                                    <td>{{$item['id']}}</td>
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item->paymentMethod->name}}</td>
                                     <td>{{$item->user->name}}</td>
