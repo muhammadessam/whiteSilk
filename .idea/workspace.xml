@@ -219,7 +219,7 @@
       <workItem from="1597681243812" duration="23432000" />
       <workItem from="1597751762826" duration="30461000" />
       <workItem from="1597842151291" duration="10161000" />
-      <workItem from="1597853710748" duration="8001000" />
+      <workItem from="1597853710748" duration="11087000" />
     </task>
     <servers />
   </component>
@@ -371,6 +371,10 @@
     </state>
     <state x="0" y="0" width="1497" height="725" key="dock-window-1/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597688085808" />
     <state x="1920" y="0" width="1600" height="1037" key="dock-window-1/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1597859372756" />
+    <state x="258" y="0" width="1406" height="1037" key="dock-window-2" timestamp="1597866964792">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="258" y="0" width="1406" height="1037" key="dock-window-2/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1597866964792" />
     <state x="2587" y="81" width="585" height="888" key="find.popup" timestamp="1597710501070">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -382,11 +386,11 @@
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597843955062" />
     <state x="2536" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1597863024093" />
     <state x="616" y="243" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597625475719" />
-    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597862951557">
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1597867737841">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@0.0.1920.1050" timestamp="1597842921335" />
-    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1597862951557" />
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1597867737841" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1597623778484" />
   </component>
 </project>

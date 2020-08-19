@@ -40,6 +40,18 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $this->canAccess('create', Order::class);
+        $request->validate([
+            'payment_method_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'address_id' => 'required|numeric',
+            'total' => 'required|numeric',
+            'status_id' => 'required|numeric',
+            'date' => 'required|date'
+        ]);
+        $request['is_paid'] = $request['is_paid'] ? 1 : 0;
+        Order::create($request->all());
+        $this->actionSuccess();
+        return redirect()->route('admin.orders.index');
     }
 
     /**
@@ -76,6 +88,18 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $this->canAccess('edit', Order::class);
+        $request->validate([
+            'payment_method_id' => 'required|numeric',
+            'user_id' => 'required|numeric',
+            'address_id' => 'required|numeric',
+            'total' => 'required|numeric',
+            'status_id' => 'required|numeric',
+            'date' => 'required|date'
+        ]);
+        $request['is_paid'] = $request['is_paid'] ? 1 : 0;
+        $order->update($request->all());
+        $this->actionSuccess();
+        return redirect()->route('admin.orders.index');
     }
 
     /**

@@ -289,7 +289,7 @@
             </li>
 
             <li class="menu">
-                <a href="#orders" data-toggle="collapse"
+                <a href="#ordersLink" data-toggle="collapse"
                    aria-expanded="{{request()->routeIs('admin.orders.*') || request()->routeIs('admin.orderStatus.*') ? 'true':'false'}}"
                    class="dropdown-toggle">
                     <div class="">
@@ -310,7 +310,7 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.orders.*') || request()->routeIs('admin.orderStatus.*')  ? 'show':''}}" id="orders" data-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.orders.*') || request()->routeIs('admin.orderStatus.*')  ? 'show':''}}" id="ordersLink" data-parent="#accordionExample">
 
                     <li class="{{request()->routeIs('admin.orderStatus.*') ? 'active':''}}">
                         <a href="{{route('admin.orderStatus.index')}}"> حالة الطلب </a>
