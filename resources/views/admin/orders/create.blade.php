@@ -12,6 +12,17 @@
                 <div class="card-body">
                     <form action="{{route('admin.orders.store')}}" class="form" method="post">
                         @csrf
+
+                        <div class="form-group">
+                            <label class="font-weight-bold" for="type">نوع الفاتورة</label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="اشتراك">اشتراك</option>
+                                <option value="منفصلة">منفصلة</option>
+                            </select>
+                            <x-error title="type"></x-error>
+                        </div>
+
+
                         <x-select name="payment_method_id" :loopOver="\App\PaymentMethod::all()" showCol="name" value="{{old('payment_method_id')}}" title="طريقة الدقع"></x-select>
                         <addresses :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
                         <x-number name="total" value="{{old('total')}}" title="المبلغ"></x-number>

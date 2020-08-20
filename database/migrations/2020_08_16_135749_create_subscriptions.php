@@ -17,7 +17,7 @@ class CreateSubscriptions extends Migration
             $table->boolean('is_active');
             $table->decimal('price');
             $table->string('pieces')->nullable()->default(null);
-            $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('type_id')->nullable()->default(null);
             $table->foreign('type_id')->references('id')->on('subscription_types')->onDelete('cascade');
 
             $table->softDeletes();

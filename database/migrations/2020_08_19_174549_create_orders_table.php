@@ -15,14 +15,19 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('payment_method_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('address_id');
-            $table->decimal('total');
+            $table->enum('type', ['اشتراك', 'منفصلة']);
+            $table->unsignedBigInteger('branch_id');
+            $table->unsignedBigInteger('payment_method_id')->nullable()->default(null);
+            $table->unsignedBigInteger('client_id')->nullable()->default(null);
+            $table->unsignedBigInteger('driver_id')->nullable()->default(null);
+            $table->unsignedBigInteger('address_id')->nullable()->default(null);
+            $table->unsignedBigInteger('subscription_id')->nullable()->default(null);
+            $table->dateTime('arrived_at')->nullable()->default(null);
+            $table->dateTime('out_at')->nullable()->default(null);
             $table->unsignedBigInteger('status_id');
             $table->boolean('is_paid')->default(true);
             $table->unsignedBigInteger('coupon_id')->nullable()->default(null);
-            $table->date('date');
+            $table->decimal('total');
             $table->timestamps();
         });
     }

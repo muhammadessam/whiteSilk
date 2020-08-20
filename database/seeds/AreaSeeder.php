@@ -14,32 +14,32 @@ class AreaSeeder extends Seeder
         $areas = [
             [
                 'name' => 'منطقة 1',
-                'city_id' => random_int(1, 5),
+                'city_id' => random_int(1, 6),
                 'price' => 10
             ],
             [
                 'name' => 'منطقة 2',
-                'city_id' => random_int(1, 5),
+                'city_id' => random_int(1, 6),
                 'price' => 10
             ],
             [
                 'name' => 'منطقة 3',
-                'city_id' => random_int(1, 5),
+                'city_id' => random_int(1, 6),
                 'price' => 10
             ],
             [
                 'name' => 'منطقة 4',
-                'city_id' => random_int(1, 5),
+                'city_id' => random_int(1, 6),
                 'price' => 10
             ],
             [
                 'name' => 'منطقة 5',
-                'city_id' => random_int(1, 5),
+                'city_id' => random_int(1, 6),
                 'price' => 10
             ],
             [
                 'name' => 'منطقة 6',
-                'city_id' => random_int(1, 5),
+                'city_id' => random_int(1, 6),
                 'price' => 10
             ],
 

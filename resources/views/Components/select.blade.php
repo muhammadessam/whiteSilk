@@ -1,6 +1,5 @@
 @props(['name', 'title', 'value'=>'','loopOver', 'showCol'])
 
-
 <div class="form-group">
     <label class="font-weight-bold" for="{{$name}}">{{$title}}</label>
     <select name="{{$name}}" id="{{$name}}" class="form-control">

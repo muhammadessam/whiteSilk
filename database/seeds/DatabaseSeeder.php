@@ -18,5 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call(DriverOrderStatusSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(AreaSeeder::class);
+        $this->call(AddressSeeder::class);
+        $this->call(BranchSeeder::class);
+        $this->call(PaymentMethodSeeder::class);
+        $this->call(OrderStatusSeeder::class);
+        $this->call(SubscriptionTypeSeeder::class);
     }
 }
