@@ -1,31 +1,32 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.address.title') }}
-    </div>
+    <div class="card">
+        <div class="card-header">
+           <h3> العنوان</h3>
+        </div>
 
-    <div class="card-body">
-        <div class="form-group">
+        <div class="card-body">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.addresses.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
-            </div>
-            <table class="table table-bordered table-striped">
-                <tbody>
+                <div class="form-group">
+                    <a class="btn btn-default" href="{{ route('admin.addresses.index') }}">
+                        رجوع </a>
+                </div>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.id') }}
+                            ID
                         </th>
                         <td>
                             {{ $address->id }}
                         </td>
                     </tr>
+
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.customer') }}
+                            العميل
                         </th>
                         <td>
                             {{ $address->customer->name ?? '' }}
@@ -33,71 +34,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.country') }}
-                        </th>
-                        <td>
-                            {{ $address->country->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.city') }}
-                        </th>
-                        <td>
-                            {{ $address->city->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.area') }}
-                        </th>
-                        <td>
-                            {{ $address->area->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.lat') }}
-                        </th>
-                        <td>
-                            {{ $address->lat }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.long') }}
-                        </th>
-                        <td>
-                            {{ $address->long }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.details') }}
-                        </th>
-                        <td>
-                            {{ $address->details }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.phone') }}
-                        </th>
-                        <td>
-                            {{ $address->phone }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.alter_phone') }}
-                        </th>
-                        <td>
-                            {{ $address->alter_phone }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.address.fields.name') }}
+                            الاسم
                         </th>
                         <td>
                             {{ $address->name }}
@@ -105,7 +42,72 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.block') }}
+                            الدولة
+                        </th>
+                        <td>
+                            {{ $address->country->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            المدينة
+                        </th>
+                        <td>
+                            {{ $address->city->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            المنطقة
+                        </th>
+                        <td>
+                            {{ $address->area->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            خط عرض
+                        </th>
+                        <td>
+                            {{ $address->lat }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            خط طول
+                        </th>
+                        <td>
+                            {{ $address->long }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            تفاصيل
+                        </th>
+                        <td>
+                            {{ $address->details }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            هاتف
+                        </th>
+                        <td>
+                            {{ $address->phone }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            هاتف بديل
+                        </th>
+                        <td>
+                            {{ $address->alter_phone }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            المريع
                         </th>
                         <td>
                             {{ $address->block }}
@@ -113,7 +115,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.gada') }}
+                            الجادة
                         </th>
                         <td>
                             {{ $address->gada }}
@@ -121,7 +123,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.street') }}
+                            الشارع
                         </th>
                         <td>
                             {{ $address->street }}
@@ -129,7 +131,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.building') }}
+                            المبني
                         </th>
                         <td>
                             {{ $address->building }}
@@ -137,7 +139,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.floor') }}
+                            الطابق
                         </th>
                         <td>
                             {{ $address->floor }}
@@ -145,22 +147,22 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.address.fields.flat_house') }}
+                            الشقة
                         </th>
                         <td>
                             {{ $address->flat_house }}
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.addresses.index') }}">
-                    {{ trans('global.back_to_list') }}
-                </a>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <a class="btn btn-default" href="{{ route('admin.addresses.index') }}">
+                        رجوع
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

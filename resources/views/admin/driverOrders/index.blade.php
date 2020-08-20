@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item->client->name}}</td>
-                                    <td>{{$item->address->name}}</td>
+                                    <td>{{$item->address->name}} - {{$item->address->area->name}} </td>
                                     <td>{{$item->time->from . ' - ' . $item->time->to}}</td>
                                     <td>{{$item->date}}</td>
                                     <td>{{$item->pieces}}</td>
