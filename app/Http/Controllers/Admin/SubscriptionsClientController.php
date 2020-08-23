@@ -19,14 +19,6 @@ class SubscriptionsClientController extends Controller
         $client = User::find($request['client_id']);
         $subscription = Subscription::find($request['subscription_id']);
 
-        if ($client->subscriptions()->exists()) {
-            foreach ($client->subscriptions as $item) {
-                $item->pivot->update([
-                    'is_active' => false,
-                ]);
-            }
-        }
-
         $client->subscriptions()->attach($subscription->id,
             [
                 'is_active' => true,

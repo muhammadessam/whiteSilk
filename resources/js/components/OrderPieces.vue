@@ -1,23 +1,43 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-10">
                 <div class="row" v-for="(element, index) in elements">
                     <div class="col-4">
                         <div class="form-group">
-                            <select name="ids" id="ids" class="form-control">
-                                <option v-for="piece in pieces" value="piece.id" v-text="piece.item"></option>
+                            <select name="ids[]" id="ids" class="form-control">
+                                <option v-for="piece in pieces" :value="piece.id" v-text="piece.item"></option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-group">
-
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="form-group">
-
+                            <div class="n-chk">
+                                <label class="new-control new-radio radio-primary">
+                                    <input type="radio" class="new-control-input" name="types[]" checked value="washing">
+                                    <span class="new-control-indicator"></span>
+                                    غسيل جاف
+                                </label>
+                            </div>
+                            <div class="n-chk">
+                                <label class="new-control new-radio radio-primary">
+                                    <input type="radio" class="new-control-input" name="types[]" value="washingAndIron">
+                                    <span class="new-control-indicator"></span>
+                                    غسيل وكوي
+                                </label>
+                            </div>
+                            <div class="n-chk">
+                                <label class="new-control new-radio radio-primary">
+                                    <input type="radio" class="new-control-input" name="types[]" value="ironed">
+                                    <span class="new-control-indicator"></span>
+                                    كوي فقط
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <input type="number" step="any" name="counts[]" class="form-control" placeholder="ادخل عدد القطعة" value="1">
                         </div>
                     </div>
                     <div class="col-2">

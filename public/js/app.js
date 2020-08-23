@@ -2004,6 +2004,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPieces",
   props: ['pieces'],
@@ -19948,7 +19968,7 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c(
         "div",
-        { staticClass: "col-12" },
+        { staticClass: "col-10" },
         [
           _vm._l(_vm.elements, function(element, index) {
             return _c("div", { staticClass: "row" }, [
@@ -19958,12 +19978,14 @@ var render = function() {
                     "select",
                     {
                       staticClass: "form-control",
-                      attrs: { name: "ids", id: "ids" }
+                      attrs: { name: "ids[]", id: "ids" }
                     },
                     _vm._l(_vm.pieces, function(piece) {
                       return _c("option", {
-                        attrs: { value: "piece.id" },
-                        domProps: { textContent: _vm._s(piece.item) }
+                        domProps: {
+                          value: piece.id,
+                          textContent: _vm._s(piece.item)
+                        }
                       })
                     }),
                     0
@@ -20010,8 +20032,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4" }, [
-      _c("div", { staticClass: "form-group" })
+    return _c("div", { staticClass: "col-2" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("div", { staticClass: "n-chk" }, [
+          _c("label", { staticClass: "new-control new-radio radio-primary" }, [
+            _c("input", {
+              staticClass: "new-control-input",
+              attrs: {
+                type: "radio",
+                name: "types[]",
+                checked: "",
+                value: "washing"
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "new-control-indicator" }),
+            _vm._v(
+              "\n                                غسيل جاف\n                            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "n-chk" }, [
+          _c("label", { staticClass: "new-control new-radio radio-primary" }, [
+            _c("input", {
+              staticClass: "new-control-input",
+              attrs: { type: "radio", name: "types[]", value: "washingAndIron" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "new-control-indicator" }),
+            _vm._v(
+              "\n                                غسيل وكوي\n                            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "n-chk" }, [
+          _c("label", { staticClass: "new-control new-radio radio-primary" }, [
+            _c("input", {
+              staticClass: "new-control-input",
+              attrs: { type: "radio", name: "types[]", value: "ironed" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "new-control-indicator" }),
+            _vm._v(
+              "\n                                كوي فقط\n                            "
+            )
+          ])
+        ])
+      ])
     ])
   },
   function() {
@@ -20019,7 +20088,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2" }, [
-      _c("div", { staticClass: "form-group" })
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "number",
+            step: "any",
+            name: "counts[]",
+            placeholder: "ادخل عدد القطعة",
+            value: "1"
+          }
+        })
+      ])
     ])
   }
 ]

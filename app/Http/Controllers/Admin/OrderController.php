@@ -39,6 +39,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $this->canAccess('create', Order::class);
         $request->validate([
             'payment_method_id' => 'required|numeric',
