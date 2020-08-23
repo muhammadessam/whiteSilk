@@ -47,6 +47,12 @@ use Silber\Bouncer\Database\HasRolesAndAbilities;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $credit
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
+ * @property-read int|null $orders_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Subscription[] $subscriptions
+ * @property-read int|null $subscriptions_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCredit($value)
  */
 class User extends Authenticatable
 {
@@ -90,4 +96,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Address::class, 'customer_id', 'id');
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'client_id', 'id');
+    }
+
+    public function subscriptions()
+    {
+        return $this->belongsToMany(Subscription::class, 'subscription_user', 'client_id', 'subscription_id')
+            ->withPivot('is_active', 'remaining_pieces', 'start_date', 'end_date', 'credit', 'id');
+    }
+
 }

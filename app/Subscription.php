@@ -36,6 +36,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int|null $days
+ * @property string|null $added_credit
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereAddedCredit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereDays($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereType($value)
  */
 class Subscription extends Model
 {
@@ -46,8 +53,9 @@ class Subscription extends Model
         return $this->hasMany(SubscriptionAttribute::class, 'subscription_id', 'id');
     }
 
-    public function type()
+    public function users()
     {
-        return $this->belongsTo(SubscriptionType::class, 'type_id', 'id');
+        return $this->belongsToMany(User::class, 'subscription_user', 'subscription_id', 'client_id')
+            ->withPivot('is_active', 'remaining_pieces', 'start_date', 'end_date', 'credit', 'id');
     }
 }

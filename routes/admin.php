@@ -13,8 +13,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::delete('roles/massDestroy', 'RoleController@massDestroy')->name('roles.mass.destroy');
 
     // mass destruction
-    Route::resource('users', 'UserController');
     Route::delete('users/massDestroy', 'UserController@massDestroy')->name('users.mass.destroy');
+    Route::resource('users', 'UserController');
 
     // role and permission
     Route::post('{role}/assignPermissions', 'RolePermissionController@assignPermissions')->name('assign.role.permissions');
@@ -109,4 +109,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::delete('branches/massDestroy', 'BranchController@massDestroy')->name('branches.mass.destroy');
     Route::resource('branches', 'BranchController');
 
+    // user and subscriptions
+    Route::post('/clients/subscriptions', 'SubscriptionsClientController@store')->name('client.subscription.store');
+    Route::post('/clients/subscriptions/edit', 'SubscriptionsClientController@edit')->name('client.subscription.edit');
+    Route::patch('/clients/subscriptions/update', 'SubscriptionsClientController@update')->name('client.subscription.update');
+    Route::delete('/clients/subscriptions/remove', 'SubscriptionsClientController@destroy')->name('client.subscription.destroy');
 });

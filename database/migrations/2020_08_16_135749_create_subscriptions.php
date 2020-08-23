@@ -16,9 +16,11 @@ class CreateSubscriptions extends Migration
             $table->text('img')->nullable()->default(null);
             $table->boolean('is_active');
             $table->decimal('price');
-            $table->string('pieces')->nullable()->default(null);
-            $table->unsignedBigInteger('type_id')->nullable()->default(null);
-            $table->foreign('type_id')->references('id')->on('subscription_types')->onDelete('cascade');
+            $table->enum('type', ['قطعة', 'تاريخ', 'مبلغ']);
+
+            $table->unsignedInteger('pieces')->nullable()->default(0);
+            $table->unsignedInteger('days')->nullable()->default(null);
+            $table->decimal('added_credit')->nullable()->default(null);
 
             $table->softDeletes();
             $table->timestamps();

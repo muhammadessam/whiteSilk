@@ -11,6 +11,8 @@ class AddEditionalFieldToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone')->nullable()->default(null);
             $table->text('img')->nullable()->default(null);
+            $table->decimal('credit')->default(0);
+
         });
     }
 
@@ -19,6 +21,7 @@ class AddEditionalFieldToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('phone');
             $table->dropColumn('img');
+            $table->dropColumn('credit');
         });
     }
 }

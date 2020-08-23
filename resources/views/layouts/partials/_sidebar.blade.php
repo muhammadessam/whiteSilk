@@ -120,9 +120,6 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled {{request()->routeIs('admin.subscriptions.*')|| request()->routeIs('admin.subscription-types.*') ? 'show' : ''}}" id="components" data-parent="#accordionExample">
-                    <li class="{{request()->routeIs('admin.subscription-types.*') ? 'active':''}}">
-                        <a href="{{route('admin.subscription-types.index')}}"> نوع الاشتراك </a>
-                    </li>
                     <li class="{{request()->routeIs('admin.subscriptions.*') ? 'active':''}}">
 
                         <a href="{{route('admin.subscriptions.index')}}"> الاشتراكات </a>

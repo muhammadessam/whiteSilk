@@ -38,6 +38,23 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  * @mixin \Eloquent
+ * @property string $type
+ * @property int $branch_id
+ * @property string $serial
+ * @property int|null $client_id
+ * @property int|null $driver_id
+ * @property int|null $subscription_id
+ * @property string|null $arrived_at
+ * @property string|null $out_at
+ * @property-read \App\User|null $client
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereArrivedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBranchId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDriverId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOutAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereSerial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereSubscriptionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereType($value)
  */
 class Order extends Model
 {
@@ -48,9 +65,9 @@ class Order extends Model
         return $this->belongsTo(PaymentMethod::class, 'payment_method_id', 'id');
     }
 
-    public function user()
+    public function client()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'client_id', 'id');
 
     }
 
@@ -68,4 +85,5 @@ class Order extends Model
     {
         return $this->belongsTo(Coupon::class, 'coupon_id', 'id');
     }
+
 }

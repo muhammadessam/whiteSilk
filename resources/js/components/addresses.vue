@@ -9,7 +9,7 @@
         <div class="form-group">
             <label class="font-weight-bold" for="address_id">العنوان</label>
             <select name="address_id" class="form-control" id="address_id">
-                <option v-for="address in addresses" :value="address.id">{{ address.name }}</option>
+                <option v-for="address in addresses" :value="address.id">{{ address.name }} => {{address.city.name}} - {{address.area.name}}</option>
             </select>
         </div>
     </div>

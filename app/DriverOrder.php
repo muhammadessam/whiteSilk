@@ -36,6 +36,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereUserId($value)
  * @mixin \Eloquent
+ * @property int|null $client_id
+ * @property int|null $is_urgent
+ * @property int|null $driver_id
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereClientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereDriverId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DriverOrder whereIsUrgent($value)
  */
 class DriverOrder extends Model
 {

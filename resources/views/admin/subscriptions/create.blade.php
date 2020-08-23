@@ -14,10 +14,12 @@
                         @csrf
                         <x-text name="name" value="{{old('name')}}" title="الاسم"></x-text>
                         <x-textarea name="description" value="{{old('description')}}" title="الوصف"></x-textarea>
-                        <x-img></x-img>
-                        <x-select name="type_id" title="النوع" value="{{old('type_id')}}" :loopOver="\App\SubscriptionType::all()" showCol="name"></x-select>
                         <x-number name="price" value="{{old('price')}}" title="السعر"></x-number>
-                        <x-text name="pieces" value="{{old('pieces')}}" title="اجمالي عدد القطع"></x-text>
+
+                        <x-img></x-img>
+
+                        <subscription></subscription>
+
                         <x-checkbox name="is_active" title="الحالة" value="1"></x-checkbox>
                         <attributes :attributes=[]></attributes>
                         <button class="btn btn-success"><i class="fa fa-plus"></i> حفظ</button>

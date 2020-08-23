@@ -9,11 +9,15 @@
                 <div class="row">
                     <div class="col">
                         <x-showtext title="الوصف" value="{{$subscription['description']}}"></x-showtext>
-                        <x-showtext title="النوع" value="{{$subscription->type['name']}}"></x-showtext>
+                        <x-showtext title="النوع" value="{{$subscription['type']}}"></x-showtext>
                         <x-showtext title="السعر" value="{{$subscription['price']}}"></x-showtext>
+                        <x-showtext title="الرصيد المضاف الي المستخدم" value="{{$subscription['added_credit']}}"></x-showtext>
+                        <x-showtext title="تاريخ البدء" value="{{$subscription['start_date']}}"></x-showtext>
+                        <x-showtext title="تاريخ الانتهاء" value="{{$subscription['end_date']}}"></x-showtext>
                     </div>
                     <div class="col">
                         <x-showtext title="اجمالي عدد القطع" value="{{$subscription['pieces']}}"></x-showtext>
+
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -22,10 +26,15 @@
                                         <div>
                                             <span class="badge badge-success"> فعال </span>
                                         </div>
+                                    @else
+                                        <div>
+                                            <span class="badge badge-danger"> غير فعال </span>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -36,6 +45,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>

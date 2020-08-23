@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->enum('type', ['اشتراك', 'منفصلة']);
             $table->unsignedBigInteger('branch_id');
+            $table->string('serial')->unique();
             $table->unsignedBigInteger('payment_method_id')->nullable()->default(null);
             $table->unsignedBigInteger('client_id')->nullable()->default(null);
             $table->unsignedBigInteger('driver_id')->nullable()->default(null);
