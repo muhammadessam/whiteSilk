@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('attributes', require('./components/Attributes.vue').default);
 Vue.component('addresses', require('./components/addresses.vue').default);
 Vue.component('subscription', require('./components/suscription.vue').default);
+Vue.component('order-pieces', require('./components/OrderPieces.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

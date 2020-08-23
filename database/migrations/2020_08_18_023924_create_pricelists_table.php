@@ -8,7 +8,7 @@ class CreatePricelistsTable extends Migration
 {
     public function up()
     {
-        Schema::create('pricelists', function (Blueprint $table) {
+        Schema::create('price_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->text('item');

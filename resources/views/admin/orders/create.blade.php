@@ -26,11 +26,7 @@
                             <x-error title="type"></x-error>
                         </div>
 
-
-
-
-
-
+                        <order-pieces :pieces="{{\App\PriceList::all()}}"></order-pieces>
 
 
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>

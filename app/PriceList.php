@@ -28,6 +28,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PriceList extends Model
 {
-    protected $table = 'pricelists';
+    protected $table = 'price_lists';
     protected $guarded = [];
 }
