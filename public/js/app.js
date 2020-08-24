@@ -2026,7 +2026,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPieces",
-  props: ['pieces', 'clients'],
+  props: ['pieces', 'clients', 'old'],
   data: function data() {
     return {
       elements: []
@@ -2045,9 +2045,21 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
     Event.$on('user-selected', function (data) {
       console.log(data);
     });
+
+    if (this.old) {
+      this.old.forEach(function (e) {
+        _this.elements.push({
+          'piece_id': e.id,
+          'type': e.pivot.type,
+          'count': e.pivot.count
+        });
+      });
+    }
   }
 });
 
@@ -2085,6 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selectedId: '',
+      selectedAddress: '',
       addresses: []
     };
   },
@@ -2108,6 +2121,7 @@ __webpack_require__.r(__webpack_exports__);
       this.addresses = this.clients.filter(function (client) {
         return _this2.selectedId == client.id;
       })[0].addresses;
+      this.selectedAddress = this.selectedaddressid;
     } else {
       this.selectedId = this.clients[0].id;
       this.addresses = this.clients.filter(function (client) {
@@ -2167,14 +2181,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "orderType",
-  props: ['clients', 'payments'],
+  props: ['clients', 'payments', 'oldtype', 'oldpayment', 'oldsubscription'],
   data: function data() {
     return {
       type: 'اشتراك',
-      selectedUser: ''
+      selectedUser: '',
+      payment: 0,
+      subscription: 0
     };
   },
   methods: {},
+  mounted: function mounted() {
+    if (this.oldtype) this.type = this.oldtype;
+    if (this.oldpayment) this.payment = this.oldpayment;
+    if (this.oldsubscription) this.subscription = this.oldsubscription;
+  },
   created: function created() {
     var _this = this;
 
@@ -20355,8 +20376,31 @@ var render = function() {
       _c(
         "select",
         {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedAddress,
+              expression: "selectedAddress"
+            }
+          ],
           staticClass: "form-control",
-          attrs: { name: "address_id", id: "address_id" }
+          attrs: { name: "address_id", id: "address_id" },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.selectedAddress = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
+          }
         },
         _vm._l(_vm.addresses, function(address) {
           return _c("option", { domProps: { value: address.id } }, [
@@ -20455,8 +20499,31 @@ var render = function() {
                 _c(
                   "select",
                   {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.subscription,
+                        expression: "subscription"
+                      }
+                    ],
                     staticClass: "form-control",
-                    attrs: { name: "subscription_id", id: "subscription_id" }
+                    attrs: { name: "subscription_id", id: "subscription_id" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.subscription = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
                   },
                   _vm._l(_vm.selectedUser.subscriptions, function(
                     subscription
@@ -20485,16 +20552,39 @@ var render = function() {
                     staticClass: "font-weight-bold",
                     attrs: { for: "payment_method_id" }
                   },
-                  [_vm._v("حدد الاشتراك")]
+                  [_vm._v("وسيلة الدفع")]
                 ),
                 _vm._v(" "),
                 _c(
                   "select",
                   {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.payment,
+                        expression: "payment"
+                      }
+                    ],
                     staticClass: "form-control",
                     attrs: {
                       name: "payment_method_id",
                       id: "payment_method_id"
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.payment = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
                     }
                   },
                   _vm._l(_vm.payments, function(payment) {

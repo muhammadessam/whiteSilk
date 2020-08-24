@@ -12,27 +12,47 @@
                 <div class="card-body">
                     <form action="{{route('admin.orders.update', $order)}}" class="form" method="post">
                         @csrf
-                        @method('PUT')
-                        <x-select name="payment_method_id" :loopOver="\App\PaymentMethod::all()" showCol="name" value="{{$order['payment_method_id']}}" title="طريقة الدقع"></x-select>
-                        <addresses :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
-                        <x-number name="total" value="{{$order['total']}}" title="المبلغ"></x-number>
-                        <x-select name="status_id" value="{{$order['status_id']}}" showCol="name" :loopOver="\App\OrderStatus::all()" title="حالة الطلب"></x-select>
+                        @method('PATCH')
+                        <addresses :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}" :selectedclientid="{{$order['user_id']}}" :selectedaddressid="{{$order['address_id']}}"></addresses>
+
+                        <x-select name="branch_id" :loopOver="\App\Branch::all()" showCol="name" value="{{$order['branch_id']}}" title="الفرع"></x-select>
+
+                        <x-text name="serial" value="{{$order['serial']}}" title="رقم الفاتورة"></x-text>
+
+                        <x-select name="driver_id" value="{{$order['driver_id']}}" showCol="name" title="السائق" :loopOver="\App\User::where('type', 'سائق')->with('addresses')->get()"></x-select>
                         <div class="form-group">
-                            <label class="font-weight-bold">مدفوع</label>
-                            <div class="mb-3">
-                                <label class="mr-3">غير مدفوع</label>
-                                <label class="switch s-icons s-outline s-outline-default mr-2 s-outline-success">
-                                    <input id="is_paid" name="is_paid" type="checkbox" {{$order['is_paid'] ? 'checked' : ''}} value="1">
-                                    <span class="slider round"></span>
-                                </label>
-                                مدفوع
+                            <label class="font-weight-bold">ادخل القطع</label>
+                            <order-pieces :old="{{$order->pieces}}" :pieces="{{\App\PriceList::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-pieces>
+                        </div>
+
+                        <order-type oldtype="{{$order['type']}}"  oldsubscription="{{$order['pivot_id']}}" oldpayment="{{$order['payment_method_id']}}" :payments="{{\App\PaymentMethod::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="arrived_at">تاريخ الاستلام</label>
+                                    <input type="date" name="arrived_at" id="arrived_at" class="form-control" value="{{\Carbon\Carbon::create($order['arrived_at'])->format('Y-m-d')}}">
+                                </div>
                             </div>
                         </div>
-                        <x-select name="coupon_id" value="{{$order['coupon_id']}}" showCol="name" :loopOver="\App\Coupon::all()" title="الكوبونات"></x-select>
-                        <div class="form-group">
-                            <label for="date">تاريخ الطلب</label>
-                            <input type="date" name="date" id="date" class="form-control" value="{{$order['date']}}">
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="out_at">تاريخ التسليم</label>
+                                    <input type="date" name="out_at" id="out_at" class="form-control" value="{{\Carbon\Carbon::create($order['out_at'])->format('Y-m-d')}}">
+                                </div>
+                            </div>
                         </div>
+
+                        <x-checkbox name="is_paid" value="{{$order['is_paid']}}" title="حالة الدفع"></x-checkbox>
+
+                        <x-select name="coupon_id" value="{{$order['coupon_id']}}" title="كوبون الخصم" :loopOver="\App\Coupon::all()"></x-select>
+
+                        <x-select name="status_id" value="{{$order['status_id']}}" title="حالة الطلب" :loopOver="\App\OrderStatus::all()" showCol="name"></x-select>
+
+                        <x-number name="total" value="{{$order['total']}}" title="مجموع الفاتورة الكلي - سوف يتم حسابه اتوماتيكيا ولكن ان تم ادخاله سوف يقوم النظام باعتبار القيمة المعطاه"></x-number>
+
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>
                 </div>

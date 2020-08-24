@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->enum('type', ['اشتراك', 'منفصلة']);
             $table->unsignedBigInteger('branch_id');
             $table->string('serial')->unique();
+            $table->unsignedBigInteger('pivot_id')->nullable()->default(null);
             $table->unsignedBigInteger('payment_method_id')->nullable()->default(null);
             $table->unsignedBigInteger('user_id')->nullable()->default(null);
             $table->unsignedBigInteger('driver_id')->nullable()->default(null);
@@ -29,6 +30,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('is_paid')->default(true);
             $table->unsignedBigInteger('coupon_id')->nullable()->default(null);
             $table->decimal('total')->nullable()->default(null);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

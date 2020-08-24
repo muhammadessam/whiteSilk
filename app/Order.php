@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Order
@@ -59,6 +60,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
+    use  SoftDeletes;
 
     public function paymentMethod()
     {
@@ -89,5 +91,20 @@ class Order extends Model
     public function pieces()
     {
         return $this->belongsToMany(PriceList::class, 'order_pieces', 'order_id', 'piece_id')->withPivot('count', 'type');
+    }
+
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class, 'subscription_id', 'id');
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(User::class, 'driver_id', 'id');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id', 'id');
     }
 }

@@ -55,7 +55,7 @@
 <script>
 export default {
     name: "OrderPieces",
-    props: ['pieces', 'clients'],
+    props: ['pieces', 'clients', 'old'],
     data: () => {
         return {
             elements: [],
@@ -77,6 +77,15 @@ export default {
         Event.$on('user-selected', (data) => {
             console.log(data)
         })
+        if (this.old) {
+            this.old.forEach((e)=>{
+                this.elements.push({
+                    'piece_id': e.id,
+                    'type': e.pivot.type,
+                    'count': e.pivot.count
+                });
+            })
+        }
     }
 }
 </script>

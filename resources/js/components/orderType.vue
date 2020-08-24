@@ -8,21 +8,21 @@
                     <option value="منفصلة">منفصلة</option>
                 </select>
             </div>
-            <div class="row" v-if="type=='اشتراك'">
+            <div class="row" v-if="type == 'اشتراك'">
                 <div class="col">
                     <div class="form-group">
                         <label class="font-weight-bold" for="type">حدد الاشتراك</label>
-                        <select name="subscription_id" id="subscription_id" class="form-control">
+                        <select name="subscription_id" id="subscription_id" class="form-control" v-model="subscription">
                             <option v-for="subscription in selectedUser.subscriptions" :value="subscription.pivot.id" v-text="subscription.name"></option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="row" v-if="type=='منفصلة'">
+            <div class="row" v-if="type =='منفصلة'">
                 <div class="col">
                     <div class="form-group">
-                        <label class="font-weight-bold" for="payment_method_id">حدد الاشتراك</label>
-                        <select name="payment_method_id" id="payment_method_id" class="form-control">
+                        <label class="font-weight-bold" for="payment_method_id">وسيلة الدفع</label>
+                        <select name="payment_method_id" id="payment_method_id" class="form-control" v-model="payment">
                             <option v-for="payment in payments" :value="payment.id" v-text="payment.name"></option>
                         </select>
                     </div>
@@ -35,16 +35,26 @@
 <script>
 export default {
     name: "orderType",
-    props: ['clients', 'payments'],
+    props: ['clients', 'payments', 'oldtype', 'oldpayment', 'oldsubscription'],
 
     data: function () {
         return {
             type: 'اشتراك',
             selectedUser: '',
+            payment: 0,
+            subscription: 0,
         }
     },
 
     methods: {},
+    mounted() {
+        if (this.oldtype)
+            this.type=this.oldtype;
+        if (this.oldpayment)
+            this.payment = this.oldpayment;
+        if (this.oldsubscription)
+            this.subscription = this.oldsubscription;
+    },
     created() {
         Event.$on('user-selected', (data) => {
             this.selectedUser = this.clients.filter((client) => {

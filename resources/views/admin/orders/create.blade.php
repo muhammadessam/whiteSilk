@@ -42,7 +42,9 @@
 
                         <x-checkbox name="is_paid" value="{{old('is_paid')}}" title="حالة الدفع"></x-checkbox>
 
-                        <x-select name="coupon_id" value="{{old('coupon_id')}}" title="كوبون الخصم" :loopOver="\App\Coupon::all()"></x-select>
+                        <x-select name="coupon_id" value="{{old('coupon_id')}}" title="كوبون الخصم" :loopOver="\App\Coupon::all()" showCol="name"></x-select>
+
+                        <x-select name="status_id" value="{{old('status_id')}}" title="حالة الطلب" :loopOver="\App\OrderStatus::all()" showCol="name"></x-select>
 
                         <x-number name="total" value="{{old('total')}}" title="مجموع الفاتورة الكلي - سوف يتم حسابه اتوماتيكيا ولكن ان تم ادخاله سوف يقوم النظام باعتبار القيمة المعطاه"></x-number>
 
