@@ -5,7 +5,7 @@
                 <div class="row" v-for="(element, index) in elements">
                     <div class="col-4">
                         <div class="form-group">
-                            <select name="ids[]" id="ids" class="form-control">
+                            <select name="ids[]" id="ids" class="form-control" v-model="element.piece_id">
                                 <option v-for="piece in pieces" :value="piece.id" v-text="piece.item"></option>
                             </select>
                         </div>
@@ -14,21 +14,21 @@
                         <div class="form-group">
                             <div class="n-chk">
                                 <label class="new-control new-radio radio-primary">
-                                    <input type="radio" class="new-control-input" name="types[]" checked value="washing">
+                                    <input type="radio" class="new-control-input" :name="'types[' + index+']'" checked value="washing" v-model="element.type">
                                     <span class="new-control-indicator"></span>
                                     غسيل جاف
                                 </label>
                             </div>
                             <div class="n-chk">
                                 <label class="new-control new-radio radio-primary">
-                                    <input type="radio" class="new-control-input" name="types[]" value="washingAndIron">
+                                    <input type="radio" class="new-control-input" :name="'types[' + index+']'" value="washingAndIron" v-model="element.type">
                                     <span class="new-control-indicator"></span>
                                     غسيل وكوي
                                 </label>
                             </div>
                             <div class="n-chk">
                                 <label class="new-control new-radio radio-primary">
-                                    <input type="radio" class="new-control-input" name="types[]" value="ironed">
+                                    <input type="radio" class="new-control-input" :name="'types[' + index+']'" value="ironed" v-model="element.type">
                                     <span class="new-control-indicator"></span>
                                     كوي فقط
                                 </label>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-2">
                         <div class="form-group">
-                            <input type="number" step="any" name="counts[]" class="form-control" placeholder="ادخل عدد القطعة" value="1">
+                            <input type="number" step="any" name="counts[]" class="form-control" placeholder="ادخل عدد القطعة" v-model="element.count">
                         </div>
                     </div>
                     <div class="col-2">
@@ -55,7 +55,7 @@
 <script>
 export default {
     name: "OrderPieces",
-    props: ['pieces'],
+    props: ['pieces', 'clients'],
     data: () => {
         return {
             elements: [],
@@ -64,9 +64,9 @@ export default {
     methods: {
         addRow() {
             this.elements.push({
-                'piece_id': '',
-                'type': '',
-                'count': ''
+                'piece_id': 1,
+                'type': 'washing',
+                'count': 1
             });
         },
         removeRow(index) {
@@ -74,6 +74,9 @@ export default {
         }
     },
     mounted() {
+        Event.$on('user-selected', (data) => {
+            console.log(data)
+        })
     }
 }
 </script>

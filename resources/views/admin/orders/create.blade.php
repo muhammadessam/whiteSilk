@@ -16,17 +16,11 @@
                         <x-select name="branch_id" :loopOver="\App\Branch::all()" showCol="name" value="{{old('branch_id')}}" title="الفرع"></x-select>
                         <x-text name="serial" value="{{old('serial')}}" title="رقم الفاتورة"></x-text>
                         <x-select name="driver_id" value="{{old('driver_id')}}" showCol="name" title="السائق" :loopOver="\App\User::where('type', 'سائق')->with('addresses')->get()"></x-select>
-
                         <div class="form-group">
-                            <label class="font-weight-bold" for="type">نوع الفاتورة</label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="اشتراك">اشتراك</option>
-                                <option value="منفصلة">منفصلة</option>
-                            </select>
-                            <x-error title="type"></x-error>
+                            <label class="font-weight-bold">ادخل القطع</label>
+                            <order-pieces :pieces="{{\App\PriceList::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-pieces>
                         </div>
-
-                        <order-pieces :pieces="{{\App\PriceList::all()}}"></order-pieces>
+                        <order-type :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
 
 
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
@@ -35,4 +29,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        function selectedUserEvent() {
+            if ($(event.target).val() == 'اشتراك') {
+                Event.$emit('subscription')
+            }
+        }
+    </script>
 @endsection

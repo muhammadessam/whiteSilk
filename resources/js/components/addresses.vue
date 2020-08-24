@@ -9,7 +9,7 @@
         <div class="form-group">
             <label class="font-weight-bold" for="address_id">العنوان</label>
             <select name="address_id" class="form-control" id="address_id">
-                <option v-for="address in addresses" :value="address.id">{{ address.name }} => {{address.city.name}} - {{address.area.name}}</option>
+                <option v-for="address in addresses" :value="address.id">{{ address.name }} => {{ address.city.name }} - {{ address.area.name }}</option>
             </select>
         </div>
     </div>
@@ -27,26 +27,30 @@ export default {
     },
     methods: {
         updateAddress() {
-            this.addresses = this.clients.filter((client)=>{
-               return this.selectedId  == client.id;
+            this.addresses = this.clients.filter((client) => {
+                return this.selectedId == client.id;
             })[0].addresses;
+            Event.$emit('user-selected', this.selectedId);
         }
     },
     mounted() {
-        if (this.selectedclientid != '' && this.selectedclientid != undefined){
 
-            this.selectedId = this.clients.filter((client)=>{
-                return this.selectedclientid  == client.id;
+        if (this.selectedclientid != '' && this.selectedclientid != undefined) {
+
+            this.selectedId = this.clients.filter((client) => {
+                return this.selectedclientid == client.id;
             })[0].id;
-            this.addresses = this.clients.filter((client)=>{
-                return this.selectedId  == client.id;
+            this.addresses = this.clients.filter((client) => {
+                return this.selectedId == client.id;
             })[0].addresses;
-        }else{
+        } else {
             this.selectedId = this.clients[0].id;
-            this.addresses = this.clients.filter((client)=>{
-                return this.selectedId  == client.id;
+            this.addresses = this.clients.filter((client) => {
+                return this.selectedId == client.id;
             })[0].addresses;
         }
+        Event.$emit('user-selected', this.selectedId);
+        console.log(this.selectedId)
     }
 }
 </script>

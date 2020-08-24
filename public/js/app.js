@@ -2026,7 +2026,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPieces",
-  props: ['pieces'],
+  props: ['pieces', 'clients'],
   data: function data() {
     return {
       elements: []
@@ -2035,16 +2035,20 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addRow: function addRow() {
       this.elements.push({
-        'piece_id': '',
-        'type': '',
-        'count': ''
+        'piece_id': 1,
+        'type': 'washing',
+        'count': 1
       });
     },
     removeRow: function removeRow(index) {
       this.elements.splice(index, 1);
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    Event.$on('user-selected', function (data) {
+      console.log(data);
+    });
+  }
 });
 
 /***/ }),
@@ -2091,6 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
       this.addresses = this.clients.filter(function (client) {
         return _this.selectedId == client.id;
       })[0].addresses;
+      Event.$emit('user-selected', this.selectedId);
     }
   },
   mounted: function mounted() {
@@ -2109,6 +2114,65 @@ __webpack_require__.r(__webpack_exports__);
         return _this2.selectedId == client.id;
       })[0].addresses;
     }
+
+    Event.$emit('user-selected', this.selectedId);
+    console.log(this.selectedId);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderType.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "orderType",
+  props: ['clients'],
+  data: function data() {
+    return {
+      type: 'اشتراك',
+      selectedUser: ''
+    };
+  },
+  methods: {},
+  created: function created() {
+    var _this = this;
+
+    Event.$on('user-selected', function (data) {
+      _this.selectedUser = _this.clients.filter(function (client) {
+        return client.id == data;
+      })[0];
+    });
   }
 });
 
@@ -19977,8 +20041,35 @@ var render = function() {
                   _c(
                     "select",
                     {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: element.piece_id,
+                          expression: "element.piece_id"
+                        }
+                      ],
                       staticClass: "form-control",
-                      attrs: { name: "ids[]", id: "ids" }
+                      attrs: { name: "ids[]", id: "ids" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            element,
+                            "piece_id",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
+                      }
                     },
                     _vm._l(_vm.pieces, function(piece) {
                       return _c("option", {
@@ -19993,9 +20084,153 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(0, true),
+              _c("div", { staticClass: "col-2" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "n-chk" }, [
+                    _c(
+                      "label",
+                      { staticClass: "new-control new-radio radio-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: element.type,
+                              expression: "element.type"
+                            }
+                          ],
+                          staticClass: "new-control-input",
+                          attrs: {
+                            type: "radio",
+                            name: "types[" + index + "]",
+                            checked: "",
+                            value: "washing"
+                          },
+                          domProps: {
+                            checked: _vm._q(element.type, "washing")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(element, "type", "washing")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "new-control-indicator" }),
+                        _vm._v(
+                          "\n                                غسيل جاف\n                            "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "n-chk" }, [
+                    _c(
+                      "label",
+                      { staticClass: "new-control new-radio radio-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: element.type,
+                              expression: "element.type"
+                            }
+                          ],
+                          staticClass: "new-control-input",
+                          attrs: {
+                            type: "radio",
+                            name: "types[" + index + "]",
+                            value: "washingAndIron"
+                          },
+                          domProps: {
+                            checked: _vm._q(element.type, "washingAndIron")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(element, "type", "washingAndIron")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "new-control-indicator" }),
+                        _vm._v(
+                          "\n                                غسيل وكوي\n                            "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "n-chk" }, [
+                    _c(
+                      "label",
+                      { staticClass: "new-control new-radio radio-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: element.type,
+                              expression: "element.type"
+                            }
+                          ],
+                          staticClass: "new-control-input",
+                          attrs: {
+                            type: "radio",
+                            name: "types[" + index + "]",
+                            value: "ironed"
+                          },
+                          domProps: { checked: _vm._q(element.type, "ironed") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(element, "type", "ironed")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "new-control-indicator" }),
+                        _vm._v(
+                          "\n                                كوي فقط\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(1, true),
+              _c("div", { staticClass: "col-2" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: element.count,
+                        expression: "element.count"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      step: "any",
+                      name: "counts[]",
+                      placeholder: "ادخل عدد القطعة"
+                    },
+                    domProps: { value: element.count },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(element, "count", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-2" }, [
                 _c(
@@ -20027,82 +20262,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("div", { staticClass: "n-chk" }, [
-          _c("label", { staticClass: "new-control new-radio radio-primary" }, [
-            _c("input", {
-              staticClass: "new-control-input",
-              attrs: {
-                type: "radio",
-                name: "types[]",
-                checked: "",
-                value: "washing"
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "new-control-indicator" }),
-            _vm._v(
-              "\n                                غسيل جاف\n                            "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "n-chk" }, [
-          _c("label", { staticClass: "new-control new-radio radio-primary" }, [
-            _c("input", {
-              staticClass: "new-control-input",
-              attrs: { type: "radio", name: "types[]", value: "washingAndIron" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "new-control-indicator" }),
-            _vm._v(
-              "\n                                غسيل وكوي\n                            "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "n-chk" }, [
-          _c("label", { staticClass: "new-control new-radio radio-primary" }, [
-            _c("input", {
-              staticClass: "new-control-input",
-              attrs: { type: "radio", name: "types[]", value: "ironed" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "new-control-indicator" }),
-            _vm._v(
-              "\n                                كوي فقط\n                            "
-            )
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "number",
-            step: "any",
-            name: "counts[]",
-            placeholder: "ادخل عدد القطعة",
-            value: "1"
-          }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -20201,6 +20361,107 @@ var render = function() {
         }),
         0
       )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "label",
+          { staticClass: "font-weight-bold", attrs: { for: "type" } },
+          [_vm._v("نوع الفاتورة")]
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.type,
+                expression: "type"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { name: "type", id: "type" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.type = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "اشتراك" } }, [_vm._v("اشتراك")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "منفصلة" } }, [_vm._v("منفصلة")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.type == "اشتراك"
+        ? _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: "font-weight-bold", attrs: { for: "type" } },
+                  [_vm._v("حدد الاشتراك")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    staticClass: "form-control",
+                    attrs: { name: "subscription_id", id: "subscription_id" }
+                  },
+                  _vm._l(_vm.selectedUser.subscriptions, function(subscripton) {
+                    return _c("option", {
+                      domProps: {
+                        value: subscripton.id,
+                        textContent: _vm._s(subscripton.name)
+                      }
+                    })
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        : _vm._e()
     ])
   ])
 }
@@ -32546,13 +32807,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  *
  * Eg. ./components/Attributes.vue -> <example-component></example-component>
  */
-// const files = require.context('./', true, /\.vue$/i)
+
+window.Event = new Vue(); // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('attributes', __webpack_require__(/*! ./components/Attributes.vue */ "./resources/js/components/Attributes.vue")["default"]);
 Vue.component('addresses', __webpack_require__(/*! ./components/addresses.vue */ "./resources/js/components/addresses.vue")["default"]);
 Vue.component('subscription', __webpack_require__(/*! ./components/suscription.vue */ "./resources/js/components/suscription.vue")["default"]);
 Vue.component('order-pieces', __webpack_require__(/*! ./components/OrderPieces.vue */ "./resources/js/components/OrderPieces.vue")["default"]);
+Vue.component('order-type', __webpack_require__(/*! ./components/orderType */ "./resources/js/components/orderType.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32812,6 +33075,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addresses_vue_vue_type_template_id_1ecd5632_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addresses_vue_vue_type_template_id_1ecd5632_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/orderType.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/orderType.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _orderType_vue_vue_type_template_id_425a99ed_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./orderType.vue?vue&type=template&id=425a99ed&scoped=true& */ "./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true&");
+/* harmony import */ var _orderType_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./orderType.vue?vue&type=script&lang=js& */ "./resources/js/components/orderType.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _orderType_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _orderType_vue_vue_type_template_id_425a99ed_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _orderType_vue_vue_type_template_id_425a99ed_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "425a99ed",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/orderType.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/orderType.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/orderType.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_orderType_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./orderType.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_orderType_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_orderType_vue_vue_type_template_id_425a99ed_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./orderType.vue?vue&type=template&id=425a99ed&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_orderType_vue_vue_type_template_id_425a99ed_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_orderType_vue_vue_type_template_id_425a99ed_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

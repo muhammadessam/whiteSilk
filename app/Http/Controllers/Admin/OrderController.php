@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Branch;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\PriceList;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -39,18 +41,32 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $this->canAccess('create', Order::class);
         $request->validate([
-            'payment_method_id' => 'required|numeric',
-            'user_id' => 'required|numeric',
-            'address_id' => 'required|numeric',
-            'total' => 'required|numeric',
-            'status_id' => 'required|numeric',
-            'date' => 'required|date'
+            'type' => 'required',
+            'branch_id' => 'required|exists:branches,id',
+            'serial' => 'required',
+            'ids' => 'required|array',
+            'types' => 'required|array|min:' . count($request['ids']) . '',
+            'counts' => 'required|array|min:' . count($request['ids']) . '',
+            'subscription_id' => 'required_if:type,اشتراك'
         ]);
+        // is paid
         $request['is_paid'] = $request['is_paid'] ? 1 : 0;
-        Order::create($request->all());
+
+        // branch
+        $branch = Branch::find($request['branch_id']);
+        $request['serial'] = $branch->bill_prefix . '-' . $request['serial'];
+
+        $order = Order::create($request->except('ids','types', 'counts'));
+
+        // pieces
+        $pieces = PriceList::findMany($request['ids']);
+        if ($request['ids'])
+            foreach ($pieces as $piece) {
+
+            }
+
         $this->actionSuccess();
         return redirect()->route('admin.orders.index');
     }

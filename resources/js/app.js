@@ -15,6 +15,7 @@ window.Vue = require('vue');
  *
  * Eg. ./components/Attributes.vue -> <example-component></example-component>
  */
+window.Event = new Vue();
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -23,6 +24,7 @@ Vue.component('attributes', require('./components/Attributes.vue').default);
 Vue.component('addresses', require('./components/addresses.vue').default);
 Vue.component('subscription', require('./components/suscription.vue').default);
 Vue.component('order-pieces', require('./components/OrderPieces.vue').default);
+Vue.component('order-type', require('./components/orderType').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,3 +35,4 @@ Vue.component('order-pieces', require('./components/OrderPieces.vue').default);
 const app = new Vue({
     el: '#app',
 });
+
