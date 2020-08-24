@@ -110,7 +110,7 @@
                                             @if($item->pivot->is_active)
                                                 <span class="badge badge-success">فعال</span>
                                             @else
-                                                <span class="badge badge-danger">منتهي</span>
+                                                <span class="badge badge-danger">منتهيl</span>
                                             @endif
                                         </td>
                                         <td>{{$item->pivot->remaining_pieces}}</td>
