@@ -32,11 +32,11 @@
                                 <tr>
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item['id']}}</td>
-                                    <td>{{$item->paymentMethod->name}}</td>
-                                    <td>{{$item->user->name}}</td>
+                                    <td>{{$item->paymentMethod ? $item->paymentMethod->name : ''}}</td>
+                                    <td>{{$item->client->name}}</td>
                                     <td>{{$item->address->name}}</td>
                                     <td>{{$item->total}}</td>
-                                    <td>{{$item->status->name}}</td>
+                                    <td>{{$item->status ? $item->status->name : ''}}</td>
                                     <td>
                                         @if($item->is_paid)
                                             <span class="badge badge-success">مدفوع</span>

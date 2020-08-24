@@ -30,4 +30,10 @@ class PriceList extends Model
 {
     protected $table = 'price_lists';
     protected $guarded = [];
+
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_pieces', 'piece_id', 'order_id')->withPivot('count', 'type');
+    }
 }

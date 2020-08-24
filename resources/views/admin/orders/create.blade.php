@@ -20,22 +20,36 @@
                             <label class="font-weight-bold">ادخل القطع</label>
                             <order-pieces :pieces="{{\App\PriceList::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-pieces>
                         </div>
-                        <order-type :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
+                        <order-type :payments="{{\App\PaymentMethod::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
 
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="arrived_at">تاريخ الاستلام</label>
+                                    <input type="date" name="arrived_at" id="arrived_at" class="form-control">
+                                </div>
+                            </div>
+                        </div>
 
-                        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="out_at">تاريخ التسليم</label>
+                                    <input type="date" name="out_at" id="out_at" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <x-checkbox name="is_paid" value="{{old('is_paid')}}" title="حالة الدفع"></x-checkbox>
+
+                        <x-select name="coupon_id" value="{{old('coupon_id')}}" title="كوبون الخصم" :loopOver="\App\Coupon::all()"></x-select>
+
+                        <x-number name="total" value="{{old('total')}}" title="مجموع الفاتورة الكلي - سوف يتم حسابه اتوماتيكيا ولكن ان تم ادخاله سوف يقوم النظام باعتبار القيمة المعطاه"></x-number>
+
+                        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ </button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-@endsection
-@section('js')
-    <script>
-        function selectedUserEvent() {
-            if ($(event.target).val() == 'اشتراك') {
-                Event.$emit('subscription')
-            }
-        }
-    </script>
 @endsection

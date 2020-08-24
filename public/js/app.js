@@ -2155,9 +2155,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "orderType",
-  props: ['clients'],
+  props: ['clients', 'payments'],
   data: function data() {
     return {
       type: 'اشتراك',
@@ -20448,11 +20458,50 @@ var render = function() {
                     staticClass: "form-control",
                     attrs: { name: "subscription_id", id: "subscription_id" }
                   },
-                  _vm._l(_vm.selectedUser.subscriptions, function(subscripton) {
+                  _vm._l(_vm.selectedUser.subscriptions, function(
+                    subscription
+                  ) {
                     return _c("option", {
                       domProps: {
-                        value: subscripton.id,
-                        textContent: _vm._s(subscripton.name)
+                        value: subscription.pivot.id,
+                        textContent: _vm._s(subscription.name)
+                      }
+                    })
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "منفصلة"
+        ? _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "font-weight-bold",
+                    attrs: { for: "payment_method_id" }
+                  },
+                  [_vm._v("حدد الاشتراك")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    staticClass: "form-control",
+                    attrs: {
+                      name: "payment_method_id",
+                      id: "payment_method_id"
+                    }
+                  },
+                  _vm._l(_vm.payments, function(payment) {
+                    return _c("option", {
+                      domProps: {
+                        value: payment.id,
+                        textContent: _vm._s(payment.name)
                       }
                     })
                   }),

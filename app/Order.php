@@ -67,7 +67,7 @@ class Order extends Model
 
     public function client()
     {
-        return $this->belongsTo(User::class, 'client_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
 
     }
 
@@ -86,4 +86,8 @@ class Order extends Model
         return $this->belongsTo(Coupon::class, 'coupon_id', 'id');
     }
 
+    public function pieces()
+    {
+        return $this->belongsToMany(PriceList::class, 'order_pieces', 'order_id', 'piece_id')->withPivot('count', 'type');
+    }
 }

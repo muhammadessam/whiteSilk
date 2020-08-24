@@ -13,6 +13,7 @@ class CreateOrderPieces extends Migration
 
             $table->unsignedBigInteger('piece_id');
             $table->unsignedBigInteger('order_id');
+            $table->decimal('price')->nullable()->default(null);
 
             $table->unsignedInteger('count')->nullable()->default(null);
             $table->enum('type', ['washing', 'washingAndIron', 'ironed'])->nullable()->default(null);

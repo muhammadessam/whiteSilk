@@ -6,6 +6,7 @@ use App\Branch;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\PriceList;
+use App\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -47,8 +48,6 @@ class OrderController extends Controller
             'branch_id' => 'required|exists:branches,id',
             'serial' => 'required',
             'ids' => 'required|array',
-            'types' => 'required|array|min:' . count($request['ids']) . '',
-            'counts' => 'required|array|min:' . count($request['ids']) . '',
             'subscription_id' => 'required_if:type,اشتراك'
         ]);
         // is paid
@@ -57,14 +56,52 @@ class OrderController extends Controller
         // branch
         $branch = Branch::find($request['branch_id']);
         $request['serial'] = $branch->bill_prefix . '-' . $request['serial'];
+        $user = User::find($request['user_id']);
+        $subscription = $user->subscriptions()->wherePivot('id', $request['subscription_id'])->first();
 
-        $order = Order::create($request->except('ids','types', 'counts'));
+        $total = 0;
+        foreach ($request['ids'] as $index => $id) {
+            $piece = PriceList::find($id);
+            $total += $piece[$request['types'][$index]] * $request['counts'][$index];
+        }
+
+        if (!$request['total']) {
+            if ($request['type'] == 'اشتراك') {
+                if ($subscription && $subscription->pivot->is_active) {
+                    if ($subscription->type == 'مبلغ') {
+                        $subscription->pivot->credit -= $total;
+                        $request['total'] = $total;
+                    } elseif ($subscription->type == 'تاريخ') {
+                        if ($subscription->pieces == 0) {
+                            $request['total'] = $total;
+                        } else {
+                            $request['total'] = $total;
+                            foreach ($request['ids'] as $index => $id) {
+                                $subscription->pivot->remaining_pieces -= $request['counts'][$index];
+                            }
+                        }
+                    } else {
+                        $request['total'] = $total;
+                        foreach ($request['ids'] as $index => $id) {
+                            $subscription->pivot->remaining_pieces -= $request['counts'][$index];
+                        }
+                    }
+                } else {
+                    toast('لا يوجد اشتراك فعال')->position('top-end');
+                    return redirect()->back();
+                }
+            } else {
+                $request['total'] = $total;
+            }
+        }
+        $order = Order::create($request->except('ids', 'types', 'counts'));
 
         // pieces
         $pieces = PriceList::findMany($request['ids']);
         if ($request['ids'])
-            foreach ($pieces as $piece) {
-
+            foreach ($request['ids'] as $index => $id) {
+                $piece = PriceList::find($id);
+                $order->pieces()->attach($piece, ['count' => $request['counts'][$index], 'type' => $request['types'][$index]]);
             }
 
         $this->actionSuccess();
