@@ -32,7 +32,7 @@
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item->branch->bill_prefix}}-{{$item['serial']}}</td>
                                     <td>{{$item->client->name}}</td>
-                                    <td>{{$item->address ? $item->address->name : ''}} - {{$item->address->city ? $item->address->city->name : ''}} - {{$item->address->area ? $item->address->area->name : ''}}</td>
+                                    <td>{{$item->address ? $item->address->name : ''}} - {{$item->address && $item->address->city ?$item->address->city->name:''}} -{{$item->address && $item->address->area ?$item->address->area->name:''}}  </td>
                                     <td>{{$item->total}}</td>
                                     <td>{{$item->status ? $item->status->name : ''}}</td>
                                     <td>
