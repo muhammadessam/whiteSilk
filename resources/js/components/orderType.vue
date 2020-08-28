@@ -5,7 +5,8 @@
                 <label class="font-weight-bold" for="type">نوع الفاتورة</label>
                 <select name="type" id="type" class="form-control" v-model="type">
                     <option value="اشتراك">اشتراك</option>
-                    <option value="منفصلة">منفصلة</option>
+                    <option value="فاتورة">فاتورة</option>
+                    <option value="فاتورة خاصة">فاتورة خاصة</option>
                 </select>
             </div>
             <div class="row" v-if="type == 'اشتراك'">
@@ -18,13 +19,21 @@
                     </div>
                 </div>
             </div>
-            <div class="row" v-if="type =='منفصلة'">
+            <div class="row" v-if="type =='فاتورة'">
                 <div class="col">
                     <div class="form-group">
                         <label class="font-weight-bold" for="payment_method_id">وسيلة الدفع</label>
                         <select name="payment_method_id" id="payment_method_id" class="form-control" v-model="payment">
                             <option v-for="payment in payments" :value="payment.id" v-text="payment.name"></option>
                         </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row" v-if="type =='فاتورة خاصة'">
+                <div class="col">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="one_time_product">ادخل نوع جديد من القطع وضع السعر في مجموع الفاتورة</label>
+                        <input type="text" name="one_time_product" id="one_time_product" class="form-control">
                     </div>
                 </div>
             </div>
@@ -49,7 +58,7 @@ export default {
     methods: {},
     mounted() {
         if (this.oldtype)
-            this.type=this.oldtype;
+            this.type = this.oldtype;
         if (this.oldpayment)
             this.payment = this.oldpayment;
         if (this.oldsubscription)

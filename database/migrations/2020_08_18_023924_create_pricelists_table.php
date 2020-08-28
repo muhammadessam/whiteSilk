@@ -15,7 +15,7 @@ class CreatePricelistsTable extends Migration
             $table->decimal('washing');
             $table->decimal('washingAndIron');
             $table->decimal('ironed');
-
+            $table->text('img')->nullable()->default(null);
 
             $table->timestamps();
         });

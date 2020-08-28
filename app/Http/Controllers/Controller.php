@@ -18,6 +18,11 @@ class Controller extends BaseController
         return toast('تمت العملية بنجاح', 'success')->position('top-start');
     }
 
+    protected function actionFailed($msg)
+    {
+        return toast($msg, 'error')->position('top-start');
+    }
+
     protected function canAccess(string $action, string $model)
     {
         return abort_if(auth()->user()->cannot(app('roleHelper')->crudsToName($action), $model), Response::HTTP_FORBIDDEN, '403 FORBIDDEN');

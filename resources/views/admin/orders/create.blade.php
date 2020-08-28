@@ -12,15 +12,22 @@
                 <div class="card-body">
                     <form action="{{route('admin.orders.store')}}" class="form" method="post">
                         @csrf
-                        <addresses :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
+                        <addresses  selectedclientid="{{old('user_id')}}" selectedaddressid="{{old('address_id')}}"  :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
+
                         <x-select name="branch_id" :loopOver="\App\Branch::all()" showCol="name" value="{{old('branch_id')}}" title="الفرع"></x-select>
+
                         <x-text name="serial" value="{{old('serial')}}" title="رقم الفاتورة"></x-text>
+
                         <x-select name="driver_id" value="{{old('driver_id')}}" showCol="name" title="السائق" :loopOver="\App\User::where('type', 'سائق')->with('addresses')->get()"></x-select>
+
+                        <order-type :payments="{{\App\PaymentMethod::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
+
+                        <x-number name="number_of_Pieces" value="{{old('number_of_Pieces')}}" title="ادخل عدد القطع - اذا تم ادخالها سوف يقوم النظام باعتبارها بدلا من القطع المدخلة"></x-number>
+
                         <div class="form-group">
                             <label class="font-weight-bold">ادخل القطع</label>
                             <order-pieces :pieces="{{\App\PriceList::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-pieces>
                         </div>
-                        <order-type :payments="{{\App\PaymentMethod::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
 
                         <div class="row">
                             <div class="col">

@@ -2179,6 +2179,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "orderType",
   props: ['clients', 'payments', 'oldtype', 'oldpayment', 'oldsubscription'],
@@ -20481,7 +20490,11 @@ var render = function() {
           [
             _c("option", { attrs: { value: "اشتراك" } }, [_vm._v("اشتراك")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "منفصلة" } }, [_vm._v("منفصلة")])
+            _c("option", { attrs: { value: "فاتورة" } }, [_vm._v("فاتورة")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "فاتورة خاصة" } }, [
+              _vm._v("فاتورة خاصة")
+            ])
           ]
         )
       ]),
@@ -20542,7 +20555,7 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.type == "منفصلة"
+      _vm.type == "فاتورة"
         ? _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col" }, [
               _c("div", { staticClass: "form-group" }, [
@@ -20600,11 +20613,42 @@ var render = function() {
               ])
             ])
           ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "فاتورة خاصة"
+        ? _c("div", { staticClass: "row" }, [_vm._m(0)])
         : _vm._e()
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "label",
+          {
+            staticClass: "font-weight-bold",
+            attrs: { for: "one_time_product" }
+          },
+          [_vm._v("ادخل نوع جديد من القطع وضع السعر في مجموع الفاتورة")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "one_time_product",
+            id: "one_time_product"
+          }
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

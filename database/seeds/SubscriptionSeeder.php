@@ -14,11 +14,11 @@ class SubscriptionSeeder extends Seeder
         $s = [
             [
                 'id' => 1,
-                'name' => 'افراد',
+                'name' => 'مبلغ',
                 'description' => 'bla bla bla',
                 'img' => '',
                 'is_active' => true,
-                'price' => 10,
+                'price' => 20,
                 'type' => 'مبلغ',
                 'added_credit' => 30.00,
                 'pieces' => null,
@@ -26,7 +26,7 @@ class SubscriptionSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'عائلي',
+                'name' => 'قطعة',
                 'description' => 'bla bla bla',
                 'img' => '',
                 'is_active' => true,
@@ -38,7 +38,7 @@ class SubscriptionSeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'name' => 'تاريخ',
+                'name' => 'تاريخ  قطع',
                 'description' => 'bla bla bla',
                 'img' => '',
                 'is_active' => true,
@@ -50,7 +50,7 @@ class SubscriptionSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'name' => 'تاريخ بقطع',
+                'name' => 'تاريخ من غير قطه',
                 'description' => 'bla bla bla',
                 'img' => '',
                 'is_active' => true,
