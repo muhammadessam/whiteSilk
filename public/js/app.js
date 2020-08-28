@@ -2136,10 +2136,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderType.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderSpecialPieces.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderSpecialPieces.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2152,6 +2152,109 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "orderSpecialPieces",
+  props: ['pieces', 'old'],
+  data: function data() {
+    return {
+      elements: []
+    };
+  },
+  methods: {
+    addRow: function addRow() {
+      this.elements.push({
+        'piece_id': null,
+        'name': '',
+        'price': '',
+        'type': 'washing',
+        'count': 1
+      });
+    },
+    removeRow: function removeRow(index) {
+      this.elements.splice(index, 1);
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    Event.$on('user-selected', function (data) {
+      console.log(data);
+    });
+
+    if (this.old) {
+      this.old.forEach(function (e) {
+        _this.elements.push({
+          'name': e.name,
+          'price': e.price,
+          'piece_id': null,
+          'type': e.pivot.type,
+          'count': e.pivot.count
+        });
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderType.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -20072,7 +20175,7 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c(
         "div",
-        { staticClass: "col-10" },
+        { staticClass: "col-12" },
         [
           _vm._l(_vm.elements, function(element, index) {
             return _c("div", { staticClass: "row" }, [
@@ -20124,7 +20227,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-2" }, [
+              _c("div", { staticClass: "col-5" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("div", { staticClass: "n-chk" }, [
                     _c(
@@ -20257,6 +20360,7 @@ var render = function() {
                       type: "number",
                       step: "any",
                       name: "counts[]",
+                      min: "0",
                       placeholder: "ادخل عدد القطعة"
                     },
                     domProps: { value: element.count },
@@ -20272,7 +20376,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-2" }, [
+              _c("div", { staticClass: "col-1" }, [
                 _c(
                   "a",
                   {
@@ -20434,6 +20538,276 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "col-12" },
+        [
+          _vm._l(_vm.elements, function(element, index) {
+            return _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-4" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: element.name,
+                        expression: "element.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      name: "newNames[]",
+                      id: "newNames",
+                      placeholder: "ادخل صنف جديد"
+                    },
+                    domProps: { value: element.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(element, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: element.price,
+                        expression: "element.price"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      step: "any",
+                      name: "newPrices[]",
+                      id: "newPrices",
+                      placeholder: "ادخل السعر"
+                    },
+                    domProps: { value: element.price },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(element, "price", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-5" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "n-chk" }, [
+                    _c(
+                      "label",
+                      { staticClass: "new-control new-radio radio-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: element.type,
+                              expression: "element.type"
+                            }
+                          ],
+                          staticClass: "new-control-input",
+                          attrs: {
+                            type: "radio",
+                            name: "newTypes[" + index + "]",
+                            checked: "",
+                            value: "washing"
+                          },
+                          domProps: {
+                            checked: _vm._q(element.type, "washing")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(element, "type", "washing")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "new-control-indicator" }),
+                        _vm._v(
+                          "\n                                غسيل جاف\n                            "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "n-chk" }, [
+                    _c(
+                      "label",
+                      { staticClass: "new-control new-radio radio-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: element.type,
+                              expression: "element.type"
+                            }
+                          ],
+                          staticClass: "new-control-input",
+                          attrs: {
+                            type: "radio",
+                            name: "newTypes[" + index + "]",
+                            value: "washingAndIron"
+                          },
+                          domProps: {
+                            checked: _vm._q(element.type, "washingAndIron")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(element, "type", "washingAndIron")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "new-control-indicator" }),
+                        _vm._v(
+                          "\n                                غسيل وكوي\n                            "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "n-chk" }, [
+                    _c(
+                      "label",
+                      { staticClass: "new-control new-radio radio-primary" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: element.type,
+                              expression: "element.type"
+                            }
+                          ],
+                          staticClass: "new-control-input",
+                          attrs: {
+                            type: "radio",
+                            name: "newTypes[" + index + "]",
+                            value: "ironed"
+                          },
+                          domProps: { checked: _vm._q(element.type, "ironed") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(element, "type", "ironed")
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "new-control-indicator" }),
+                        _vm._v(
+                          "\n                                كوي فقط\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-2" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: element.count,
+                        expression: "element.count"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "number",
+                      step: "any",
+                      name: "newCounts[]",
+                      min: "0",
+                      placeholder: "ادخل عدد القطعة"
+                    },
+                    domProps: { value: element.count },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(element, "count", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-1" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-success",
+                    on: {
+                      click: function($event) {
+                        return _vm.removeRow(index)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-minus" })]
+                )
+              ])
+            ])
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "a",
+              { staticClass: "btn btn-success", on: { click: _vm.addRow } },
+              [_c("i", { staticClass: "fa fa-plus" })]
+            )
+          ])
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/orderType.vue?vue&type=template&id=425a99ed&scoped=true& ***!
@@ -20490,11 +20864,7 @@ var render = function() {
           [
             _c("option", { attrs: { value: "اشتراك" } }, [_vm._v("اشتراك")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "فاتورة" } }, [_vm._v("فاتورة")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "فاتورة خاصة" } }, [
-              _vm._v("فاتورة خاصة")
-            ])
+            _c("option", { attrs: { value: "فاتورة" } }, [_vm._v("فاتورة")])
           ]
         )
       ]),
@@ -20613,42 +20983,11 @@ var render = function() {
               ])
             ])
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.type == "فاتورة خاصة"
-        ? _c("div", { staticClass: "row" }, [_vm._m(0)])
         : _vm._e()
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c(
-          "label",
-          {
-            staticClass: "font-weight-bold",
-            attrs: { for: "one_time_product" }
-          },
-          [_vm._v("ادخل نوع جديد من القطع وضع السعر في مجموع الفاتورة")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "one_time_product",
-            id: "one_time_product"
-          }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -32998,7 +33337,8 @@ Vue.component('attributes', __webpack_require__(/*! ./components/Attributes.vue 
 Vue.component('addresses', __webpack_require__(/*! ./components/addresses.vue */ "./resources/js/components/addresses.vue")["default"]);
 Vue.component('subscription', __webpack_require__(/*! ./components/suscription.vue */ "./resources/js/components/suscription.vue")["default"]);
 Vue.component('order-pieces', __webpack_require__(/*! ./components/OrderPieces.vue */ "./resources/js/components/OrderPieces.vue")["default"]);
-Vue.component('order-type', __webpack_require__(/*! ./components/orderType */ "./resources/js/components/orderType.vue")["default"]);
+Vue.component('order-type', __webpack_require__(/*! ./components/orderType.vue */ "./resources/js/components/orderType.vue")["default"]);
+Vue.component('order-special', __webpack_require__(/*! ./components/orderSpecialPieces.vue */ "./resources/js/components/orderSpecialPieces.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33258,6 +33598,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addresses_vue_vue_type_template_id_1ecd5632_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addresses_vue_vue_type_template_id_1ecd5632_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/orderSpecialPieces.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/orderSpecialPieces.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _orderSpecialPieces_vue_vue_type_template_id_165ea38a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true& */ "./resources/js/components/orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true&");
+/* harmony import */ var _orderSpecialPieces_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./orderSpecialPieces.vue?vue&type=script&lang=js& */ "./resources/js/components/orderSpecialPieces.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _orderSpecialPieces_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _orderSpecialPieces_vue_vue_type_template_id_165ea38a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _orderSpecialPieces_vue_vue_type_template_id_165ea38a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "165ea38a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/orderSpecialPieces.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/orderSpecialPieces.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/orderSpecialPieces.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_orderSpecialPieces_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./orderSpecialPieces.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderSpecialPieces.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_orderSpecialPieces_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_orderSpecialPieces_vue_vue_type_template_id_165ea38a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/orderSpecialPieces.vue?vue&type=template&id=165ea38a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_orderSpecialPieces_vue_vue_type_template_id_165ea38a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_orderSpecialPieces_vue_vue_type_template_id_165ea38a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

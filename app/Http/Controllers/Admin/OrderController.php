@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Branch;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\OrderPieces;
 use App\PriceList;
 use App\User;
 use Illuminate\Http\Request;
@@ -64,112 +65,65 @@ class OrderController extends Controller
         $request['pivot_id'] = $request['subscription_id'];
         $request['subscription_id'] = $subscription ? $subscription->id : null;
 
+
         // is Paid
         $request['is_paid'] = $request['is_paid'] ? 1 : 0;
         $total = 0;
-        if ($request['type'] == 'اشتراك') {
-            // checking fot subscription exists
-            if ($subscription) {
-                // checking the type of the subscription
-                if ($subscription['type'] == 'قطعة') {
-                    if ($request['number_of_Pieces']) {
-                        $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
-                        $subscription->pivot->save();
-                    } else {
-                        if ($request['ids']) {
-                            foreach ($request['ids'] as $index => $id) {
-                                $piece = PriceList::find($id);
-                                $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                                $subscription->pivot->remaining_pieces -= $request['counts'][$index];
-                            }
-                            $request['number_of_Pieces'] = count($request['ids']);
-                            $subscription->pivot->save();
-                        } else {
-                            toast('لم تدخل عدد القطع ', 'error')->position('top-start');
-                            return redirect()->back();
-                        }
-                    }
-                } elseif ($subscription['type'] == 'مبلغ') {
-                    if ($request['ids']) {
-                        foreach ($request['ids'] as $index => $id) {
-                            $piece = PriceList::find($id);
-                            $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                        }
-                        $subscription->pivot->credit -= $total;
-                        $subscription->save();
-                        $subscription->pivot->save();
-                    } else {
-                        toast('لم تدخل القطع ', 'error')->position('top-start');
-                        return redirect()->back();
-                    }
-                } else {
-                    if (now() > $subscription->pivot->start_date && now() < $subscription->pivot->end_date) {
-                        if ($subscription->pieces == 0) {
-                            if ($request['ids']) {
-                                foreach ($request['ids'] as $index => $id) {
-                                    $piece = PriceList::find($id);
-                                    $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                                }
-                            } else {
-                                toast('لم تدخل القطع ', 'error')->position('top-start');
-                                return redirect()->back();
-                            }
-                        } else {
-                            if ($request['number_of_Pieces']) {
-                                $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
-                                $subscription->pivot->save();
-                            } else {
-                                if ($request['ids']) {
-                                    foreach ($request['ids'] as $index => $id) {
-                                        $piece = PriceList::find($id);
-                                        $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                                        $subscription->pivot->remaining_pieces -= $request['counts'][$index];
-                                    }
-                                    $request['number_of_Pieces'] = count($request['ids']);
-                                    $subscription->pivot->save();
-                                } else {
-                                    toast('لم تدخل عدد القطع ', 'error')->position('top-start');
-                                    return redirect()->back();
-                                }
-                            }
-                        }
-                    } else {
-                        toast('تاريخ الاشتراك منتهي', 'error')->position('top-start');
-                        return redirect()->back();
-                    }
-                }
-
-            } else {
-                // return back if the subscription doesn't exist
-                $this->actionFailed('لابد من وجود اشتراك صالح');
-                return redirect()->back();
-            }
-        } elseif ($request['type'] == 'فاتورة') {
-            if ($request['ids']) {
-                foreach ($request['ids'] as $index => $id) {
-                    $piece = PriceList::find($id);
-                    $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                }
-            } else {
-                $this->actionFailed('لا يوجد قطع');
-                return redirect()->back();
-            }
-        }
-
         if (!$request['total']) {
+            foreach ((array)$request['ids'] as $index => $id) {
+                $piece = PriceList::find($id);
+                $total += $request['counts'][$index] * $piece[$request['types'][$index]];
+            }
+            foreach ((array)$request['newNames'] as $index => $name) {
+                $total += $request['newCounts'][$index] * $request['newPrices'][$index];
+            }
             $request['total'] = $total;
         }
-        $order = Order::create($request->except('ids', 'types', 'counts'));
+        if (!$request['number_of_Pieces']) {
+            $request['number_of_Pieces'] = count((array)$request['ids']) + count((array)$request['newNames']);
+        }
 
-        if ($request['ids']) {
-            foreach ($request['ids'] as $index => $id) {
-                $piece = PriceList::find($id);
-                $order->pieces()->attach($id, [
-                    'price' => $piece[$request['types'][$index]] * $request['counts'][$index],
-                    'count' => $request['counts'][$index],
-                    'type' => $request['types'][$index],
-                ]);
+        if ($request['type'] == 'اشتراك') {
+            if ($subscription) {
+                if ($subscription->type == 'قطعة') {
+                    $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
+                } elseif ($subscription->type == 'مبلغ') {
+                    $subscription->pivot->credit -= $request['total'];
+                } else {
+                    if (now() > $subscription->pivot->start_date && now() < $subscription->pivot->end_date) {
+                        if ($subscription->pieces != 0) {
+                            $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
+                        }
+                    } else {
+                        $this->actionFailed('الاشتراك منتهي');
+                        return redirect()->back();
+                    }
+                }
+                $subscription->pivot->save();
+            } else {
+                $this->actionFailed('لا يوجد اشتراك صالح');
+                return redirect()->back();
             }
+        }
+        $order = Order::create($request->except(['ids', 'counts', 'types', 'newNames','newTypes', 'newCounts', 'newPrices']));
+
+        foreach ((array)$request['ids'] as $index => $id) {
+            $piece = PriceList::find($id);
+            $order->pieces()->attach($id, [
+                'price' => $piece[$request['types'][$index]] * $request['counts'][$index],
+                'count' => $request['counts'][$index],
+                'type' => $request['types'][$index],
+                'name' => $piece['item'],
+            ]);
+        }
+        foreach ((array)$request['newNames'] as $index => $name) {
+            OrderPieces::create([
+                'order_id' => $order->id,
+                'name' => $name,
+                'price' => $request['newPrices'][$index],
+                'count' => $request['newCounts'][$index],
+                'type' => $request['newTypes'][$index],
+            ]);
         }
 
         $this->actionSuccess();
@@ -230,113 +184,67 @@ class OrderController extends Controller
         $request['pivot_id'] = $request['subscription_id'];
         $request['subscription_id'] = $subscription ? $subscription->id : null;
 
+
         // is Paid
         $request['is_paid'] = $request['is_paid'] ? 1 : 0;
         $total = 0;
-        if ($request['type'] == 'اشتراك') {
-            // checking fot subscription exists
-            if ($subscription) {
-                // checking the type of the subscription
-                if ($subscription['type'] == 'قطعة') {
-                    if ($request['number_of_Pieces']) {
-                        $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
-                        $subscription->pivot->save();
-                    } else {
-                        if ($request['ids']) {
-                            foreach ($request['ids'] as $index => $id) {
-                                $piece = PriceList::find($id);
-                                $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                                $subscription->pivot->remaining_pieces -= $request['counts'][$index];
-                            }
-                            $request['number_of_Pieces'] = count($request['ids']);
-                            $subscription->pivot->save();
-                        } else {
-                            toast('لم تدخل عدد القطع ', 'error')->position('top-start');
-                            return redirect()->back();
-                        }
-                    }
-                } elseif ($subscription['type'] == 'مبلغ') {
-                    if ($request['ids']) {
-                        foreach ($request['ids'] as $index => $id) {
-                            $piece = PriceList::find($id);
-                            $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                        }
-                        $subscription->pivot->credit -= $total;
-                        $subscription->save();
-                        $subscription->pivot->save();
-                    } else {
-                        toast('لم تدخل القطع ', 'error')->position('top-start');
-                        return redirect()->back();
-                    }
-                } else {
-                    if (now() > $subscription->pivot->start_date && now() < $subscription->pivot->end_date) {
-                        if ($subscription->pieces == 0) {
-                            if ($request['ids']) {
-                                foreach ($request['ids'] as $index => $id) {
-                                    $piece = PriceList::find($id);
-                                    $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                                }
-                            } else {
-                                toast('لم تدخل القطع ', 'error')->position('top-start');
-                                return redirect()->back();
-                            }
-                        } else {
-                            if ($request['number_of_Pieces']) {
-                                $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
-                                $subscription->pivot->save();
-                            } else {
-                                if ($request['ids']) {
-                                    foreach ($request['ids'] as $index => $id) {
-                                        $piece = PriceList::find($id);
-                                        $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                                        $subscription->pivot->remaining_pieces -= $request['counts'][$index];
-                                    }
-                                    $request['number_of_Pieces'] = count($request['ids']);
-                                    $subscription->pivot->save();
-                                } else {
-                                    toast('لم تدخل عدد القطع ', 'error')->position('top-start');
-                                    return redirect()->back();
-                                }
-                            }
-                        }
-                    } else {
-                        toast('تاريخ الاشتراك منتهي', 'error')->position('top-start');
-                        return redirect()->back();
-                    }
-                }
-
-            } else {
-                // return back if the subscription doesn't exist
-                $this->actionFailed('لابد من وجود اشتراك صالح');
-                return redirect()->back();
-            }
-        } elseif ($request['type'] == 'فاتورة') {
-            if ($request['ids']) {
-                foreach ($request['ids'] as $index => $id) {
-                    $piece = PriceList::find($id);
-                    $total += $piece[$request['types'][$index]] * $request['counts'][$index];
-                }
-            } else {
-                $this->actionFailed('لا يوجد قطع');
-                return redirect()->back();
-            }
-        }
-
         if (!$request['total']) {
+            foreach ((array)$request['ids'] as $index => $id) {
+                $piece = PriceList::find($id);
+                $total += $request['counts'][$index] * $piece[$request['types'][$index]];
+            }
+            foreach ((array)$request['newNames'] as $index => $name) {
+                $total += $request['newCounts'][$index] * $request['newPrices'][$index];
+            }
             $request['total'] = $total;
         }
+        if (!$request['number_of_Pieces']) {
+            $request['number_of_Pieces'] = count((array)$request['ids']) + count((array)$request['newNames']);
+        }
+
+        if ($request['type'] == 'اشتراك') {
+            if ($subscription) {
+                if ($subscription->type == 'قطعة') {
+                    $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
+                } elseif ($subscription->type == 'مبلغ') {
+                    $subscription->pivot->credit -= $request['total'];
+                } else {
+                    if (now() > $subscription->pivot->start_date && now() < $subscription->pivot->end_date) {
+                        if ($subscription->pieces != 0) {
+                            $subscription->pivot->remaining_pieces -= $request['number_of_Pieces'];
+                        }
+                    } else {
+                        $this->actionFailed('الاشتراك منتهي');
+                        return redirect()->back();
+                    }
+                }
+                $subscription->pivot->save();
+            } else {
+                $this->actionFailed('لا يوجد اشتراك صالح');
+                return redirect()->back();
+            }
+        }
+
         $order->update($request->except('ids', 'types', 'counts'));
 
-        if ($request['ids']) {
-            $order->pieces()->sync([]);
-            foreach ($request['ids'] as $index => $id) {
-                $piece = PriceList::find($id);
-                $order->pieces()->attach($id, [
-                    'price' => $piece[$request['types'][$index]] * $request['counts'][$index],
-                    'count' => $request['counts'][$index],
-                    'type' => $request['types'][$index],
-                ]);
-            }
+        $order->pieces()->sync([]);
+        foreach ((array)$request['ids'] as $index => $id) {
+            $piece = PriceList::find($id);
+            $order->pieces()->attach($id, [
+                'price' => $piece[$request['types'][$index]] * $request['counts'][$index],
+                'count' => $request['counts'][$index],
+                'type' => $request['types'][$index],
+                'name' => $piece['item'],
+            ]);
+        }
+        foreach ((array)$request['newNames'] as $index => $name) {
+            OrderPieces::create([
+                'order_id' => $order->id,
+                'name' => $name,
+                'price' => $request['prices'][$index],
+                'count' => $request['newCounts'][$index],
+                'type' => $request['newTypes'][$index],
+            ]);
         }
 
         $this->actionSuccess();

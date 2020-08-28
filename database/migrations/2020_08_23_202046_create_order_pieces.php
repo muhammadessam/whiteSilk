@@ -11,10 +11,11 @@ class CreateOrderPieces extends Migration
         Schema::create('order_pieces', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('piece_id');
             $table->unsignedBigInteger('order_id');
-            $table->decimal('price')->nullable()->default(null);
+            $table->unsignedBigInteger('piece_id')->nullable()->default(null);
+            $table->string('name')->nullable()->default(null);
 
+            $table->decimal('price')->nullable()->default(null);
             $table->unsignedInteger('count')->nullable()->default(null);
             $table->enum('type', ['washing', 'washingAndIron', 'ironed'])->nullable()->default(null);
 

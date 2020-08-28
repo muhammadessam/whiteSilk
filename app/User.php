@@ -110,4 +110,5 @@ class User extends Authenticatable
             ->withPivot('is_active', 'remaining_pieces', 'start_date', 'end_date', 'credit', 'id');
     }
 
+
 }

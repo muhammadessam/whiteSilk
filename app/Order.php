@@ -90,7 +90,7 @@ class Order extends Model
 
     public function pieces()
     {
-        return $this->belongsToMany(PriceList::class, 'order_pieces', 'order_id', 'piece_id')->withPivot('count', 'type');
+        return $this->belongsToMany(PriceList::class, 'order_pieces', 'order_id', 'piece_id')->withPivot('count', 'type', 'price', 'name');
     }
 
     public function subscription()
@@ -106,5 +106,10 @@ class Order extends Model
     public function branch()
     {
         return $this->belongsTo(Branch::class, 'branch_id', 'id');
+    }
+
+    public function OrderPieces()
+    {
+        return $this->hasMany(OrderPieces::class, 'order_id', 'id');
     }
 }

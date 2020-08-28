@@ -15,10 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['اشتراك', 'فاتورة', 'فاتورة خاصة']);
+            $table->enum('type', ['اشتراك', 'فاتورة']);
             $table->unsignedBigInteger('branch_id');
             $table->string('serial')->unique();
-            $table->string('one_time_product')->nullable()->default(null);
+            $table->longText('notes')->nullable()->default(null);
             $table->unsignedBigInteger('pivot_id')->nullable()->default(null);
             $table->unsignedBigInteger('payment_method_id')->nullable()->default(null);
             $table->unsignedBigInteger('user_id')->nullable()->default(null);

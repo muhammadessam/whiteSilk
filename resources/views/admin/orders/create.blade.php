@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <form action="{{route('admin.orders.store')}}" class="form" method="post">
                         @csrf
-                        <addresses  selectedclientid="{{old('user_id')}}" selectedaddressid="{{old('address_id')}}"  :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
+                        <addresses selectedclientid="{{old('user_id')}}" selectedaddressid="{{old('address_id')}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
 
                         <x-select name="branch_id" :loopOver="\App\Branch::all()" showCol="name" value="{{old('branch_id')}}" title="الفرع"></x-select>
 
@@ -24,16 +24,24 @@
 
                         <x-number name="number_of_Pieces" value="{{old('number_of_Pieces')}}" title="ادخل عدد القطع - اذا تم ادخالها سوف يقوم النظام باعتبارها بدلا من القطع المدخلة"></x-number>
 
-                        <div class="form-group">
-                            <label class="font-weight-bold">ادخل القطع</label>
-                            <order-pieces :pieces="{{\App\PriceList::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-pieces>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">اختر من قائمة الاسعار</label>
+                                    <order-pieces :pieces="{{\App\PriceList::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-pieces>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label class="font-weight-bold">اضف صنف غير موجود</label>
+                                <order-special :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-special>
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="arrived_at">تاريخ الاستلام</label>
-                                    <input type="date" name="arrived_at" id="arrived_at" class="form-control">
+                                    <input type="date" name="arrived_at" id="arrived_at" class="form-control" value="{{old('arrived_at')}}">
                                 </div>
                             </div>
                         </div>
@@ -42,7 +50,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="out_at">تاريخ التسليم</label>
-                                    <input type="date" name="out_at" id="out_at" class="form-control">
+                                    <input type="date" name="out_at" id="out_at" class="form-control" value="{{old('out_at')}}">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +63,9 @@
 
                         <x-number name="total" value="{{old('total')}}" title="مجموع الفاتورة الكلي - سوف يتم حسابه اتوماتيكيا ولكن ان تم ادخاله سوف يقوم النظام باعتبار القيمة المعطاه"></x-number>
 
-                        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ </button>
+                        <x-textarea name="notes" value="{{old('notes')}}" title="ملاحظات"></x-textarea>
+
+                        <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>
                 </div>
             </div>

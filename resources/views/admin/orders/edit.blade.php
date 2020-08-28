@@ -53,6 +53,8 @@
 
                         <x-number name="total" value="{{$order['total']}}" title="مجموع الفاتورة الكلي - سوف يتم حسابه اتوماتيكيا ولكن ان تم ادخاله سوف يقوم النظام باعتبار القيمة المعطاه"></x-number>
 
+                        <x-textarea name="notes" value="{{$order['notes']}}" title="ملاحظات"></x-textarea>
+
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>
                 </div>
