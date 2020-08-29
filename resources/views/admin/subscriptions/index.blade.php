@@ -17,6 +17,7 @@
                                 <th></th>
                                 <th>الاسم</th>
                                 <th>الوصف</th>
+                                <th>النوع</th>
                                 <th>السعر</th>
                                 <th>الصورة</th>
                                 <th>اجمالي القطع</th>
@@ -29,6 +30,7 @@
                                     <td>{{$item['id']}}</td>
                                      <td>{{$item['name']}}</td>
                                      <td>{{$item['description']}}</td>
+                                     <td>{{$item['type']}}</td>
                                      <td>{{$item['price']}}</td>
                                      <td>
                                          <img src="{{asset($item['img'])}}" alt="photo" style="width: 75px;height: 75px;" class="rounded-circle">

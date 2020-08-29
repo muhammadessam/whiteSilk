@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Subscription;
 use App\SubscriptionAttribute;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -53,16 +52,15 @@ class SubscriptionController extends Controller
         $this->storeImg($request, 'img_temp', 'Subscriptions');
 
         $newSubscription = Subscription::create($request->except('keys', 'values', 'img_temp', 'date'));
-        if ($request['keys'])
-            foreach ($request['keys'] as $index => $value) {
-                if ($value) {
-                    SubscriptionAttribute::create([
-                        'key' => $value,
-                        'value' => $request['values'][$index],
-                        'subscription_id' => $newSubscription['id']
-                    ]);
-                }
+        foreach ((array)$request['keys'] as $index => $value) {
+            if ($value) {
+                SubscriptionAttribute::create([
+                    'key' => $value,
+                    'value' => $request['values'][$index],
+                    'subscription_id' => $newSubscription['id']
+                ]);
             }
+        }
 
         $this->actionSuccess();
         return redirect()->route('admin.subscriptions.index');
@@ -105,15 +103,16 @@ class SubscriptionController extends Controller
         $this->canAccess('edit', Subscription::class);
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'type_id' => ['required', 'exists:subscription_types,id'],
+            'type' => ['required'],
             'price' => 'required|numeric',
-            'pieces' => 'required',
+            'added_credit' => ['required_if:type,مبلغ'],
+            'days' => 'required_if:type,تاريخ',
+            'pieces' => 'required_if:type,قطعة'
         ]);
         $this->storeImg($request, 'img_temp', 'Subscriptions');
         $subscription->update($request->except('keys', 'values', 'img_temp'));
         $subscription->attributes()->delete();
-        foreach ($request['keys'] as $index => $value) {
+        foreach ((array)$request['keys'] as $index => $value) {
             if ($value) {
                 SubscriptionAttribute::create([
                     'key' => $value,

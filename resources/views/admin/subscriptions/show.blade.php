@@ -12,8 +12,7 @@
                         <x-showtext title="النوع" value="{{$subscription['type']}}"></x-showtext>
                         <x-showtext title="السعر" value="{{$subscription['price']}}"></x-showtext>
                         <x-showtext title="الرصيد المضاف الي المستخدم" value="{{$subscription['added_credit']}}"></x-showtext>
-                        <x-showtext title="تاريخ البدء" value="{{$subscription['start_date']}}"></x-showtext>
-                        <x-showtext title="تاريخ الانتهاء" value="{{$subscription['end_date']}}"></x-showtext>
+                        <x-showtext title="عدد الايام" value="{{$subscription['days']}}"></x-showtext>
                     </div>
                     <div class="col">
                         <x-showtext title="اجمالي عدد القطع" value="{{$subscription['pieces']}}"></x-showtext>

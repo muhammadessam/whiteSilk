@@ -2374,29 +2374,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "suscription",
+  props: ['oldtype', 'olddays', 'oldpieces', 'oldadded_credit'],
   data: function data() {
     return {
       type: 'قطعة',
-      piece: true,
-      date: false,
-      price: false
+      days: '',
+      pieces: '',
+      added_credit: ''
     };
   },
-  methods: {
-    changeView: function changeView() {
-      if (this.type == 'قطعة') {
-        this.piece = true;
-        this.date = false;
-        this.price = false;
-      } else if (this.type == 'تاريخ') {
-        this.piece = false;
-        this.date = true;
-        this.price = false;
-      } else {
-        this.piece = false;
-        this.date = false;
-        this.price = true;
-      }
+  methods: {},
+  mounted: function mounted() {
+    if (this.oldtype) {
+      this.type = this.oldtype;
+    }
+
+    if (this.olddays) {
+      this.days = this.olddays;
+    }
+
+    if (this.oldpieces) {
+      this.pieces = this.oldpieces;
+    }
+
+    if (this.oldadded_credit) {
+      this.added_credit = this.oldadded_credit;
     }
   }
 });
@@ -21064,7 +21066,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col" }, [
-          _vm.price
+          _vm.type == "مبلغ"
             ? _c("div", { staticClass: "form-group" }, [
                 _c(
                   "label",
@@ -21073,18 +21075,35 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.added_credit,
+                      expression: "added_credit"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
                     type: "number",
                     step: ".1",
                     id: "price",
                     name: "added_credit"
+                  },
+                  domProps: { value: _vm.added_credit },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.added_credit = $event.target.value
+                    }
                   }
                 })
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.piece
+          _vm.type == "قطعة"
             ? _c("div", { staticClass: "form-group" }, [
                 _c(
                   "label",
@@ -21093,18 +21112,35 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.pieces,
+                      expression: "pieces"
+                    }
+                  ],
                   staticClass: "form-control",
                   attrs: {
                     type: "number",
                     step: ".1",
                     name: "pieces",
                     id: "pieces"
+                  },
+                  domProps: { value: _vm.pieces },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.pieces = $event.target.value
+                    }
                   }
                 })
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.date
+          _vm.type == "تاريخ"
             ? _c("div", { staticClass: "form-group" }, [
                 _c(
                   "label",
@@ -21113,13 +21149,30 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.days,
+                      expression: "days"
+                    }
+                  ],
                   staticClass: "form-control",
-                  attrs: { type: "number", name: "days", id: "days" }
+                  attrs: { type: "number", name: "days", id: "days" },
+                  domProps: { value: _vm.days },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.days = $event.target.value
+                    }
+                  }
                 })
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.date
+          _vm.type == "تاريخ"
             ? _c("div", { staticClass: "form-group" }, [
                 _c(
                   "label",
@@ -21128,8 +21181,25 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.pieces,
+                      expression: "pieces"
+                    }
+                  ],
                   staticClass: "form-control",
-                  attrs: { type: "number", name: "pieces", id: "piece" }
+                  attrs: { type: "number", name: "pieces", id: "piece" },
+                  domProps: { value: _vm.pieces },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.pieces = $event.target.value
+                    }
+                  }
                 })
               ])
             : _vm._e()

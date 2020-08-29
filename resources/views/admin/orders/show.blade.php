@@ -13,6 +13,7 @@
                             <x-showtext title="العميل" value="{{$order->client? $order->client->name : ''}}"></x-showtext>
                             <x-showtext title="السائق" value="{{$order->driver? $order->driver->name : ''}}"></x-showtext>
                             <x-showtext title="الاشتراك" value="{{$order->subscription ? $order->subscription->name : ''}}"></x-showtext>
+                            <x-showtext title="العنوان" value="{{$order->address ? $order->address->name:''}}"></x-showtext>
                         </div>
 
                         <div class="col">
@@ -20,6 +21,7 @@
                             <x-showtext title="تاريخ التسليم" value="{{$order['out_at']}}"></x-showtext>
                             <x-showtext title="الحالة" value="{{$order->status ? $order->status->name : ''}}"></x-showtext>
                             <x-showtext title="المجموع الكلي" value="{{$order['total']}}"></x-showtext>
+
                         </div>
                     </div>
                 </div>
