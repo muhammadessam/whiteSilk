@@ -19,6 +19,7 @@
                                 <th>غسيل جاف</th>
                                 <th>غسيل وكوي</th>
                                 <th>كوي</th>
+                                <th>صورة</th>
                                 <th>اجراء</th>
                             </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                     <td>{{$item['washing']}}</td>
                                     <td>{{$item['washingAndIron']}}</td>
                                     <td>{{$item['ironed']}}</td>
+                                    <td><img src="{{asset($item['img'])}}" style="width: 50px;height: 50px" class="rounded-circle"></td>
                                     <td class="d-flex">
                                         <a href="{{route('admin.price-list.edit', $item)}}"><i class="fa fa-edit text-primary"></i></a>
                                         <form action="{{route('admin.price-list.destroy', $item)}}" method="post" onsubmit="return confirm('هل انت متاكد؟')">

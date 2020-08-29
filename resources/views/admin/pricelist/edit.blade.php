@@ -10,13 +10,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.price-list.update', $priceList)}}" class="form" method="post">
+                    <form action="{{route('admin.price-list.update', $priceList)}}" class="form" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <x-text name="item" title="الصنف" value="{{$priceList['item']}}"></x-text>
                         <x-number name="washing" title="غسيل جاف" value="{{$priceList['washing']}}"></x-number>
                         <x-number name="washingAndIron" title="غسيل وكوي" value="{{$priceList['washingAndIron']}}"></x-number>
                         <x-number name="ironed" title="كوي" value="{{$priceList['ironed']}}"></x-number>
+                        <x-img></x-img>
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>
                 </div>

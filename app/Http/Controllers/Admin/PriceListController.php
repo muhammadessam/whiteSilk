@@ -46,7 +46,8 @@ class PriceListController extends Controller
             'washingAndIron' => 'required|numeric',
             'ironed' => 'required',
         ]);
-        PriceList::create($request->all());
+        $this->storeImg($request, 'img_temp', 'PriceList');
+        PriceList::create($request->except('img_temp'));
         $this->actionSuccess();
         return redirect()->route('admin.price-list.index');
     }
@@ -90,7 +91,8 @@ class PriceListController extends Controller
             'washingAndIron' => 'required|numeric',
             'ironed' => 'required',
         ]);
-        $priceList->update($request->all());
+        $this->storeImg($request, 'img_temp', 'PriceList');
+        $priceList->update($request->except('img_temp'));
         $this->actionSuccess();
         return redirect()->route('admin.price-list.index');
     }

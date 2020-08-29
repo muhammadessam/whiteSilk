@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['اشتراك', 'فاتورة']);
+            $table->boolean('is_fast')->default(true);
             $table->unsignedBigInteger('branch_id');
             $table->string('serial')->unique();
             $table->longText('notes')->nullable()->default(null);

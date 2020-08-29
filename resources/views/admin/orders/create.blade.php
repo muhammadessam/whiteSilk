@@ -63,6 +63,8 @@
 
                         <x-number name="total" value="{{old('total')}}" title="مجموع الفاتورة الكلي - سوف يتم حسابه اتوماتيكيا ولكن ان تم ادخاله سوف يقوم النظام باعتبار القيمة المعطاه"></x-number>
 
+                        <x-checkbox name="is_fast" value="{{old('is_fast')}}" title="استعجال الطلب"></x-checkbox>
+
                         <x-textarea name="notes" value="{{old('notes')}}" title="ملاحظات"></x-textarea>
 
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>

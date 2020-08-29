@@ -10,12 +10,13 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.price-list.store')}}" class="form" method="post">
+                    <form action="{{route('admin.price-list.store')}}" class="form" method="post" enctype="multipart/form-data">
                         @csrf
                         <x-text name="item" title="الصنف" value="{{old('item')}}"></x-text>
                         <x-number name="washing" title="غسيل جاف" value="{{old('washing')}}"></x-number>
                         <x-number name="washingAndIron" title="غسيل وكوي" value="{{old('washingAndIron')}}"></x-number>
                         <x-number name="ironed" title="كوي" value="{{old('ironed')}}"></x-number>
+                        <x-img></x-img>
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>
                 </div>
