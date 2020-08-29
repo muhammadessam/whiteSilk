@@ -110,6 +110,6 @@ class Order extends Model
 
     public function OrderPieces()
     {
-        return $this->hasMany(OrderPieces::class, 'order_id', 'id');
+        return $this->hasMany(OrderPieces::class, 'order_id', 'id')->where('piece_id', null);
     }
 }

@@ -224,10 +224,8 @@ class OrderController extends Controller
                 return redirect()->back();
             }
         }
+        $order->update($request->except(['ids', 'counts', 'types', 'newNames','newTypes', 'newCounts', 'newPrices']));
 
-        $order->update($request->except('ids', 'types', 'counts'));
-
-        $order->pieces()->sync([]);
         foreach ((array)$request['ids'] as $index => $id) {
             $piece = PriceList::find($id);
             $order->pieces()->attach($id, [
@@ -241,7 +239,7 @@ class OrderController extends Controller
             OrderPieces::create([
                 'order_id' => $order->id,
                 'name' => $name,
-                'price' => $request['prices'][$index],
+                'price' => $request['newPrices'][$index],
                 'count' => $request['newCounts'][$index],
                 'type' => $request['newTypes'][$index],
             ]);

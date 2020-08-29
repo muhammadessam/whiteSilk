@@ -57,7 +57,7 @@
 <script>
 export default {
     name: "orderSpecialPieces",
-    props: ['pieces','old'],
+    props: ['pieces', 'old'],
     data: () => {
         return {
             elements: [],
@@ -78,20 +78,19 @@ export default {
         }
     },
     mounted() {
-        Event.$on('user-selected', (data) => {
-            console.log(data)
-        })
         if (this.old) {
             this.old.forEach((e) => {
+                console.log(e)
                 this.elements.push({
                     'name': e.name,
                     'price': e.price,
                     'piece_id': null,
-                    'type': e.pivot.type,
-                    'count': e.pivot.count
+                    'type': e.type,
+                    'count': e.count
                 });
             })
         }
+        console.log(this.old)
     }
 }
 </script>

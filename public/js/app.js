@@ -2226,21 +2226,21 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    Event.$on('user-selected', function (data) {
-      console.log(data);
-    });
-
     if (this.old) {
       this.old.forEach(function (e) {
+        console.log(e);
+
         _this.elements.push({
           'name': e.name,
           'price': e.price,
           'piece_id': null,
-          'type': e.pivot.type,
-          'count': e.pivot.count
+          'type': e.type,
+          'count': e.count
         });
       });
     }
+
+    console.log(this.old);
   }
 });
 
