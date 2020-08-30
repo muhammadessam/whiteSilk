@@ -15,8 +15,12 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
+        $data = Client::all();
+        if ($request['is_sub']){
+            $data = $data->filter()
+        }
         return view('admin.clients.index');
     }
 

@@ -17,6 +17,7 @@
                                 <th></th>
                                 <th>رقم الطلب</th>
                                 <th>اسم العميل</th>
+                                <th>الاشتراك</th>
                                 <th>العنوان</th>
                                 <th>المبلغ</th>
                                 <th>الحالة</th>
@@ -32,6 +33,7 @@
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item->branch->bill_prefix}}-{{$item['serial']}}</td>
                                     <td>{{$item->client->name}}</td>
+                                    <td>{{$item->subscription ? $item->subscription->name : ''}}</td>
                                     <td>{{$item->address ? $item->address->name : ''}} - {{$item->address && $item->address->city ?$item->address->city->name:''}} -{{$item->address && $item->address->area ?$item->address->area->name:''}}  </td>
                                     <td>{{$item->total}}</td>
                                     <td>{{$item->status ? $item->status->name : ''}}</td>
