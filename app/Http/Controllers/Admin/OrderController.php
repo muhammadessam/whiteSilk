@@ -107,6 +107,7 @@ class OrderController extends Controller
             }
         }
 
+        $request['total'] -= $request['discount'];
         $order = Order::create($request->except(['ids', 'counts', 'types', 'newNames', 'newTypes', 'newCounts', 'newPrices']));
         $client->decrement('credit', $order['total']);
 
@@ -227,6 +228,7 @@ class OrderController extends Controller
                 return redirect()->back();
             }
         }
+        $request['total'] -= $request['discount'];
         $order->update($request->except(['ids', 'counts', 'types', 'newNames', 'newTypes', 'newCounts', 'newPrices']));
 
         $client->decrement('credit', $order['total']);

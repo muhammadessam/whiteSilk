@@ -32,6 +32,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('is_paid')->default(true);
             $table->unsignedBigInteger('coupon_id')->nullable()->default(null);
             $table->decimal('total')->nullable()->default(null);
+            $table->decimal('discount')->nullable()->default(null);
             $table->unsignedInteger('number_of_Pieces')->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
