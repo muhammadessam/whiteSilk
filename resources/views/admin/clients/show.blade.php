@@ -92,6 +92,7 @@
                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="border-top-contact-tab">
                     @include('admin.clients.partials._orders')
                 </div>
+
                 <div class="tab-pane fade" id="fast-orders" role="tabpanel" aria-labelledby="border-top-contact-tab">
                     @include('admin.clients.partials._fast-orders')
                 </div>
