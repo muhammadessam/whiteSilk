@@ -13,11 +13,23 @@ class ClientController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request  $request)
+    public function index(Request $request)
     {
-        return view('admin.clients.index');
+        $data = Client::all();
+        if ($request['is_subscribed'] === '1') {
+            $data = $data->filter(function ($client) {
+                return $client->subscriptions()->exists();
+            });
+        }
+        if ($request['is_subscribed'] === '0') {
+            $data = $data->filter(function ($client) {
+                return !($client->subscriptions()->exists());
+            });
+        }
+        return view('admin.clients.index', ['data' => $data]);
     }
 
     /**

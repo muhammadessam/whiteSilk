@@ -6,7 +6,17 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title">العملاء</h3>
-                    <div class="card-text">
+                    <div class="card-text d-flex">
+                        <div>
+                            <form class="form-inline" action="{{route('admin.clients.index')}}" method="get">
+                                <select name="is_subscribed" id="filter_type" class="form-control">
+                                    <option value="" {{request('is_subscribed') === null ? 'selected':''}}>الكل</option>
+                                    <option value="1" {{request('is_subscribed') === '1' ? 'selected':''}}>مشتركين</option>
+                                    <option value="0" {{request('is_subscribed') === '0' ? 'selected':''}}>غير مشتركين</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
                         <a class="btn btn-success" href="{{route('admin.clients.create')}}"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
@@ -25,7 +35,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(\App\Client::all() as $item)
+                            @foreach($data as $item)
                                 <tr>
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item['name']}}</td>
