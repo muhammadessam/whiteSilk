@@ -17,10 +17,6 @@ class ClientController extends Controller
      */
     public function index(Request  $request)
     {
-        $data = Client::all();
-        if ($request['is_sub']){
-            $data = $data->filter()
-        }
         return view('admin.clients.index');
     }
 
