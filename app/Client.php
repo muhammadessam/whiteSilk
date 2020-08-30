@@ -54,4 +54,9 @@ class Client extends Model
     {
         return $this->hasMany(Address::class, 'client_id', 'id');
     }
+
+    public function driverOrders()
+    {
+        return $this->hasMany(DriverOrder::class, 'client_id', 'id');
+    }
 }

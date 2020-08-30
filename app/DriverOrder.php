@@ -49,7 +49,7 @@ class DriverOrder extends Model
 
     public function client()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
 
     public function address()

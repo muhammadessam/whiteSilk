@@ -68,6 +68,12 @@
                         العناوين
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="border-top-contact-tab" data-toggle="tab" href="#driver-order" role="tab" aria-controls="border-top-contact" aria-selected="false">
+                        <i class="fa fa-map-pin"></i>
+                        طلبات السائقين
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" id="border-top-profile-tab" data-toggle="tab" href="#roles" role="tab" aria-controls="border-top-profile" aria-selected="false">
@@ -99,6 +105,9 @@
 
                 <div class="tab-pane fade" id="fast-orders" role="tabpanel" aria-labelledby="border-top-contact-tab">
                     @include('admin.clients.partials._fast-orders')
+                </div>
+                <div class="tab-pane fade" id="driver-order" role="tabpanel" aria-labelledby="border-top-contact-tab">
+                    @include('admin.clients.partials._driverOrders')
                 </div>
 
             </div>
