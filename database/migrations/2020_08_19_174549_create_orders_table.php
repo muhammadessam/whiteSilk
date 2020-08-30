@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->longText('notes')->nullable()->default(null);
             $table->unsignedBigInteger('pivot_id')->nullable()->default(null);
             $table->unsignedBigInteger('payment_method_id')->nullable()->default(null);
-            $table->unsignedBigInteger('user_id')->nullable()->default(null);
+            $table->unsignedBigInteger('client_id')->nullable()->default(null);
             $table->unsignedBigInteger('driver_id')->nullable()->default(null);
             $table->unsignedBigInteger('address_id')->nullable()->default(null);
             $table->unsignedBigInteger('subscription_id')->nullable()->default(null);

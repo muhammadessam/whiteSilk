@@ -96,7 +96,7 @@ class User extends Authenticatable
 
     public function addresses()
     {
-        return $this->hasMany(Address::class, 'customer_id', 'id');
+        return $this->hasMany(Address::class, 'client_id', 'id');
     }
 
     public function orders()

@@ -48,6 +48,9 @@
                             <div class="custom-file-container__image-preview"></div>
                         </div>
 
+                        <x-number name="credit" value="{{$client['credit']}}" title="الرصيد"></x-number>
+
+
 
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>
                     </form>

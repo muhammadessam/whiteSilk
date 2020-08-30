@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Client;
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\HttpFoundation\Response;
 
-class ClientsController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class ClientsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,11 +42,10 @@ class ClientsController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
             'password' => 'required|confirmed|min:6',
+            'phone' => 'required|numeric',
         ]);
-        if ($request->hasFile('img_temp'))
-            $request['img'] = 'storage/' . $request->file('img_temp')->store('UserProfiles', 'public');
-        $request['type'] = 'عميل';
-        User::create($request->all());
+        $this->storeImg($request, 'img_temp', 'UserProfiles');
+        Client::create($request->all());
         $this->actionsuccess();
         return redirect()->route('admin.clients.index');
     }
@@ -54,10 +53,10 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Driver $client
+     * @param Client $client
      * @return \Illuminate\Http\Response
      */
-    public function show(User $client)
+    public function show(Client $client)
     {
         return view('admin.clients.show', compact('client'));
     }
@@ -65,10 +64,10 @@ class ClientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Driver $client
+     * @param Client $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $client)
+    public function edit(Client $client)
     {
         return view('admin.clients.edit', compact('client'));
     }
@@ -76,22 +75,23 @@ class ClientsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @param \App\Driver $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $client)
+    public function update(Request $request, Client $client)
     {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'phone' => 'required|numeric',
         ]);
 
         if ($request->hasFile('img_temp')) {
             if ($client['img']) {
                 File::delete($client['img']);
             }
-            $request['img'] = 'storage/' . $request->file('img_temp')->store('UserProfiles', 'public');
+            $this->storeImg($request, 'img_temp', 'UserProfiles');
         }
 
         $client->update($request->all());
@@ -102,10 +102,10 @@ class ClientsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Driver $client
+     * @param Client $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $client)
+    public function destroy(Client $client)
     {
         $client->delete();
         $this->actionSuccess();
@@ -114,7 +114,7 @@ class ClientsController extends Controller
 
     public function massDestroy(Request $request)
     {
-        User::whereIn('id', $request['ids'])->delete();
+        Client::whereIn('id', $request['ids'])->delete();
         return response(null, Response::HTTP_NO_CONTENT);
 
     }

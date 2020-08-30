@@ -55,8 +55,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('drivers-times', 'DriversTimeController');
 
     //Customers
-    Route::delete('clients/massDestroy', 'ClientsController@massDestroy')->name('clients.mass.destroy');
-    Route::resource('clients', 'ClientsController');
+    Route::delete('clients/massDestroy', 'ClientController@massDestroy')->name('clients.mass.destroy');
+    Route::resource('clients', 'ClientController');
 
     // Price List
     Route::delete('price-list/massDestroy', 'PriceListController@massDestroy')->name('price.list.mass.destroy');

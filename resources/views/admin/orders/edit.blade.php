@@ -13,7 +13,7 @@
                     <form action="{{route('admin.orders.update', $order)}}" class="form" method="post">
                         @csrf
                         @method('PATCH')
-                        <addresses selectedclientid="{{$order['user_id']}}" selectedaddressid="{{$order['address_id']}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></addresses>
+                        <addresses selectedclientid="{{$order['client_id']}}" selectedaddressid="{{$order['address_id']}}" :clients="{{\App\Client::all()}}"></addresses>
 
                         <x-select name="branch_id" :loopOver="\App\Branch::all()" showCol="name" value="{{$order['branch_id']}}" title="الفرع"></x-select>
 
@@ -21,7 +21,7 @@
 
                         <x-select name="driver_id" value="{{$order['driver_id']}}" showCol="name" title="السائق" :loopOver="\App\User::where('type', 'سائق')->with('addresses')->get()"></x-select>
 
-                        <order-type :payments="{{\App\PaymentMethod::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
+                        <order-type oldsubscription="{{$order['pivot_id']}}" oldtype="{{$order['type']}}" :payments="{{\App\PaymentMethod::all()}}" :clients="{{\App\User::where('type', 'عميل')->with('addresses')->get()}}"></order-type>
 
                         <x-number name="number_of_Pieces" value="{{$order['number_of_Pieces']}}" title="ادخل عدد القطع - اذا تم ادخالها سوف يقوم النظام باعتبارها بدلا من القطع المدخلة"></x-number>
 

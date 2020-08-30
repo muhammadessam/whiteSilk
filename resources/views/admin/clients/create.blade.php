@@ -29,23 +29,18 @@
                         </div>
                         <div class="form-group">
                             <label for="password">كلمة المرور</label>
-                            <input type="text" name="password" id="password" class="form-control" value="{{old('password')}}">
+                            <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}">
                             <x-error title="password"></x-error>
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation">تاكيد كلمة المرور</label>
-                            <input type="text" name="password_confirmation" id="password_confirmation" class="form-control" value="{{old('password_confirmation')}}">
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" value="{{old('password_confirmation')}}">
                             <x-error title="password_confirmation"></x-error>
                         </div>
-                        <div class="custom-file-container" data-upload-id="img_temp">
-                            <label>اختر صورة<a href="javascript:void(0)" class="custom-file-container__image-clear" title="حذف">x</a></label>
-                            <label class="custom-file-container__custom-file">
-                                <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*" name="img_temp">
-                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760"/>
-                                <span class="custom-file-container__custom-file__custom-file-control"></span>
-                            </label>
-                            <div class="custom-file-container__image-preview"></div>
-                        </div>
+
+                        <x-number name="credit" value="{{old('credit')}}" title="الرصيد"></x-number>
+
+                        <x-img></x-img>
 
 
                         <button class="btn btn-success" type="submit"><i class="fa fa-plus"></i> حفظ</button>

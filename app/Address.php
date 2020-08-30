@@ -68,9 +68,9 @@ class Address extends Model
 
     protected $with = ['city', 'area'];
 
-    public function customer()
+    public function client()
     {
-        return $this->belongsTo(User::class, 'customer_id');
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
     public function country()

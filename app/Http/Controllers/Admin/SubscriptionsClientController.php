@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\Subscription;
 use App\User;
@@ -16,7 +17,7 @@ class SubscriptionsClientController extends Controller
             'client_id' => 'required|exists:users,id',
             'subscription_id' => 'required|exists:subscriptions,id',
         ]);
-        $client = User::find($request['client_id']);
+        $client = Client::find($request['client_id']);
         $subscription = Subscription::find($request['subscription_id']);
 
         $client->subscriptions()->attach($subscription->id,
@@ -28,6 +29,8 @@ class SubscriptionsClientController extends Controller
                 'remaining_pieces' => $subscription->pieces
             ]
         );
+        $client['credit'] += $subscription['added_credit'];
+        $client->save();
         $this->actionSuccess();
         return redirect()->back();
 
@@ -42,7 +45,7 @@ class SubscriptionsClientController extends Controller
                 'pivot_id' => 'required',
             ]
         );
-        $user = User::find($request['client_id']);
+        $user = Client::find($request['client_id']);
         $subscription = Subscription::find($request['subscription_id']);
         $user->subscriptions()->wherePivot('id', $request['pivot_id'])->detach($subscription);
         $this->actionSuccess();
@@ -76,6 +79,6 @@ class SubscriptionsClientController extends Controller
             'remaining_pieces' => $request['remaining_pieces']
         ]]);
         $this->actionSuccess();
-        return redirect()->route('admin.users.show', $request['client_id']);
+        return redirect()->route('admin.clients.show', $request['client_id']);
     }
 }

@@ -12,10 +12,10 @@
             <form method="POST" action="{{ route("admin.addresses.store") }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label class="required" for="customer_id">المستخدم</label>
-                    <select class="form-control select2 {{ $errors->has('customer') ? 'is-invalid' : '' }}" name="customer_id" id="customer_id" required>
-                        @foreach(\App\User::all() as $item)
-                            <option value="{{ $item->id }}" {{ old('customer_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                    <label class="required" for="client_id">المستخدم</label>
+                    <select class="form-control select2 {{ $errors->has('customer') ? 'is-invalid' : '' }}" name="client_id" id="client_id" required>
+                        @foreach(\App\Client::all() as $item)
+                            <option value="{{ $item->id }}" {{ old('client_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
                         @endforeach
                     </select>
                     @if($errors->has('customer'))

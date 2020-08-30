@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -62,6 +63,17 @@ class Order extends Model
     protected $guarded = [];
     use  SoftDeletes;
 
+
+    public function scopeFast(Builder $builder)
+    {
+        return $builder->where('is_fast', 1);
+    }
+
+    public function scopeNormal(Builder $builder)
+    {
+        return $builder->where('is_fast', 0);
+    }
+
     public function paymentMethod()
     {
         return $this->belongsTo(PaymentMethod::class, 'payment_method_id', 'id');
@@ -69,7 +81,7 @@ class Order extends Model
 
     public function client()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'client_id', 'id');
 
     }
 
@@ -112,4 +124,6 @@ class Order extends Model
     {
         return $this->hasMany(OrderPieces::class, 'order_id', 'id')->where('piece_id', null);
     }
+
+
 }

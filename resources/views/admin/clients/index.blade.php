@@ -19,19 +19,21 @@
                                 <th>الاسم</th>
                                 <th>البريد</th>
                                 <th>الهاتف</th>
+                                <th>الرصيد</th>
                                 <th>الصورة</th>
                                 <th>اجراء</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(\App\User::where('type', 'عميل')->get() as $item)
+                            @foreach(\App\Client::all() as $item)
                                 <tr>
                                     <td>{{$item['id']}}</td>
                                     <td>{{$item['name']}}</td>
                                     <td>{{$item['email']}}</td>
                                     <td>{{$item['phone']}}</td>
+                                    <td>{{$item['credit']}}</td>
                                     <td>
-                                        <img class="rounded-circle" style="width: 100px;height: 100px;" src="{{asset($item['img'])}}" alt="">
+                                        <img class="rounded-circle" style="width: 50px;height: 50px;" src="{{asset($item['img'])}}" alt="">
                                     </td>
                                     <td>
                                         <ul class="table-controls">

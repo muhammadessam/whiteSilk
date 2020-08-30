@@ -20434,7 +20434,7 @@ var render = function() {
     _c("div", { staticClass: "form-group" }, [
       _c(
         "label",
-        { staticClass: "font-weight-bold", attrs: { for: "user_id" } },
+        { staticClass: "font-weight-bold", attrs: { for: "client_id" } },
         [_vm._v("العميل")]
       ),
       _vm._v(" "),
@@ -20450,7 +20450,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control",
-          attrs: { name: "user_id", id: "user_id" },
+          attrs: { name: "client_id", id: "client_id" },
           on: {
             change: [
               function($event) {

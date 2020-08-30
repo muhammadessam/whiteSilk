@@ -110,13 +110,13 @@
                                             @if($item->pivot->is_active)
                                                 <span class="badge badge-success">فعال</span>
                                             @else
-                                                <span class="badge badge-danger">منتهيl</span>
+                                                <span class="badge badge-danger">منتهي</span>
                                             @endif
                                         </td>
                                         <td>{{$item->pivot->remaining_pieces}}</td>
                                         <td>{{$item->pivot->start_date}}</td>
                                         <td>{{$item->pivot->end_date}}</td>
-                                        <td>{{$item->pivot->credit}}</td>
+                                        <td>{{$item->added_credit}}</td>
                                         <td class="d-flex">
                                             <form action="{{route('admin.client.subscription.edit')}}" method="POST">
                                                 @csrf

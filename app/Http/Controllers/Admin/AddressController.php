@@ -45,8 +45,6 @@ class AddressController extends Controller
             'customer_id' => ['required', 'integer',],
             'country_id' => ['required', 'integer',],
             'city_id' => ['required', 'integer',],
-            'lat' => ['numeric',],
-            'long' => ['numeric',],
             'phone' => ['string', 'nullable',],
             'alter_phone' => ['string', 'nullable',],
             'name' => ['string', 'nullable',],

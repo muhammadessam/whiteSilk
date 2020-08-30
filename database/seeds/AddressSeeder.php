@@ -14,7 +14,7 @@ class AddressSeeder extends Seeder
         $addresses = [
             [
                 'name' => 'منزل 1',
-                'customer_id' => random_int(2, 3),
+                'client_id' => random_int(2, 3),
                 'country_id' => '1',
                 'city_id' => random_int(1, 6),
                 'area_id' => random_int(1, 6),
@@ -22,7 +22,7 @@ class AddressSeeder extends Seeder
             ],
             [
                 'name' => 'منزل 2',
-                'customer_id' => random_int(2, 3),
+                'client_id' => random_int(2, 3),
                 'country_id' => '1',
                 'city_id' => random_int(1, 6),
                 'area_id' => random_int(1, 6),
@@ -30,7 +30,7 @@ class AddressSeeder extends Seeder
             ],
             [
                 'name' => 'منزل31',
-                'customer_id' => random_int(2, 3),
+                'client_id' => random_int(2, 3),
                 'country_id' => '1',
                 'city_id' => random_int(1, 6),
                 'area_id' => random_int(1, 6),
@@ -38,7 +38,7 @@ class AddressSeeder extends Seeder
             ],
             [
                 'name' => 'منزل 4',
-                'customer_id' => random_int(2, 3),
+                'client_id' => random_int(2, 3),
                 'country_id' => '1',
                 'city_id' => random_int(1, 6),
                 'area_id' => random_int(1, 6),
@@ -46,7 +46,7 @@ class AddressSeeder extends Seeder
             ],
             [
                 'name' => 'منزل 5',
-                'customer_id' => random_int(2, 3),
+                'client_id' => random_int(2, 3),
                 'country_id' => '1',
                 'city_id' => random_int(1, 6),
                 'area_id' => random_int(1, 6),
@@ -54,7 +54,7 @@ class AddressSeeder extends Seeder
             ],
             [
                 'name' => 'منزل 6',
-                'customer_id' => random_int(2, 3),
+                'client_id' => random_int(2, 3),
                 'country_id' => '1',
                 'city_id' => random_int(1, 6),
                 'area_id' => random_int(1, 6),

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Branch;
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderPieces;
@@ -57,11 +58,11 @@ class OrderController extends Controller
         // branch
         $branch = Branch::find($request['branch_id']);
 
-        $user = User::find($request['user_id']);
+        $client = Client::find($request['client_id']);
         $driver = User::find($request['driver_id']);
 
         // saving the subscription pivot for specific subscription, this is not the subscription id its the pivot id
-        $subscription = $user->subscriptions()->wherePivot('id', $request['subscription_id'])->first();
+        $subscription = $client->subscriptions()->wherePivot('id', $request['subscription_id'])->first();
         $request['pivot_id'] = $request['subscription_id'];
         $request['subscription_id'] = $subscription ? $subscription->id : null;
 
@@ -105,7 +106,9 @@ class OrderController extends Controller
                 return redirect()->back();
             }
         }
-        $order = Order::create($request->except(['ids', 'counts', 'types', 'newNames','newTypes', 'newCounts', 'newPrices']));
+
+        $order = Order::create($request->except(['ids', 'counts', 'types', 'newNames', 'newTypes', 'newCounts', 'newPrices']));
+        $client->decrement('credit', $order['total']);
 
         foreach ((array)$request['ids'] as $index => $id) {
             $piece = PriceList::find($id);
@@ -176,11 +179,11 @@ class OrderController extends Controller
         // branch
         $branch = Branch::find($request['branch_id']);
 
-        $user = User::find($request['user_id']);
+        $client = Client::find($request['client_id']);
         $driver = User::find($request['driver_id']);
 
         // saving the subscription pivot for specific subscription, this is not the subscription id its the pivot id
-        $subscription = $user->subscriptions()->wherePivot('id', $request['subscription_id'])->first();
+        $subscription = $client->subscriptions()->wherePivot('id', $request['subscription_id'])->first();
         $request['pivot_id'] = $request['subscription_id'];
         $request['subscription_id'] = $subscription ? $subscription->id : null;
 
@@ -224,7 +227,9 @@ class OrderController extends Controller
                 return redirect()->back();
             }
         }
-        $order->update($request->except(['ids', 'counts', 'types', 'newNames','newTypes', 'newCounts', 'newPrices']));
+        $order->update($request->except(['ids', 'counts', 'types', 'newNames', 'newTypes', 'newCounts', 'newPrices']));
+
+        $client->decrement('credit', $order['total']);
 
         foreach ((array)$request['ids'] as $index => $id) {
             $piece = PriceList::find($id);

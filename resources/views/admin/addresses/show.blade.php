@@ -29,7 +29,7 @@
                             العميل
                         </th>
                         <td>
-                            {{ $address->customer->name ?? '' }}
+                            {{ $address->client->name ?? '' }}
                         </td>
                     </tr>
                     <tr>

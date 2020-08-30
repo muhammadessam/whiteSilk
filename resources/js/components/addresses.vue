@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="form-group">
-            <label class="font-weight-bold" for="user_id">العميل</label>
-            <select name="user_id" class="form-control" id="user_id" @change="updateAddress()" v-model="selectedId">
+            <label class="font-weight-bold" for="client_id">العميل</label>
+            <select name="client_id" class="form-control" id="client_id" @change="updateAddress()" v-model="selectedId">
                 <option v-for="client in clients" :value="client.id">{{ client.name }}</option>
             </select>
         </div>

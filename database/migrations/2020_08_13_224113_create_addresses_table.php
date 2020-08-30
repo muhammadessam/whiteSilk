@@ -13,7 +13,7 @@ class CreateAddressesTable extends Migration
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('area_id');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('client_id');
 
             $table->float('lat', 15, 2)->nullable();
             $table->float('long', 15, 2)->nullable();
@@ -31,7 +31,7 @@ class CreateAddressesTable extends Migration
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

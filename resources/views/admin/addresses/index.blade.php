@@ -32,7 +32,7 @@
                                     <td>{{$item->country->name}}</td>
                                     <td>{{$item->city->name}}</td>
                                     <td>{{$item->area->name}}</td>
-                                    <td>{{$item->customer->name}}</td>
+                                    <td>{{$item->client ? $item->client->name : ''}}</td>
                                     <td>{{$item['details']}}</td>
                                     <td class="d-flex">
                                         <a href="{{route('admin.addresses.show', $item)}}"><i class="fa fa-eye text-dark"></i></a>

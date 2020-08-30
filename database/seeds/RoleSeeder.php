@@ -23,6 +23,10 @@ class RoleSeeder extends Seeder
             'name' => 'السائق',
             'title' => 'Driver',
         ]);
+        Bouncer::role()->firstOrCreate([
+            'name' => 'عميل',
+            'title' => 'Client',
+        ]);
         \App\User::find(1)->roles()->Sync([1]);
     }
 }
