@@ -54,7 +54,7 @@ class OrderController extends Controller
         ]);
         // is paid
         $request['is_paid'] = $request['is_paid'] ? 1 : 0;
-
+        $request['is_fast'] = $request['is_fast'] ? 1 : 0;
         // branch
         $branch = Branch::find($request['branch_id']);
 
@@ -176,6 +176,7 @@ class OrderController extends Controller
         ]);
         // is paid
         $request['is_paid'] = $request['is_paid'] ? 1 : 0;
+        $request['is_fast'] = $request['is_fast'] ? 1 : 0;
 
         // branch
         $branch = Branch::find($request['branch_id']);
