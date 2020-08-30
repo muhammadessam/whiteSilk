@@ -13,8 +13,18 @@
                             <x-showtext title="العميل" value="{{$order->client? $order->client->name : ''}}"></x-showtext>
                             <x-showtext title="السائق" value="{{$order->driver? $order->driver->name : ''}}"></x-showtext>
                             <x-showtext title="الاشتراك" value="{{$order->subscription ? $order->subscription->name : ''}}"></x-showtext>
+                            <x-showtext title="استعجال الطلب" value="{{$order->is_fast ? 'نعم' : 'لا'}}"></x-showtext>
+                            <x-showtext title="عدد القطع" value="{{$order->number_of_Pieces}}"></x-showtext>
+
+
+                            {{--Address--}}
                             <x-showtext title="العنوان" value="{{$order->address ? $order->address->name:''}}"></x-showtext>
                             <x-showtext title="المدينة" value="{{$order->address ? $order->address->city->name:''}}"></x-showtext>
+                            <x-showtext title="هاتف العنوان" value="{{$order->address ? $order->address->phone :''}}"></x-showtext>
+                            <x-showtext title="تفاصيل العنوان" value="{{$order->address ? $order->address->details :''}}"></x-showtext>
+                            <x-showtext title="المربع" value="{{$order->address ? $order->address->block:''}}"></x-showtext>
+                            <x-showtext title="الجادة" value="{{$order->address ? $order->address->gada:''}}"></x-showtext>
+
                         </div>
 
                         <div class="col">
@@ -24,6 +34,14 @@
                             <x-showtext title="المجموع الكلي" value="{{$order['total']}}"></x-showtext>
                             <x-showtext title="الخصم" value="{{$order->discount}}"></x-showtext>
                             <x-showtext title="المنطقة" value="{{$order->address ? $order->address->area->name:''}}"></x-showtext>
+
+
+                            {{--Addresa--}}
+                            <x-showtext title="الهاتف البديل" value="{{$order->address ? $order->address->alter_phone :''}}"></x-showtext>
+                            <x-showtext title="الشارع" value="{{$order->address ? $order->address->street:''}}"></x-showtext>
+                            <x-showtext title="المبني" value="{{$order->address ? $order->address->building:''}}"></x-showtext>
+                            <x-showtext title="الطابق" value="{{$order->address ? $order->address->floor:''}}"></x-showtext>
+                            <x-showtext title="الشقة" value="{{$order->address ? $order->address->flat_house:''}}"></x-showtext>
 
                         </div>
                     </div>

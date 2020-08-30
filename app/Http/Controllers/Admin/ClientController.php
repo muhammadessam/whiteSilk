@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\File;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class ClientController extends Controller
@@ -14,7 +16,7 @@ class ClientController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index(Request $request)
     {
@@ -35,7 +37,7 @@ class ClientController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
@@ -46,7 +48,7 @@ class ClientController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return Route
      */
     public function store(Request $request)
     {
@@ -54,7 +56,7 @@ class ClientController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email|email',
             'password' => 'required|confirmed|min:6',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|unique:users,phone',
         ]);
         $this->storeImg($request, 'img_temp', 'UserProfiles');
         Client::create($request->all());
@@ -66,7 +68,7 @@ class ClientController extends Controller
      * Display the specified resource.
      *
      * @param Client $client
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function show(Client $client)
     {
@@ -77,7 +79,7 @@ class ClientController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Client $client
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function edit(Client $client)
     {
@@ -88,15 +90,15 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param \App\Driver $client
-     * @return \Illuminate\Http\Response
+     * @param Client $client
+     * @return Route
      */
     public function update(Request $request, Client $client)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'email' => 'required|email|unique:users,email,' . $client['id'],
+            'phone' => 'required|numeric|unique:users,phone,' . $client['id'],
         ]);
 
         if ($request->hasFile('img_temp')) {
@@ -115,11 +117,15 @@ class ClientController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Client $client
-     * @return \Illuminate\Http\Response
+     * @return Route
      */
     public function destroy(Client $client)
     {
-        $client->delete();
+        try {
+            $client->delete();
+        } catch (\Exception $e) {
+            return back()->withException($e);
+        }
         $this->actionSuccess();
         return back();
     }
@@ -128,6 +134,5 @@ class ClientController extends Controller
     {
         Client::whereIn('id', $request['ids'])->delete();
         return response(null, Response::HTTP_NO_CONTENT);
-
     }
 }

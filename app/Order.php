@@ -57,6 +57,30 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereSerial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereSubscriptionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereType($value)
+ * @property int $is_fast
+ * @property string|null $notes
+ * @property int|null $pivot_id
+ * @property string|null $discount
+ * @property int|null $number_of_Pieces
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\OrderPieces[] $OrderPieces
+ * @property-read int|null $order_pieces_count
+ * @property-read \App\Branch $branch
+ * @property-read \App\User|null $driver
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\PriceList[] $pieces
+ * @property-read int|null $pieces_count
+ * @property-read \App\Subscription|null $subscription
+ * @method static Builder|Order fast()
+ * @method static Builder|Order normal()
+ * @method static \Illuminate\Database\Query\Builder|Order onlyTrashed()
+ * @method static Builder|Order whereDeletedAt($value)
+ * @method static Builder|Order whereDiscount($value)
+ * @method static Builder|Order whereIsFast($value)
+ * @method static Builder|Order whereNotes($value)
+ * @method static Builder|Order whereNumberOfPieces($value)
+ * @method static Builder|Order wherePivotId($value)
+ * @method static \Illuminate\Database\Query\Builder|Order withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Order withoutTrashed()
  */
 class Order extends Model
 {

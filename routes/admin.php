@@ -114,4 +114,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::post('/clients/subscriptions/edit', 'SubscriptionsClientController@edit')->name('client.subscription.edit');
     Route::patch('/clients/subscriptions/update', 'SubscriptionsClientController@update')->name('client.subscription.update');
     Route::delete('/clients/subscriptions/remove', 'SubscriptionsClientController@destroy')->name('client.subscription.destroy');
+
+    // Settings
+    Route::resource(    'settings', 'SettingsController')->except(['create', 'store', 'destroy']);
 });

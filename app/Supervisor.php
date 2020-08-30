@@ -6,6 +6,45 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
+/**
+ * App\Supervisor
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $phone
+ * @property string|null $email
+ * @property string|null $email_verified_at
+ * @property string $password
+ * @property string|null $img
+ * @property string $credit
+ * @property string $type
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Ability[] $abilities
+ * @property-read int|null $abilities_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Silber\Bouncer\Database\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static Builder|Supervisor newModelQuery()
+ * @method static Builder|Supervisor newQuery()
+ * @method static Builder|Supervisor query()
+ * @method static Builder|Supervisor whereCreatedAt($value)
+ * @method static Builder|Supervisor whereCredit($value)
+ * @method static Builder|Supervisor whereEmail($value)
+ * @method static Builder|Supervisor whereEmailVerifiedAt($value)
+ * @method static Builder|Supervisor whereId($value)
+ * @method static Builder|Supervisor whereImg($value)
+ * @method static Builder|Supervisor whereIs($role)
+ * @method static Builder|Supervisor whereIsAll($role)
+ * @method static Builder|Supervisor whereIsNot($role)
+ * @method static Builder|Supervisor whereName($value)
+ * @method static Builder|Supervisor wherePassword($value)
+ * @method static Builder|Supervisor wherePhone($value)
+ * @method static Builder|Supervisor whereRememberToken($value)
+ * @method static Builder|Supervisor whereType($value)
+ * @method static Builder|Supervisor whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Supervisor extends Model
 {
     use HasRolesAndAbilities;

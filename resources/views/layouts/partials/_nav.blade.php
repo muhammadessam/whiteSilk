@@ -170,6 +170,21 @@
                                         المدن
                                     @elseif(request()->routeIs('admin.areas.*'))
                                         المناطق
+                                    @elseif(request()->routeIs('admin.clients.*'))
+                                        العملاء
+                                    @elseif(request()->routeIs('admin.settings.*'))
+                                        الاعدادات
+                                    @elseif(request()->routeIs('admin.price-list.*'))
+                                        قائمة الاسعار
+                                    @elseif(request()->routeIs('admin.driver-orders.*'))
+                                        طلبات السائقين
+                                    @elseif(request()->routeIs('admin.couponUsage.*'))
+                                        استخدم الكوبونات
+                                    @elseif(request()->routeIs('admin.coupons.*'))
+                                        الكوبونات
+                                    @elseif(request()->routeIs('admin.payments.*'))
+                                        الدفع
+
                                     @endif
                                 </span>
                             </li>
@@ -183,7 +198,7 @@
             <li class="nav-item more-dropdown">
                 <div class="dropdown  custom-dropdown-icon">
                     <a class="dropdown-toggle btn" href="#" role="button" id="customDropdown" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"><span>Settings</span>
+                       aria-haspopup="true" aria-expanded="false"><span>الاعدادات</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                              class="feather feather-chevron-down">
@@ -192,7 +207,7 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="customDropdown">
-                        <a class="dropdown-item" data-value="Settings" href="javascript:void(0);">الاعدادات</a>
+                        <a class="dropdown-item" data-value="Settings" href="{{route('admin.settings.index')}}">الاعدادات</a>
                     </div>
                 </div>
             </li>

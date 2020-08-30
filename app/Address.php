@@ -59,6 +59,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|Address withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Address withoutTrashed()
  * @mixin \Eloquent
+ * @property int $client_id
+ * @property-read \App\Client $client
+ * @method static \Illuminate\Database\Eloquent\Builder|Address whereClientId($value)
  */
 class Address extends Model
 {

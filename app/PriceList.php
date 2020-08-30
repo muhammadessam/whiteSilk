@@ -25,6 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|PriceList whereWashing($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PriceList whereWashingAndIron($value)
  * @mixin \Eloquent
+ * @property string|null $img
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
+ * @property-read int|null $orders_count
+ * @method static \Illuminate\Database\Eloquent\Builder|PriceList whereImg($value)
  */
 class PriceList extends Model
 {

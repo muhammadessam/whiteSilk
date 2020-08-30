@@ -25,10 +25,11 @@ class RoleAbilityHelper
         Coupon::class => 'الكوبونات',
         CouponUsage::class => 'استخدام الكوبونات',
         PaymentMethod::class => 'طرق الدفع',
-        OrderStatus::class  =>'حالة الطلب',
-        Order::class=>'الطلبات',
-        Payment::class=>'عمليات الدفع',
-        Branch::class=>'الفروع',
+        OrderStatus::class => 'حالة الطلب',
+        Order::class => 'الطلبات',
+        Payment::class => 'عمليات الدفع',
+        Branch::class => 'الفروع',
+        Settings::class => 'الاعدادات',
     ];
     private $cruds = [
         'show' => 'عرض',
