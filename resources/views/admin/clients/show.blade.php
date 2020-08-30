@@ -57,15 +57,15 @@
 
                 <li class="nav-item">
                     <a class="nav-link" id="border-top-contact-tab" data-toggle="tab" href="#fast-orders" role="tab" aria-controls="border-top-contact" aria-selected="false">
-                       <i class="fa fa-shipping-fast"></i>
+                        <i class="fa fa-shipping-fast"></i>
                         الطلبات المستعجلة
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="border-top-contact-tab" data-toggle="tab" href="#fast-orders" role="tab" aria-controls="border-top-contact" aria-selected="false">
-                       <i class="fa fa-map-pin"></i>
-                    العناوين
+                    <a class="nav-link" id="border-top-contact-tab" data-toggle="tab" href="#addresses" role="tab" aria-controls="border-top-contact" aria-selected="false">
+                        <i class="fa fa-map-pin"></i>
+                        العناوين
                     </a>
                 </li>
 
@@ -91,6 +91,10 @@
 
                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="border-top-contact-tab">
                     @include('admin.clients.partials._orders')
+                </div>
+
+                <div class="tab-pane fade" id="addresses" role="tabpanel" aria-labelledby="border-top-contact-tab">
+                    @include('admin.clients.partials._addresses')
                 </div>
 
                 <div class="tab-pane fade" id="fast-orders" role="tabpanel" aria-labelledby="border-top-contact-tab">
